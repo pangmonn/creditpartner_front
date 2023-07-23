@@ -1,0 +1,40 @@
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.logoNtitle {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin-left: 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
+
+
+img {
+    width: 45px;
+}
+
+.auth {
+    width: 90px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.authmenu {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+}
