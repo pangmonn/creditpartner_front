@@ -5,12 +5,12 @@ const client = axios.create();
 
 const config = { headers : { "Content-Type": 'application/json' } };
 
-const semesterURL1 = 'http://localhost:8080/credits1';
-const semesterURL2 = 'http://localhost:8080/credits2';
-const semesterURL3 = 'http://localhost:8080/credits3';
-const semesterURL4 = 'http://localhost:8080/credits4';
-const semesterURL5 = 'http://localhost:8080/credits5';
-const semesterURL6 = 'http://localhost:8080/credits6';
+const semesterURL1 = '/api/credits/1';
+const semesterURL2 = '/api/credits/2';
+const semesterURL3 = '/api/credits/3';
+const semesterURL4 = '/api/credits/4';
+const semesterURL5 = '/api/credits/5';
+const semesterURL6 = '/api/credits/6';
 
 
 export const getClasses = (semester) => {
