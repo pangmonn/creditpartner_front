@@ -1,0 +1,21 @@
+.mypageProfileImage {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mypageUsername {
+    font-family: 'NanumSquareNeo-Heavy';
+    font-style: normal;
+    font-size: 25px;
+    line-height: 36px;
+    color: #1751EC;
+    
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

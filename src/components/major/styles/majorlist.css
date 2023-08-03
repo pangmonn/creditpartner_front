@@ -1,0 +1,41 @@
+.searchContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+/* Table */
+.categoryTable {
+    margin-top: 20px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 100px;
+    table-layout: fixed;
+}
+  
+/* 헤더 */
+.categoryTable thead th {
+    background-color: #B5C9FF;
+    border: 1px solid #bcbcbc;
+    width: 197px;
+    height: 40px;
+    text-align: center;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 18px;
+}
+  
+/* 본문 */
+.categoryTable tbody td {
+    border: 1px solid #ddd;
+    height: 35px;
+    text-align: center;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+}

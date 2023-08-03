@@ -1,0 +1,23 @@
+.menuContainer {
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuComponent {
+    font-family: 'NanumSquareNeo-Bold';
+    font-style: normal;
+    font-size: 18px;
+    line-height: 40px;
+    color: #949494;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.selected {
+    font-family: 'NanumSquareNeo-ExtraBold';
+    color: #4f4f4f;
+}

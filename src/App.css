@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+/* font(in order of thickness) */
+
+/* variable */
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url("./fonts/NanumSquareNeo-Variable.ttf");
+}
+
+/* Light */
+@font-face {
+  font-family: 'NanumSquareNeo-Light';
+  src: url("./fonts/NanumSquareNeo-aLt.ttf");
+}
+
+/* Regular */
+@font-face {
+  font-family: 'NanumSquareNeo-Regular';
+  src: url("./fonts/NanumSquareNeo-bRg.ttf");
+}
+
+/* Bold */
+@font-face {
+  font-family: 'NanumSquareNeo-Bold';
+  src: url("./fonts/NanumSquareNeo-cBd.ttf");
+}
+
+/* Extra Bold */
+@font-face {
+  font-family: 'NanumSquareNeo-ExtraBold';
+  src: url("./fonts/NanumSquareNeo-dEb.ttf");
+}
+
+/* Heavy */
+@font-face {
+  font-family: 'NanumSquareNeo-Heavy';
+  src: url("./fonts/NanumSquareNeo-eHv.ttf");
+}
