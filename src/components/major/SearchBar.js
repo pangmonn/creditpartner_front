@@ -12,9 +12,15 @@ const SearchBar = ({ onSearch }) => {
         onSearch(keyword);
     };
 
+    const onKeyPress = (e) => {
+        if(e.key == 'Enter') {
+            onSearchClick();
+        }
+    }
+
     const onResetClick = () => {
         setKeyword('');
-        onSearch(''); // Optionally, you can trigger a search with an empty keyword to reset the search results.
+        onSearch('');
     };
 
     return (
@@ -24,6 +30,7 @@ const SearchBar = ({ onSearch }) => {
                 placeholder="학과명 검색하기"
                 value={keyword}
                 onChange={onChange}
+                onKeyPress={onKeyPress}
                 className="searchInput"
             />
             <button onClick={onSearchClick}>검색</button>
