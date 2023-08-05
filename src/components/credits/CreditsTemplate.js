@@ -121,6 +121,29 @@ const CreditsTemplate = () => {
                     console.log(newSubject);
                 }
                 nextId.current = classes.length;
+                console.log(newSubject.length);
+                if(newSubject.length===0) {
+                    setSubjects([
+                        {
+                            id: 1,
+                            subject: '국어',
+                            class: '',
+                            credit: '',
+                        },
+                        {
+                            id: 2,
+                            subject: '수학',
+                            class: '',
+                            credit: '',
+                        },
+                        {
+                            id: 3,
+                            subject: '영어',
+                            class: '',
+                            credit: '',
+                        },
+                    ]);
+                }
                 setSubjects(newSubject);  
             } catch (error) {
                 // 에러 처리
@@ -150,7 +173,30 @@ const CreditsTemplate = () => {
                     newSubject.push(newClass);
                 }
                 nextId.current = classes.length;
-                setSubjects(newSubject);  
+                console.log(newSubject.length);
+                if(newSubject.length===0) {
+                    setSubjects([
+                        {
+                            id: 1,
+                            subject: '국어',
+                            class: '',
+                            credit: '',
+                        },
+                        {
+                            id: 2,
+                            subject: '수학',
+                            class: '',
+                            credit: '',
+                        },
+                        {
+                            id: 3,
+                            subject: '영어',
+                            class: '',
+                            credit: '',
+                        },
+                    ]);
+                }
+                //setSubjects(newSubject);  
             } catch (error) {
                 // 에러 처리
             }
