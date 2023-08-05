@@ -17,10 +17,14 @@ const Bar = () => {
                     </div>
                 </Link>
                 
-                <div className='menu2'>
-                    <span style={colorBLUE}>학과정보 </span>
-                    <span>둘러보기</span>
-                </div>
+                
+                <Link to='/major'>
+                    <div className='menu2'>
+                        <span style={colorBLUE}>학과정보 </span>
+                        <span>둘러보기</span>
+                    </div>
+                </Link>
+                    
             </div>
         </div>
     );
