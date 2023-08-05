@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import "./styles/majorlist.css"
 import SearchBar from './SearchBar';
-import departmentData from "./departmentData.json"
+import MajorPopUp from "./MajorPopUp";
+import departmentData from "./departmentData.json";
 
 // field, line, major 선택에 따라 그 List를 filtering하여 출력
 const MajorList = ({ fieldSelected, lineSelected, majorSelected }) => {
@@ -57,7 +58,7 @@ const MajorList = ({ fieldSelected, lineSelected, majorSelected }) => {
             <td>{dept.field}</td>
             <td>{dept.line}</td>
             <td>{dept.major}</td>
-            <td>{}</td>
+            <td>{<MajorPopUp id={dept.id}/>}</td>
         </tr>
     ));
 
