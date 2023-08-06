@@ -1,0 +1,18 @@
+.chatbotContainer {
+    width: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    /*
+    overflow: auto -> 컨텐츠 량에 따라 스크롤바를 추가할지 자동으로 결정됩니다.
+    ( 필요에 따라 가로, 세로 별도로 추가될 수도 있습니다.)
+    */
+}
+
+.chatbotContent {
+    width: 95%;
+    height: 1000px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

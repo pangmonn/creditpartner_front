@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles/top.css'
-import logo from '../../images/logo.png'
+import home from '../../images/home.png'
 import { Link } from 'react-router-dom';
 
 const imgstyle = {
-    width: '20px',
-    height: '20px'
+    width: '30px',
+    height: '30px'
 }
 
 const Top = () => {
@@ -13,7 +13,7 @@ const Top = () => {
         <div className='creditsTop'>
             <div className='creditsTitle'>이수내역 입력하기</div>
             <Link to='/'>
-                <img src={logo} style={imgstyle} />
+                <img src={home} style={imgstyle} />
             </Link>
         </div>
     );

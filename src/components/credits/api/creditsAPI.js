@@ -5,6 +5,8 @@ const client = axios.create();
 
 const config = { headers : { "Content-Type": 'application/json' } };
 
+const fakeURL_credits = 'http://localhost:3000/credits1';
+
 const semesterURL1 = '/api/credits/1';
 const semesterURL2 = '/api/credits/2';
 const semesterURL3 = '/api/credits/3';
@@ -38,7 +40,7 @@ export const getClasses = (semester) => {
             break;
     }
     return new Promise((resolve, reject) => {
-        client.get(URL, config)
+        client.get(fakeURL_credits, config)
             .then(response => {
                 // console.log(response.data.items);
                 resolve(response.data.items);
@@ -74,7 +76,7 @@ export const postClasses = (form, semester) => {
         default:
             break;
     }
-    client.post(URL, data, config).then(function (response) {
+    client.post(fakeURL_credits, data, config).then(function (response) {
             console.log(response);
             return response;
             }).catch(function (error) {
