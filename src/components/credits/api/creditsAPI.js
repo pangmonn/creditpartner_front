@@ -40,10 +40,10 @@ export const getClasses = (semester) => {
             break;
     }
     return new Promise((resolve, reject) => {
-        client.get(fakeURL_credits, config)
+        client.get(URL, config)
             .then(response => {
                 // console.log(response.data.items);
-                resolve(response.data.items);
+                resolve(response.data);
             })
             .catch(error => {
                 reject(error);
@@ -52,7 +52,7 @@ export const getClasses = (semester) => {
 };
 
 export const postClasses = (form, semester) => {
-    const data = { items: form };
+    const data = JSON.stringify(form);
     let URL;
     switch(semester) {
         case 1:
@@ -76,7 +76,7 @@ export const postClasses = (form, semester) => {
         default:
             break;
     }
-    client.post(fakeURL_credits, data, config).then(function (response) {
+    client.post(URL, data, config).then(function (response) {
             console.log(response);
             return response;
             }).catch(function (error) {
