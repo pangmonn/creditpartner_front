@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/profile.css'
 import profile from '../../images/profile.png'
-// import { join } from '../auth/api/auth';
+import userInfo from "./userInfo.json";
 
 const imgstyle = {
     width: '160px',
@@ -9,11 +9,17 @@ const imgstyle = {
     borderRadius: '50%'
 }
 
-// Test(이름 받아와야 함)
-let userName = 'OOO';
+// TEST
+// let userId = 'bbb';
+let userId = 'abc123';
+
+const getUserName = (userId) => {
+    const user = userInfo.find((user) => user.id === userId);
+    return user ? user.name : 'OOO';
+  };
 
 const Profile = () => {
-    // const { user } = join(); // 맞나????
+    const userName = getUserName(userId);
 
     return (
         <div>
