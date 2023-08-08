@@ -1,0 +1,16 @@
+.guideTop {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guideTitle {
+    font-family: 'NanumSquareNeo-Heavy';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 30px;
+    color: #1751EC;
+}

@@ -7,6 +7,7 @@ import CreditsTemplate from "./components/credits/CreditsTemplate";
 import MyPageTemplate from "./components/mypage/MypageTemplate";
 import MajorTemplate from "./components/major/MajorTemplate";
 import ChatbotTemplate from "./components/chatbot/ChatbotTemplate";
+import GuideTemplate from "./components/guide/GuideTemplate";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/mypage" element={<MyPageTemplate />} />
       <Route path="/major" element={<MajorTemplate />} />
       <Route path="/chatbot" element={<ChatbotTemplate />} />
+      <Route path="/guide" element={<GuideTemplate />} />
     </Routes>
   );
 }
