@@ -113,7 +113,7 @@ const CreditsTemplate = () => {
                     const newClass = {
                         id: i,
                         subject: classes[i].subject,
-                        class_name:  classes[i].class,
+                        class_name:  classes[i].class_name,
                         credit:  classes[i].credit,
                     };
                     newSubject.push(newClass);
@@ -167,7 +167,7 @@ const CreditsTemplate = () => {
                     const newClass = {
                         id: i,
                         subject: classes[i].subject,
-                        class_name:  classes[i].class,
+                        class_name:  classes[i].class_name,
                         credit:  classes[i].credit,
                     };
                     newSubject.push(newClass);
@@ -208,7 +208,7 @@ const CreditsTemplate = () => {
 
     const onSubmitClass = useCallback(() => {
         for(let i=0;i<subjects.length;i++) {
-            if(subjects[i].subject==='' || subjects[i].class==='' || subjects[i].credit==='') {
+            if(subjects[i].subject==='' || subjects[i].class_name==='' || subjects[i].credit==='') {
                 alert('빈 칸을 모두 선택하세요.');
                 return;
             }
