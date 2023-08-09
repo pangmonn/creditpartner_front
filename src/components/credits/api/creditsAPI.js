@@ -17,7 +17,7 @@ const semesterURL6 = '/api/credits/6';
 
 export const getClasses = (semester) => {
     let URL;
-    switch(semester) {
+    switch(Number(semester)) {
         case 1:
             URL = semesterURL1;
             break;
@@ -53,8 +53,9 @@ export const getClasses = (semester) => {
 
 export const postClasses = (form, semester) => {
     const data = JSON.stringify(form);
+    console.log(data);
     let URL;
-    switch(semester) {
+    switch(Number(semester)) {
         case 1:
             URL = semesterURL1;
             break;

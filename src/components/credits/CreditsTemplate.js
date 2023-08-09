@@ -16,19 +16,19 @@ const CreditsTemplate = () => {
         {
             id: 1,
             subject: '국어',
-            class: '',
+            class_name: '',
             credit: '',
         },
         {
             id: 2,
             subject: '수학',
-            class: '',
+            class_name: '',
             credit: '',
         },
         {
             id: 3,
             subject: '영어',
-            class: '',
+            class_name: '',
             credit: '',
         },
     ]);
@@ -49,7 +49,7 @@ const CreditsTemplate = () => {
 
     const onModifyClass = useCallback((e, id) => {
         setSubjects(
-            subjects.map(subject => (subject.id === id) ? { ...subject, class: e.value } : subject)
+            subjects.map(subject => (subject.id === id) ? { ...subject, class_name: e.value } : subject)
         );
         //console.log(id);
     });
@@ -65,7 +65,7 @@ const CreditsTemplate = () => {
         const newClass = {
             id: nextId.current,
             subject:'국어',
-            class: '',
+            class_name: '',
             credit: '',
         };
         setSubjects(subjects.concat(newClass));
@@ -78,19 +78,19 @@ const CreditsTemplate = () => {
             {
                 id: 1,
                 subject: '국어',
-                class: '',
+                class_name: '',
                 credit: '',
             },
             {
                 id: 2,
                 subject: '수학',
-                class: '',
+                class_name: '',
                 credit: '',
             },
             {
                 id: 3,
                 subject: '영어',
-                class: '',
+                class_name: '',
                 credit: '',
             },
         ]);
@@ -113,7 +113,7 @@ const CreditsTemplate = () => {
                     const newClass = {
                         id: i,
                         subject: classes[i].subject,
-                        class:  classes[i].class,
+                        class_name:  classes[i].class,
                         credit:  classes[i].credit,
                     };
                     newSubject.push(newClass);
@@ -127,19 +127,19 @@ const CreditsTemplate = () => {
                         {
                             id: 1,
                             subject: '국어',
-                            class: '',
+                            class_name: '',
                             credit: '',
                         },
                         {
                             id: 2,
                             subject: '수학',
-                            class: '',
+                            class_name: '',
                             credit: '',
                         },
                         {
                             id: 3,
                             subject: '영어',
-                            class: '',
+                            class_name: '',
                             credit: '',
                         },
                     ]);
@@ -167,7 +167,7 @@ const CreditsTemplate = () => {
                     const newClass = {
                         id: i,
                         subject: classes[i].subject,
-                        class:  classes[i].class,
+                        class_name:  classes[i].class,
                         credit:  classes[i].credit,
                     };
                     newSubject.push(newClass);
@@ -179,19 +179,19 @@ const CreditsTemplate = () => {
                         {
                             id: 1,
                             subject: '국어',
-                            class: '',
+                            class_name: '',
                             credit: '',
                         },
                         {
                             id: 2,
                             subject: '수학',
-                            class: '',
+                            class_name: '',
                             credit: '',
                         },
                         {
                             id: 3,
                             subject: '영어',
-                            class: '',
+                            class_name: '',
                             credit: '',
                         },
                     ]);
