@@ -160,10 +160,10 @@ const SubjectItem = ({ subject, id, onModifySubject, onModifyClass, onModifyCred
         //for showing
         switch(subjectNum) {
             case 0: //국어
-                classNum = classList0.indexOf(subject.class);
+                classNum = classList0.indexOf(subject.class_name);
                 break;
             case 1:
-                classNum = classList1.indexOf(subject.class);
+                classNum = classList1.indexOf(subject.class_name);
                 break;
             default:
                 break;
@@ -199,7 +199,7 @@ const SubjectItem = ({ subject, id, onModifySubject, onModifyClass, onModifyCred
                     isSearchable={false}
                     onChange={onSelectClass}
                     value={classOptions[subjectNum].filter(function (option) {
-                        return option.value === subject.class;
+                        return option.value === subject.class_name;
                     })} />
             <Select options={creditOptions}
                     isSearchable={false}
