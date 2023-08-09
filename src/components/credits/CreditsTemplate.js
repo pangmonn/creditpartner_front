@@ -33,7 +33,7 @@ const CreditsTemplate = () => {
         },
     ]);
 
-    const [semester, setSemester] = useState('1'); //semester -> 0: 1-1 / 1: 1-2 / ...
+    const [semester, setSemester] = useState('1'); //semester -> 1: 1-1 / 2: 1-2 / ...
     
 
     //GET => semester와 해당하는 item들 list 받기
@@ -96,17 +96,17 @@ const CreditsTemplate = () => {
         ]);
         nextId.current = 4;
     }, [subjects]);
+    
 
     const onClickSemester = useCallback((e) => {
+        
         setSemester(e.value);
         let classes = [];
         const get = async () => {
             try {
                 const data = await getClasses(semester);
                 // data에 접근하여 필요한 작업 수행
-                console.log(data);
                 classes = data;
-                console.log(classes); 
 
                 let newSubject = [];
                 for(let i=0;i<classes.length;i++) {
@@ -152,7 +152,8 @@ const CreditsTemplate = () => {
         get(); //semester 학기에 저장된 class들 리스트 받아오기
         
         //console.log(newSubject);
-    }, [semester, subjects]);
+        
+    }, [semester]);
 
     useEffect(() => {
         let classes = [];
@@ -161,6 +162,7 @@ const CreditsTemplate = () => {
                 const data = await getClasses(semester);
                 // data에 접근하여 필요한 작업 수행
                 classes = data;
+                console.log(classes)
 
                 let newSubject = [];
                 for(let i=0;i<classes.length;i++) {
@@ -196,6 +198,9 @@ const CreditsTemplate = () => {
                         },
                     ]);
                 }
+                else {
+                    setSubjects(newSubject);
+                }
                 //setSubjects(newSubject);  
             } catch (error) {
                 // 에러 처리
@@ -204,7 +209,7 @@ const CreditsTemplate = () => {
         get(); //semester 학기에 저장된 class들 리스트 받아오기
         
         //console.log(newSubject);
-    }, [semester]);
+    },[semester]);
 
     const onSubmitClass = useCallback(() => {
         for(let i=0;i<subjects.length;i++) {
