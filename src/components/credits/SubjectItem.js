@@ -145,12 +145,12 @@ const classOptions = [ [{value: "국어", label: "국어"},{value: "화법과 �
 {value: "논술", label: "논술"}
 ]];
 
-const creditOptions = [{value: 1, label: "1"},
-{value: 2, label: "2"},
-{value: 3, label: "3"},
-{value: 4, label: "4"},
-{value: 5, label: "5"},
-{value: 6, label: "6"}];
+const creditOptions = [{value: "1", label: "1"},
+{value: "2", label: "2"},
+{value: "3", label: "3"},
+{value: "4", label: "4"},
+{value: "5", label: "5"},
+{value: "6", label: "6"}];
 
 const SubjectItem = ({ subject, id, onModifySubject, onModifyClass, onModifyCredit }) => {
     let subjectNum = -1;
@@ -160,10 +160,10 @@ const SubjectItem = ({ subject, id, onModifySubject, onModifyClass, onModifyCred
         //for showing
         switch(subjectNum) {
             case 0: //국어
-                classNum = classList0.indexOf(subject.class_name);
+                classNum = classList0.indexOf(subject.class);
                 break;
             case 1:
-                classNum = classList1.indexOf(subject.class_name);
+                classNum = classList1.indexOf(subject.class);
                 break;
             default:
                 break;
@@ -185,8 +185,7 @@ const SubjectItem = ({ subject, id, onModifySubject, onModifyClass, onModifyCred
 
     useEffect(() => {
         setSubjectSelected(subject.subject);
-    },[]);
-
+    });
 
     return (
         <div className='subjectItemList'>
@@ -200,7 +199,7 @@ const SubjectItem = ({ subject, id, onModifySubject, onModifyClass, onModifyCred
                     isSearchable={false}
                     onChange={onSelectClass}
                     value={classOptions[subjectNum].filter(function (option) {
-                        return option.value === subject.class_name;
+                        return option.value === subject.class;
                     })} />
             <Select options={creditOptions}
                     isSearchable={false}
