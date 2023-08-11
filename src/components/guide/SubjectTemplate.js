@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import SubjectList from "./SubjectList";
 import SemesterButton from "./SemesterButton";
+import subjectBySemesterData from "./subjectBySemesterData.json"
+import subjectByMajorData from "./subjectByMajorData.json"
 
-const subjectData_1_1 = ["공통국어1", "공통수학1", "공통영어1", "한국사1"];
-const subjectData_1_2 = ["공통국어2", "공통수학2", "공통영어2"];
-
-const SubjectTemplate = () => {
-    const [selectedSubjectData, setSelectedSubjectData] = useState([]);
+const SubjectTemplate = ({selectedMajor}) => {
+    const [selectedSubjectData, setSelectedSemesterData] = useState([]);
 
     const handleButtonClick = (selectedData) => {
-        setSelectedSubjectData(selectedData);
+        setSelectedSemesterData(selectedData);
     };
+
+    const majorData = subjectByMajorData.find(data => data.major === selectedMajor);
+    console.log(subjectByMajorData);
+    console.log(majorData);
 
     return (
         <div>
-            <SemesterButton onClick={() => handleButtonClick(subjectData_1_1)} label="1-1 버튼" />
-            <SemesterButton onClick={() => handleButtonClick(subjectData_1_2)} label="1-2 버튼" />
-            <SubjectList selectedSubjectData={selectedSubjectData} handleButtonClick={handleButtonClick} />
+            {subjectBySemesterData.map((semesterData, index) => (
+                <SemesterButton
+                    key={index}
+                    onClick={() => handleButtonClick(semesterData.subjectData)}
+                    label={`${Math.floor((semesterData.semester+1)/2)}-${(semesterData.semester+1)%2+1}`}
+                    isSelected={selectedSubjectData === semesterData.subjectData}
+                />
+            ))}
+            <SubjectList selectedSemesterData={selectedSubjectData} handleButtonClick={handleButtonClick} majorData={majorData} />
         </div>
     );
 };

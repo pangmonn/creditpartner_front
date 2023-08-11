@@ -144,5 +144,8 @@
     { "majorNum": 107, "field": "교육", "line": "교육", "major": "물리교육과", "descript": "", "recommend": [], "similar": [], "general_credit": [], "career_credit": [] },
     { "majorNum": 108, "field": "교육", "line": "교육", "major": "화학교육과", "descript": "", "recommend": [], "similar": [], "general_credit": [], "career_credit": [] },
     { "majorNum": 109, "field": "교육", "line": "교육", "major": "생물교육과", "descript": "", "recommend": [], "similar": [], "general_credit": [], "career_credit": [] },
-    { "majorNum": 110, "field": "교육", "line": "교육", "major": "지구과학교육과", "descript": "", "recommend": [], "similar": [], "general_credit": [], "career_credit": [] }
+    { "majorNum": 110, "field": "교육", "line": "교육", "major": "지구과학교육과", "descript": "", "recommend": [], "similar": [], "general_credit": [], "career_credit": [] },
+    { "majorNum": 111, "field": "교육", "line": "교육", "major": "교육학과", "descript": "", "recommend": [], "similar": [], "general_credit": [], "career_credit": [] },
+    { "majorNum": 112, "field": "교육", "line": "교육", "major": "초등교육과", "descript": "", "recommend": [], "similar": [], "general_credit": [], "career_credit": [] },
+    { "majorNum": 113, "field": "교육", "line": "교육", "major": "유아교육과", "descript": "", "recommend": [], "similar": [], "general_credit": [], "career_credit": [] }
 ]

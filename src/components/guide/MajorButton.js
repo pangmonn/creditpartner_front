@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import './styles/majorbutton.css'
 
-const MajorButton = () => {
-    const majorButtonList = ['컴퓨터공학과', '인공지능학과', '소프트웨어학과'];
+const MajorButton = ({ majorList, handleMajorButtonClick }) => {
+    const [selectedMajor, setSelectedMajor] = useState(null);
+
+    const handleButtonClick = (major) => {
+        setSelectedMajor(major);
+        handleMajorButtonClick(major);
+    };
 
     return (
-        <div>
-            <button>{majorButtonList[0]}</button>
-            <button>{majorButtonList[1]}</button>
-            <button>{majorButtonList[2]}</button>
+        <div className="majorButtonContainer">
+            {majorList.map((major, index) => (
+                <button
+                    className={`majorButton ${selectedMajor === major ? 'selected' : ''}`}
+                    key={index}
+                    onClick={() => handleButtonClick(major)}
+                >
+                    {major}
+                </button>
+            ))}
         </div>
     );
 };

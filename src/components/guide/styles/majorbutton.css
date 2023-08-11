@@ -1,0 +1,29 @@
+.majorButtonContainer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.majorButton {
+    background-color: #E7EDFD;
+    border: none;
+    border-radius: 16px;
+    width: 150px;
+    height: 32px;
+    margin-right: 20px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    color: grey;
+}
+
+.majorButton:hover {
+    font-family: 'NanumSquareNeo-ExtraBold';
+}
+
+.majorButton.selected {
+    background-color: #CCFA50;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    color: #1751EC;
+}

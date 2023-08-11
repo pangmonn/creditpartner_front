@@ -1,9 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import Top from "./Top";
 import MajorButton from "./MajorButton";
-import SemesterButton from "./SemesterButton";
-import SubjectList from "./SubjectList";
 import SubjectTemplate from "./SubjectTemplate";
+import subjectByMajorData from "./subjectByMajorData.json"
 
 const desktop = {
     width: "800px",
@@ -12,11 +11,18 @@ const desktop = {
 };
 
 const GuideTemplate = () => {
+    // Default: 첫 번째 버튼
+    const [selectedMajor, setSelectedMajor] = useState(subjectByMajorData[0].major);
+
+    const handleMajorButtonClick = (major) => {
+        setSelectedMajor(major);
+    };
+
     return (
         <div style={desktop}>
             <Top />
-            <MajorButton />
-            <SubjectTemplate />
+            <MajorButton majorList={subjectByMajorData.map(data => data.major)} handleMajorButtonClick={handleMajorButtonClick} />
+            <SubjectTemplate selectedMajor={selectedMajor} />
         </div>
     );
 };

@@ -1,0 +1,16 @@
+[
+    {
+        "semester": 1,
+        "subjectData" : ["공통국어1", "공통수학1", "공통영어1", "한국사1"]
+    },
+
+    {
+        "semester": 2,
+        "subjectData" : ["공통국어2", "공통수학2", "공통영어2"]
+    },
+
+    {
+        "semester": 3,
+        "subjectData" : ["한국사2"]
+    }
+]
