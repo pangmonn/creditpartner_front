@@ -1,0 +1,26 @@
+.majorPopUpContainer {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: translate(-20%, -20%);
+    max-width: 100%;
+    max-height: 80%;
+    overflow-y: auto;
+
+    background-color: #E7EDFD;
+    border-radius: 20px;
+
+    font-family: 'NanumSquareNeo-Regular';
+    font-size: 15px;
+    color: #4D789D;
+}
+
+.majorPopUpContent {
+    background-color: white;
+    border-radius: 20px;
+    margin: 40px;
+
+    font-family: 'NanumSquareNeo-Regular';
+    font-size: 15px;
+    color: #4D789D;
+}
