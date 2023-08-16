@@ -3,7 +3,6 @@ import "./styles/subjectlist.css"
 
 const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => {
     const subjectMap = new Map(); // 과목별 데이터를 저장할 Map 생성
-
     majorData.subjectData.forEach((subj) => {
         if (!subjectMap.has(subj.subject)) {
             subjectMap.set(subj.subject, []);
@@ -12,8 +11,7 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
     });
 
     // 학점 계산
-    const creditMap = new Map();
-
+    const creditMap = new Map(); // 과목별 학점 데이터를 저장
     majorData.subjectData.forEach((subj) => {
         if (!creditMap.has(subj.subject)) {
             creditMap.set(subj.subject, 0);
@@ -23,13 +21,18 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
         }
     });
 
+    // 과목 리스트 출력
     const subjectList = Array.from(subjectMap.keys()).map((subject) => (
         <tr key={subject}>
             <td>{subject}</td>
-            <td>
+            <td style={{ textAlign: "left" }}>
                 {subjectMap.get(subject).map((subj) => (
-                    <span key={subj.class} style={{ fontWeight: selectedSemesterData.includes(subj.class) ? "bold" : "normal" }}>
-                        <button className={subj.complete ? 'subject_complete' : 'subject_incomplete'}>{subj.class}</button>
+                    <span key={subj.class}> 
+                        <button
+                            className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
+                        >
+                            {subj.class}
+                        </button>
                     </span>
                 ))}
             </td>
@@ -48,7 +51,7 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
                 <thead>
                     <tr>
                         <th>과목</th>
-                        <th>과목명</th>
+                        <th >과목명</th>
                         <th>학점</th>
                     </tr>
                 </thead>

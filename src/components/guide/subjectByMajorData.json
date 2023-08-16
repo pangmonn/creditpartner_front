@@ -7,8 +7,8 @@
 
             {"subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
             {"subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": true},
+            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": true},
             {"subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
             {"subject": "수학", "class": "기하", "credit": 3, "course": "진로", "complete": false},
 
@@ -23,8 +23,8 @@
 
             {"subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
             {"subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": false},
-            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": false},
+            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
+            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
             {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
             {"subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
             {"subject": "과학", "class": "물리학Ⅱ", "credit": 3, "course": "진로", "complete": false},
@@ -43,8 +43,8 @@
 
             {"subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
             {"subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": true},
+            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": true},
             {"subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
             {"subject": "수학", "class": "수학과제 탐구", "credit": 3, "course": "진로", "complete": false},
 
@@ -60,8 +60,8 @@
 
             {"subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
             {"subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": false},
-            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": false},
+            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
+            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
             {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
             {"subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
             {"subject": "과학", "class": "물리학Ⅱ", "credit": 3, "course": "진로", "complete": false},
@@ -81,8 +81,8 @@
 
             {"subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
             {"subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": true},
+            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": true},
             {"subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
             {"subject": "수학", "class": "기하", "credit": 3, "course": "진로", "complete": false},
 
@@ -100,8 +100,8 @@
 
             {"subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
             {"subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": false},
-            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": false},
+            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
+            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
             {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
 
             {"subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},

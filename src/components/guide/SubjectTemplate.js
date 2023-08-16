@@ -12,8 +12,7 @@ const SubjectTemplate = ({selectedMajor}) => {
     };
 
     const majorData = subjectByMajorData.find(data => data.major === selectedMajor);
-    console.log(subjectByMajorData);
-    console.log(majorData);
+    console.log(selectedSubjectData);
 
     return (
         <div>
