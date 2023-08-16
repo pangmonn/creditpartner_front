@@ -1,9 +1,9 @@
 import React from "react";
+import "./styles/subjectlist.css"
 
 const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => {
     const subjectMap = new Map(); // 과목별 데이터를 저장할 Map 생성
 
-    // Use majorData.subjectData instead of subjectData
     majorData.subjectData.forEach((subj) => {
         if (!subjectMap.has(subj.subject)) {
             subjectMap.set(subj.subject, []);
@@ -11,14 +11,16 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
         subjectMap.get(subj.subject).push(subj);
     });
 
-    // Calculate creditMap based on majorData.subjectData
+    // 학점 계산
     const creditMap = new Map();
 
     majorData.subjectData.forEach((subj) => {
         if (!creditMap.has(subj.subject)) {
             creditMap.set(subj.subject, 0);
         }
-        creditMap.set(subj.subject, creditMap.get(subj.subject) + subj.credit);
+        if (subj.complete) {
+            creditMap.set(subj.subject, creditMap.get(subj.subject) + subj.credit);
+        }
     });
 
     const subjectList = Array.from(subjectMap.keys()).map((subject) => (
@@ -27,17 +29,22 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
             <td>
                 {subjectMap.get(subject).map((subj) => (
                     <span key={subj.class} style={{ fontWeight: selectedSemesterData.includes(subj.class) ? "bold" : "normal" }}>
-                        {subj.class}
+                        <button className={subj.complete ? 'subject_complete' : 'subject_incomplete'}>{subj.class}</button>
                     </span>
                 ))}
             </td>
-            <td>{creditMap.get(subject)}/10</td>
+            <td style={{ color: creditMap.get(subject) < 10 ? 'red' : 'inherit' }}>{creditMap.get(subject)}/10</td>
         </tr>
     ));
 
     return (
         <div>
-            <table>
+            <table className="subjectListTable">
+            <colgroup>
+                <col style={{ width: "15%" }} />
+                <col style={{ width: "75%" }} />
+                <col style={{ width: "10%" }} />
+            </colgroup>
                 <thead>
                     <tr>
                         <th>과목</th>
