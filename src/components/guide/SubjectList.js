@@ -44,15 +44,15 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
         <div>
             <table className="subjectListTable">
             <colgroup>
-                <col style={{ width: "15%" }} />
-                <col style={{ width: "75%" }} />
-                <col style={{ width: "10%" }} />
+                <col style={{ width: "12%" }} />
+                <col style={{ width: "70%" }} />
+                <col style={{ width: "18%" }} />
             </colgroup>
                 <thead>
                     <tr>
-                        <th>과목</th>
-                        <th >과목명</th>
-                        <th>학점</th>
+                        <th></th>
+                        <th ></th>
+                        <th>이수학점/최소학점</th>
                     </tr>
                 </thead>
                 <tbody>{subjectList}</tbody>

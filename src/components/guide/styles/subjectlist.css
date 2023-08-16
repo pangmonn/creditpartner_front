@@ -35,10 +35,10 @@
 }
 
 .subjectListTable {
+    display: inline;
     margin-top: 20px;
     table-layout: fixed;
     border-collapse: collapse;
-    border: 1px solid #ddd;
     width: 100%;
     margin-bottom: 100px;
     table-layout: fixed;
@@ -46,22 +46,22 @@
 
 /* 헤더 */
 .subjectListTable thead th {
-    background-color: #B5C9FF;
-    border: 1px solid #bcbcbc;
+    background-color: none;
+    border: none;
     width: 197px;
     height: 40px;
     text-align: center;
 
-    font-family: 'NanumSquareNeo-ExtraBold';
-    font-size: 18px;
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 13px;
 }
   
 /* 본문 */
 .subjectListTable tbody td {
-    border: 1px solid #ddd;
-    height: 50px;
+    border-bottom: 1px solid #ddd;
+    height: 60px;
     text-align: center;
 
     font-family: 'NanumSquareNeo-Bold';
-    font-size: 15px;
+    font-size: 14px;
 }

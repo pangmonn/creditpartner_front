@@ -8,7 +8,8 @@ const SubjectTemplate = ({selectedMajor}) => {
     const [selectedSubjectData, setSelectedSemesterData] = useState([]);
 
     const handleButtonClick = (selectedData) => {
-        setSelectedSemesterData(selectedData);
+        // 버튼 재클릭시 해제
+        setSelectedSemesterData(prevSelectedData => prevSelectedData === selectedData ? [] : selectedData);
     };
 
     const majorData = subjectByMajorData.find(data => data.major === selectedMajor);
