@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
+import ModifyButton from "./ModifyButton";
+import subjectDataList from './subjectDataList.json'
 import "./styles/subjectlist.css"
 
 const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => {
@@ -20,6 +22,15 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
             creditMap.set(subj.subject, creditMap.get(subj.subject) + subj.credit);
         }
     });
+
+    // 전체 과목 리스트
+    const [subjectData, setSubjectData] = useState(subjectDataList);
+
+    // 전체 과목 중에 이미 넣어둔 과목을 제외하는 기능
+
+    // 새로운 과목 추가
+
+    // 기존 과목 삭제
 
     // 과목 리스트 출력
     const subjectList = Array.from(subjectMap.keys()).map((subject) => (
@@ -51,11 +62,13 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
                 <thead>
                     <tr>
                         <th></th>
-                        <th ></th>
+                        <th></th>
                         <th>이수학점/최소학점</th>
                     </tr>
                 </thead>
-                <tbody>{subjectList}</tbody>
+                <tbody>
+                    {subjectList}
+                </tbody>
             </table>
         </div>
     );

@@ -1,0 +1,32 @@
+.userBubble {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: block;
+}
+
+.userBubbleText {
+    position: absolute;
+    display: flex;
+    background-color: white;
+    border: 1px solid #90AAC1;
+    width: 200px;
+    left: 300px;
+    border-radius: 25px;
+    padding: 10px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+}
+
+.userBubbleText::before {
+    position: absolute;
+    content: '';
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgba(255,255,255,0) rgba(255,255,255,0) #90AAC1 rgba(255,255,255,0);
+    top: 0.625rem;
+    right: -0.5rem;
+    z-index: -1;
+}
+
