@@ -54,11 +54,11 @@ const MajorList = ({ fieldSelected, lineSelected, majorSelected }) => {
 
     // 학과 목록
     const majorList = filteredDepartments.map((dept) => (
-        <tr key={dept.majorNum}>
+        <tr key={dept.id}>
             <td>{dept.field}</td>
             <td>{dept.line}</td>
             <td>{dept.major}</td>
-            <td>{<MajorPopUp descript={dept.descript} recommend={dept.recommend} similar={dept.similar} general_credit={dept.general_credit} career_credit={dept.career_credit}/>}</td>
+            <td>{<MajorPopUp id={dept.id}/>}</td>
         </tr>
     ));
 

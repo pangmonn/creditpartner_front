@@ -1,36 +1,28 @@
-.firstBotBubble {
-    display: flex;
-}
 
-.botBubble {
+.afterBotBubble {
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 100px;
     display: block;
+    margin-left: 30px;
+    margin-bottom: 50px;
+    animation: fadeInUp 1s;
+
 }
 
-.botBubbleText {
+.afterBotBubbleText {
     position: absolute;
     display: flex;
     background-color: #E7EDFD;
     width: 200px;
     left: 20px;
     border-radius: 25px;
-    padding: 10px;
-    color: black;
-    justify-content: center;
+    padding: 20px;
     align-items: center;
-}
 
-.botBubbleText::before{
-    content: "";
-    border-bottom: 0.6875rem solid transparent;
-    border-right: 0.6875rem solid #E7EDFD;
-    position: absolute;
-    left: -0.5rem;
-}
-
-.logoBubble {
-    width: 30px;
-    height: 30px;
+    font-family: 'NanumSquareNeo-Bold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 20px;
+    color: black;
 }

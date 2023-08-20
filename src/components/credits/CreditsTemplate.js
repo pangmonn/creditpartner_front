@@ -144,7 +144,9 @@ const CreditsTemplate = () => {
                         },
                     ]);
                 }
-                setSubjects(newSubject);  
+                else {
+                    setSubjects(newSubject);
+                }
             } catch (error) {
                 // 에러 처리
             }
@@ -220,6 +222,7 @@ const CreditsTemplate = () => {
         }
         //post
         postClasses(subjects, semester);
+        alert('저장되었습니다.')
     })
 
     console.log(subjects);

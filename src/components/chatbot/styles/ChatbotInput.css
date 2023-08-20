@@ -31,3 +31,7 @@
     height: 38px;
     margin-right: 10px;
 }
+
+.send:hover {
+    cursor: pointer;
+}

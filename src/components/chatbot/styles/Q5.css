@@ -1,0 +1,40 @@
+.strongField {
+    width: 100%;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    animation: fadeInUp 1s;
+    margin-bottom: 35px;
+}
+
+.strongButton {
+    height: 40px;
+    background-color: white;
+    border: 0.5px solid #4D789D;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-style: normal;
+    font-size: 12px;
+    color: #1751EC;
+}
+
+.strongButton:hover {
+    background: #E7EDFD;
+    cursor: pointer;
+}
+
+.selectDone {
+    display: flex;
+    justify-content: center;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-style: normal;
+    font-size: 12px;
+    color: #1751EC;
+}
