@@ -1,21 +1,17 @@
 import React, {useState} from "react";
 import Modal from 'react-modal';
 import './styles/majorpopup.css'
-// import departmentDetail from './departmentDetail.json'
 
 const MajorPopUp = ({descript, recommend, similar, general_credit, career_credit}) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    // const matchingDepartment = departmentDetail.find((department) => department.majorNum === majorNum);
-    // console.log(departmentDetail);
 
     const modalClose = () => {
     	setModalIsOpen(!modalIsOpen);
   	};
     
-
     return (
         <div>
-            <button onClick={()=> setModalIsOpen(true)}>학과 정보</button>
+            <button className="majorPopUpButton" onClick={()=> setModalIsOpen(true)}>학과 정보</button>
             <Modal className="majorPopUpContainer" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                     <div>
                         <div className="majorPopUpTop">

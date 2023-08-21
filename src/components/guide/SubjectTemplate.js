@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SubjectList from "./SubjectList";
 import SemesterButton from "./SemesterButton";
+import ModifyButton from "./ModifyButton";
 import subjectBySemesterData from "./subjectBySemesterData.json"
 import subjectByMajorData from "./subjectByMajorData.json"
 
@@ -13,7 +14,11 @@ const SubjectTemplate = ({selectedMajor}) => {
     };
 
     const majorData = subjectByMajorData.find(data => data.major === selectedMajor);
-    console.log(selectedSubjectData);
+
+    // ModifyButton을 이용하여 majorData 수정
+    const handleModifyMajorData = (modifiedMajorData) => {
+        
+    };
 
     return (
         <div>
@@ -25,6 +30,7 @@ const SubjectTemplate = ({selectedMajor}) => {
                     isSelected={selectedSubjectData === semesterData.subjectData}
                 />
             ))}
+            <ModifyButton ownSubjectList={majorData} />
             <SubjectList selectedSemesterData={selectedSubjectData} handleButtonClick={handleButtonClick} majorData={majorData} />
         </div>
     );

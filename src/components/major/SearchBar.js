@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch }) => {
     };
 
     const onKeyPress = (e) => {
-        if(e.key == 'Enter') {
+        if(e.key === 'Enter') {
             onSearchClick();
         }
     }
