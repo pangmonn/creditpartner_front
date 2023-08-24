@@ -3,7 +3,7 @@ import client from './client';
 const config = { headers : { "Content-Type": 'application/json' } };
 
 export const login = ({ userId, password }) => {
-    const data = { 'id': userId, 'pwd': password };
+    const data = { 'username': userId, 'password': password };
     client.post('/api/login', data, config).then(function (response) {
         console.log(response);
         return response;
