@@ -38,7 +38,7 @@ const LoginForm = () => {
         }
         console.log({userId, password});
         //post
-        const response = login(userId, password);
+        const response = login({userId, password});
         /*
         if(response.response.status===409) {
             setError('로그인 실패!');
