@@ -4,7 +4,7 @@ const config = { headers : { "Content-Type": 'application/json' } };
 
 export const login = ({ userId, password }) => {
     const data = { 'id': userId, 'pwd': password };
-    client.post('api/login', data, config).then(function (response) {
+    client.post('/api/login', data, config).then(function (response) {
         console.log(response);
         return response;
     }).catch(function (error) {
