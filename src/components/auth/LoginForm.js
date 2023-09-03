@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //import { changeField, initializeForm, login } from '../main/modules/auth';
 import { login } from './api/auth';
@@ -30,25 +30,24 @@ const LoginForm = () => {
 
     };
 
-    const onSubmit = e => {
-        e.preventDefault();
+    const onSubmit = useCallback(async (e) => {
+        try {
+            e.preventDefault();
         if([userId, password].includes('')) {
             setError('빈 칸을 모두 입력하세요.');
             return;
         }
         console.log({userId, password});
         //post
-        const response = login({userId, password});
-        /*
-        if(response.response.status===409) {
-            setError('로그인 실패!');
-        }
-        else {
-            alert('로그인되었습니다.');
+        const response = await login({userId, password});
+        console.log(response);
+            alert('로그인 되었습니다.');
             navigate('/');
         }
-        */
-    };
+        catch {
+            setError('로그인 실패!');
+        }
+    });
 /*
     useEffect(() => {
         if(authError) {

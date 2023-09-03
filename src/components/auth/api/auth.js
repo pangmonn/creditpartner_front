@@ -2,16 +2,25 @@ import client from './client';
 
 const config = { headers : { "Content-Type": 'application/json' } };
 
-export const login = (form) => {
+export const login = async (form) => {
+    
     const data = { 'username': form.userId, 'password': form.password };
     console.log(data);
-    client.post('/api/login', data, config).then(function (response) {
-        console.log(response);
-        return response;
-    }).catch(function (error) {
-        console.log(error);
-        console.log(error.response.status);
-    });
+
+    return new Promise((resolve, reject) => {
+        client.post('/api/login', data, config).then(function (response) {
+            console.log(response.data);
+            if (response.data.token) {
+                localStorage.setItem('login-token', response.data.token);
+            }
+            resolve(response)
+    
+        }).catch(function (error) {
+            console.log(error);
+            reject(error);
+        });
+    })
+    
 }
 
 export const join = (form) => {
@@ -21,6 +30,6 @@ export const join = (form) => {
         return response;
     }).catch(function (error) {
         console.log(error);
-        return error;
+        return error.response.status;
     });
 }

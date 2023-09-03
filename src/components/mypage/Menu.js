@@ -1,9 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import './styles/menu.css'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Menu = () => {
     // 메뉴 위에 마우스를 올렸을 때, 폰트 변환
+
+    const navigate = useNavigate();
+
     const [hoveredMenu, setHoveredMenu] = useState();
 
     const handleMenuMouseOn = (menu) => {
@@ -14,6 +18,12 @@ const Menu = () => {
         setHoveredMenu();
     };
 
+    const onClickLogout = () => {
+        localStorage.removeItem('login-token');
+        localStorage.removeItem('username');
+        alert('로그아웃 되었습니다.')
+        navigate('/');
+    }
     // 로그아웃
     /*
     const [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -40,9 +50,9 @@ const Menu = () => {
                 onMouseEnter={() => handleMenuMouseOn('로그아웃')}
                 onMouseLeave={handledMenuMouseOut}
             >
-                <Link to="/logout">
+                <div className='logout' onClick={onClickLogout}>
                     로그아웃
-                </Link>
+                </div>
             </div>
         </div>
     );

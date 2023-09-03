@@ -21,3 +21,7 @@
     font-family: 'NanumSquareNeo-ExtraBold';
     color: #4f4f4f;
 }
+
+.logout:hover {
+    cursor: pointer;
+}
