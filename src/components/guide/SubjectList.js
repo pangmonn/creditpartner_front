@@ -1,16 +1,20 @@
-import React, {useState} from "react";
-import subjectDataList from './subjectDataList.json'
+import React from "react";
 import "./styles/subjectlist.css"
 
-const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => {
+const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData, onAddSubjects }) => {
     const subjectMap = new Map(); // 과목별 데이터를 저장할 Map 생성
+
+    // subjectMap에 majorData(SubjecTemplete.js)의 subjectData 값을 배열로 넣기
     majorData.subjectData.forEach((subj) => {
+        // 해당 subject가 없으면 새로운 배열로 추가
         if (!subjectMap.has(subj.subject)) {
             subjectMap.set(subj.subject, []);
         }
         subjectMap.get(subj.subject).push(subj);
     });
 
+    // console.log(subjectMap);
+    
     // 학점 계산
     const creditMap = new Map(); // 과목별 학점 데이터를 저장
     majorData.subjectData.forEach((subj) => {
@@ -21,15 +25,6 @@ const SubjectList = ({ selectedSemesterData, handleButtonClick, majorData }) => 
             creditMap.set(subj.subject, creditMap.get(subj.subject) + subj.credit);
         }
     });
-
-    // 전체 과목 리스트
-    const [subjectData, setSubjectData] = useState(subjectDataList);
-
-    // 전체 과목 중에 이미 넣어둔 과목을 제외하는 기능
-
-    // 새로운 과목 추가
-
-    // 기존 과목 삭제
 
     // 과목 리스트 출력
     const subjectList = Array.from(subjectMap.keys()).map((subject) => (

@@ -1,24 +1,75 @@
-import React, { useState } from "react";
-import SubjectList from "./SubjectList";
+import React, { useState, useEffect } from "react";
+import "./styles/subjecttemplate.css"
 import SemesterButton from "./SemesterButton";
-import ModifyButton from "./ModifyButton";
-import subjectBySemesterData from "./subjectBySemesterData.json"
-import subjectByMajorData from "./subjectByMajorData.json"
+import AddButton from "./AddButton";
+
+import subjectBySemesterData from "./subjectBySemesterData.json";
+import subjectByMajorData from "./subjectByMajorData.json";
 
 const SubjectTemplate = ({selectedMajor}) => {
-    const [selectedSubjectData, setSelectedSemesterData] = useState([]);
+    const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
+    
+    // 디버깅!!
+    // 선택한 학과에 대한 과목 정보
+    const [majorData, setMajorData] = useState(
+        subjectByMajorData.find((data) => data.major === selectedMajor)
+    );
+
+    useEffect(() => {
+        // selectedMajor가 변경될 때마다 해당 학과 데이터를 찾아 majorData를 업데이트합니다.
+        const data = subjectByMajorData.find((data) => data.major === selectedMajor);
+        setMajorData(data || {}); // data가 없을 경우 빈 객체로 초기화
+    }, []);
+
+    console.log(selectedMajor);
+    console.log(majorData);
 
     const handleButtonClick = (selectedData) => {
         // 버튼 재클릭시 해제
         setSelectedSemesterData(prevSelectedData => prevSelectedData === selectedData ? [] : selectedData);
     };
 
-    const majorData = subjectByMajorData.find(data => data.major === selectedMajor);
+    // 학점 계산
+    const creditMap = new Map(); // 과목별 학점 데이터를 저장
+    majorData.subjectData.forEach((subj) => {
+        if (!creditMap.has(subj.subject)) {
+            creditMap.set(subj.subject, 0);
+        }
+        if (subj.complete) {
+            creditMap.set(subj.subject, creditMap.get(subj.subject) + subj.credit);
+        }
+    });
 
-    // ModifyButton을 이용하여 majorData 수정
-    const handleModifyMajorData = (modifiedMajorData) => {
-        
-    };
+    // 과목 리스트 출력
+    const subjectList = Object.keys(majorData.subjectData.reduce((idx, subj) => {
+        if (!idx[subj.subject]) {
+            idx[subj.subject] = [];
+        }
+        idx[subj.subject].push(subj.class);
+        return idx;
+    }, {})).map((subject) => (
+        <tr key={subject}>
+            <td>{subject}</td>
+            <td style={{ textAlign: "left" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+                    {majorData.subjectData
+                        .filter((subj) => subj.subject === subject)
+                        .map((subj) => (
+                            <span key={subj.class}> 
+                                <button
+                                    className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
+                                >
+                                    {subj.class}
+                                </button>
+                            </span>
+                        ))
+                    }
+                    <AddButton subject={subject} majorData={majorData} setMajorData={setMajorData} />
+                </div>
+            </td>
+            <td style={{ color: creditMap.get(subject) < 10 ? 'red' : 'inherit' }}>{creditMap.get(subject)}/10</td>
+        </tr>
+    ));
 
     return (
         <div>
@@ -27,11 +78,29 @@ const SubjectTemplate = ({selectedMajor}) => {
                     key={index}
                     onClick={() => handleButtonClick(semesterData.subjectData)}
                     label={`${Math.floor((semesterData.semester+1)/2)}-${(semesterData.semester+1)%2+1}`}
-                    isSelected={selectedSubjectData === semesterData.subjectData}
+                    isSelected={selectedSemesterData === semesterData.subjectData}
                 />
             ))}
-            <ModifyButton ownSubjectList={majorData} />
-            <SubjectList selectedSemesterData={selectedSubjectData} handleButtonClick={handleButtonClick} majorData={majorData} />
+
+            <div>
+                <table className="subjectListTable">
+                <colgroup>
+                    <col style={{ width: "12%" }} />
+                    <col style={{ width: "70%" }} />
+                    <col style={{ width: "18%" }} />
+                </colgroup>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>이수학점/최소학점</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {subjectList}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

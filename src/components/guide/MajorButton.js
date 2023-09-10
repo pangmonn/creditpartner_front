@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import './styles/majorbutton.css'
 
-const MajorButton = ({ majorList, handleMajorButtonClick }) => {
-    const [selectedMajor, setSelectedMajor] = useState(majorList[0]); // 첫 번째 항목을 선택 상태로 설정
-
+const MajorButton = ({ majorList, selectedMajor, handleMajorButtonClick }) => {
     const handleButtonClick = (major) => {
-        setSelectedMajor(major);
         handleMajorButtonClick(major);
     };
+
+    // console.log(selectedMajor);
 
     return (
         <div className="majorButtonContainer">
@@ -25,4 +24,3 @@ const MajorButton = ({ majorList, handleMajorButtonClick }) => {
 };
 
 export default MajorButton;
-

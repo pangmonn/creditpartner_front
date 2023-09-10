@@ -1,0 +1,86 @@
+.addButton {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    color: #4D789D;
+}
+
+.addButtonPopUp {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    max-height: 75%;
+    overflow-y: auto;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    background-color: #E7EDFD;
+    border-radius: 20px;
+
+    font-family: 'NanumSquareNeo-Heavy';
+    color: #4D789D;
+}
+
+.addButtonPopUpContent {
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    font-family: 'NanumSquareNeo-Regular';
+    font-size: 15px;
+    color: #4D789D;
+}
+
+.addButtonFooter {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.addButtonInnerButton {
+    display: inline-block;
+    background-color: #4D789D;
+    border: none;
+    border-radius: 12px;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    color: white;
+}
+
+.addButtonClass {
+    background-color: #E7EDFD;
+    border: none;
+    border-radius: 16px;
+    height: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    color: grey;
+}
+
+.addButtonClass.selected {
+    background-color: #CCFA50;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    color: #1751EC;
+}

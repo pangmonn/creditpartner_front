@@ -1,0 +1,67 @@
+/* 수강 */
+.subject_complete {
+    background-color: #E7EDFD;
+    border: solid;
+    border-color: #4D789D;
+    border-width: 2px;
+    border-radius: 14px;
+    height: 28px;
+    margin: 5px;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 13px;
+    color: #1751EC;
+}
+
+/* 미수강 */
+.subject_incomplete {
+    background-color: white;
+    border: solid;
+    border-color: #4D789D;
+    border-width: 2px;
+    border-radius: 14px;
+    height: 28px;
+    margin: 5px;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 13px;
+    color: #1751EC;
+}
+
+/* 학기 선택 */
+.semester_selected {
+    background-color: #4D789D;
+    color: white;
+}
+
+.subjectListTable {
+    display: inline;
+    margin-top: 20px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 100px;
+    table-layout: fixed;
+}
+
+/* 헤더 */
+.subjectListTable thead th {
+    background-color: none;
+    border: none;
+    width: 197px;
+    height: 40px;
+    text-align: center;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 13px;
+}
+  
+/* 본문 */
+.subjectListTable tbody td {
+    border-bottom: 1px solid #ddd;
+    height: 60px;
+    text-align: center;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 14px;
+}
