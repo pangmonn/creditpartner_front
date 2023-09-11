@@ -12,6 +12,7 @@ export const login = async (form) => {
             console.log(response.data);
             if (response.data.token) {
                 localStorage.setItem('login-token', response.data.token);
+                localStorage.setItem('username', response.data.name);
             }
             resolve(response)
     

@@ -28,12 +28,15 @@ const ChatbotInput = ({ableSend, q, setq, seta3, seta4, seta6, seta9}) => {
             seta6(typing);
             setTyping('');
             inputRef.current.value='';
+            setq(7);
         }
+        /*
         else if(q===9) {
             seta9(typing);
             setTyping('');
             inputRef.current.value='';
         }
+        */
     }
 
     const onKeyDown =(e) => {

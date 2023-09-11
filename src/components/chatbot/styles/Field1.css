@@ -1,15 +1,15 @@
-.strongField {
+.majors {
     width: 100%;
     padding-top: 20px;
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 0.7fr 1fr 1fr 1fr 1fr 0.7fr;
     column-gap: 10px;
     row-gap: 10px;
     animation: fadeInUp 1s;
     margin-bottom: 35px;
 }
 
-.strongButton {
+.majorButton {
     height: 40px;
     background-color: white;
     border: 0.5px solid #4D789D;
@@ -20,30 +20,11 @@
 
     font-family: 'NanumSquareNeo-ExtraBold';
     font-style: normal;
-    font-size: 12px;
+    font-size: 11px;
     color: #1751EC;
 }
 
-.strongButton:hover {
+.majorButton:hover {
     background: #E7EDFD;
-    cursor: pointer;
-}
-
-.selectDone {
-    height: 40px;
-    border-radius: 30px;
-    border: 0.5px solid #E7EDFD;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-family: 'NanumSquareNeo-ExtraBold';
-    font-style: normal;
-    font-size: 12px;
-    background-color: #E7EDFD;
-}
-
-
-.selectDone:hover {
     cursor: pointer;
 }

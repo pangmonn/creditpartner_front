@@ -18,7 +18,7 @@ function checkBatchimEnding(word) {
   }
 
 const BubbleList = ({inputText, setAbleSend}) => {
-    const username = '김태형'
+    const username = localStorage.getItem('username')
     const batchim = checkBatchimEnding(username);
 
     const [hopeMajor, setHopeMajor] = useState(0);

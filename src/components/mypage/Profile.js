@@ -9,11 +9,9 @@ const imgstyle = {
     borderRadius: '50%'
 }
 
-// Test(이름 받아와야 함)
-let userName = 'OOO';
 
 const Profile = () => {
-    // const { user } = join(); // 맞나????
+    const userName = localStorage.getItem('username');
 
     return (
         <div>

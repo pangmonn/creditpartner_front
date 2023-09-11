@@ -1,7 +1,8 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import ChatbotInput from "./ChatbotInput";
 import Container from "./Container";
 import Header from "./Header";
+import { useNavigate } from 'react-router-dom';
 
 
 const desktop = {
@@ -15,6 +16,19 @@ const desktop = {
 export const MyContext = createContext();
 
 const ChatbotTemplate = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(window.localStorage.length===0) {
+        navigate('/login');
+        console.log("$");
+      }
+    console.log("*");
+  },[]);
+  console.log("@");
+    
+
   const [inputText, setInputText] = useState('');
   const [ableSend, setAbleSend] = useState(false);
   const [answer3, setAnswer3] = useState('');

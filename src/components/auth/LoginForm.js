@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //import { changeField, initializeForm, login } from '../main/modules/auth';
 import { login } from './api/auth';
 import AuthForm from './AuthForm';
 import { useNavigate } from 'react-router-dom';
 //import { check } from '../main/modules/user';
+
 
 const LoginForm = () => {
     const [error, setError] = useState(null);
@@ -41,8 +42,9 @@ const LoginForm = () => {
         //post
         const response = await login({userId, password});
         console.log(response);
-            alert('로그인 되었습니다.');
-            navigate('/');
+        //setLoginName(response.data.name)
+        alert('로그인 되었습니다.');
+        navigate('/');
         }
         catch {
             setError('로그인 실패!');

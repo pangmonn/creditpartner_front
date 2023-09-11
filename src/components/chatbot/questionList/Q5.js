@@ -1,13 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import BotBubble from '../BotBubble';
 import '../styles/Q5.css';
 
-const Q5 = ({username, batchim, setAbleSend}) => {
+const Q5 = ({username, batchim, setAbleSend, setQuestionNum, strongs, setStrongs}) => {
     const name = username.substring(1) + (batchim ? '이':'')
     const q5_1 = name + '가 강점영역이라고 생각하는 지능들을 아래에서 선택해줄래?';
     const q5_2 = '여러 개 선택해도 되니 신중하게 고민해서 골라줘.'
 
-    setAbleSend(false);
+    
+    console.log(strongs);
+
+    useEffect(()=> {
+        setAbleSend(false);
+    },[setAbleSend]);
 
     const s1 = useRef();
     const s2 = useRef();
@@ -112,6 +117,42 @@ const Q5 = ({username, batchim, setAbleSend}) => {
             default:
                 break;
         }
+        const newStrongs = strongs;
+        newStrongs.push(Number(e.target.id));
+        setStrongs(newStrongs);
+    }
+
+    const onClickSelect = e => {
+        e.target.style.backgroundColor = '#1751EC';
+        e.target.style.color = '#CCFA50';
+        s1.current.disabled = true;
+        s2.current.disabled = true;
+        s3.current.disabled = true;
+        s4.current.disabled = true;
+        s5.current.disabled = true;
+        s6.current.disabled = true;
+        s7.current.disabled = true;
+        s8.current.disabled = true;
+        s1.current.style.cursor = 'default';
+        s2.current.style.cursor = 'default';
+        s3.current.style.cursor = 'default';
+        s4.current.style.cursor = 'default';
+        s5.current.style.cursor = 'default';
+        s6.current.style.cursor = 'default';
+        s7.current.style.cursor = 'default';
+        s8.current.style.cursor = 'default';
+        e.target.style.cursor = 'default';
+        s1.current.pointerEvents = 'none';
+        s2.current.pointerEvents = 'none';
+        s3.current.pointerEvents = 'none';
+        s4.current.pointerEvents = 'none';
+        s5.current.pointerEvents = 'none';
+        s6.current.pointerEvents = 'none';
+        s7.current.pointerEvents = 'none';
+        s8.current.pointerEvents = 'none';
+        e.target.disabled = true;
+        setQuestionNum(6);
+        setAbleSend(true);
     }
 
     return (
@@ -131,8 +172,8 @@ const Q5 = ({username, batchim, setAbleSend}) => {
                 <div></div>
                 <button className='strongButton' id={7} onClick={onClick} ref={s7}>대인관계 지능</button>
                 <button className='strongButton' id={8} onClick={onClick} ref={s8}>자기이해 지능</button>
+                <button className='selectDone' onClick={onClickSelect}>선택 완료</button>
             </div>
-            <div className='selectDone'>선택 완료</div>
         </div>
     );
 };
