@@ -3,6 +3,7 @@ import CategoryButton from './CategoryButton';
 import MainCategory from './MainCategory';
 import ModifyBar from './ModifyBar';
 import Top from './Top';
+import { useNavigate } from 'react-router-dom';
 import {getClasses, postClasses} from './api/creditsAPI';
 
 const desktop = {
@@ -12,6 +13,7 @@ const desktop = {
 };
 
 const CreditsTemplate = () => {
+    const navigate = useNavigate();
     const [subjects, setSubjects] = useState([
         {
             id: 1,
@@ -158,6 +160,10 @@ const CreditsTemplate = () => {
     }, [semester]);
 
     useEffect(() => {
+        if(window.localStorage.length===0) {
+            navigate('/login');
+          }
+
         let classes = [];
         const get = async () => {
             try {
