@@ -8,18 +8,15 @@ import subjectByMajorData from "./subjectByMajorData.json";
 
 const SubjectTemplate = ({selectedMajor}) => {
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
-    
-    // 디버깅!!
-    // 선택한 학과에 대한 과목 정보
     const [majorData, setMajorData] = useState(
         subjectByMajorData.find((data) => data.major === selectedMajor)
     );
 
+    // 선택한 학과에 대한 과목 정보 업데이트
     useEffect(() => {
-        // selectedMajor가 변경될 때마다 해당 학과 데이터를 찾아 majorData를 업데이트합니다.
-        const data = subjectByMajorData.find((data) => data.major === selectedMajor);
-        setMajorData(data || {}); // data가 없을 경우 빈 객체로 초기화
-    }, []);
+        const updatedMajorData = subjectByMajorData.find((data) => data.major === selectedMajor);
+        setMajorData(updatedMajorData);
+    }, [selectedMajor]); // selectedMajor가 변경될 때마다 실행
 
     console.log(selectedMajor);
     console.log(majorData);
