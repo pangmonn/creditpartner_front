@@ -48,11 +48,11 @@ const SubjectTemplate = ({selectedMajor}) => {
         <tr key={subject}>
             <td>{subject}</td>
             <td style={{ textAlign: "left" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap"}}>
                     {majorData.subjectData
                         .filter((subj) => subj.subject === subject)
                         .map((subj) => (
-                            <span key={subj.class}> 
+                            <span key={subj.class} > 
                                 <button
                                     className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
                                 >

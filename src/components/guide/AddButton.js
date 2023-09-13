@@ -55,26 +55,30 @@ const AddButton = ({ subject, majorData, setMajorData }) => {
             >
                 <h2>{subject}</h2>
                 <ul className="addButtonPopUpContent">
-                {filterMajorData.map(className => (
-                    <div key={className}>
-                        <label>
-                            <button
-                                className={`addButtonClass ${selectedClasses.includes(className) ? 'selected' : ''}`}
-                                onClick={() => {
-                                    if (selectedClasses.includes(className)) {
-                                    setSelectedClasses(prevClasses =>
-                                        prevClasses.filter(item => item !== className)
-                                    );
-                                    } else {
-                                    setSelectedClasses(prevClasses => [...prevClasses, className]);
-                                    }
-                                }}
-                            >
-                            {className}
-                            </button>
-                        </label>
-                    </div>
-                    ))}
+                    {filterMajorData.length === 0 ? (
+                        <li className="noSubjects">추가할 수 있는 과목이 없습니다.</li>
+                    ) : (
+                        filterMajorData.map(className => (
+                            <li key={className}>
+                                <label>
+                                    <button
+                                        className={`addButtonClass ${selectedClasses.includes(className) ? 'selected' : ''}`}
+                                        onClick={() => {
+                                            if (selectedClasses.includes(className)) {
+                                                setSelectedClasses(prevClasses =>
+                                                    prevClasses.filter(item => item !== className)
+                                                );
+                                            } else {
+                                                setSelectedClasses(prevClasses => [...prevClasses, className]);
+                                            }
+                                        }}
+                                    >
+                                        {className}
+                                    </button>
+                                </label>
+                            </li>
+                        ))
+                    )}
                 </ul>
                 <div className="addButtonFooter">
                     <button className="addButtonInnerButton" onClick={handleAddSubject}>추가</button>
@@ -86,6 +90,7 @@ const AddButton = ({ subject, majorData, setMajorData }) => {
             </Modal>
         </div>
     );
+    
 };
 
 export default AddButton;

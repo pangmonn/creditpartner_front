@@ -33,11 +33,12 @@
     background-color: white;
     border-radius: 20px;
     margin-top: 20px;
+    list-style-type: none;
     padding: 10px;
     flex-wrap: wrap;
     justify-content: center;
 
-    font-family: 'NanumSquareNeo-Regular';
+    font-family: 'NanumSquareNeo-Bold';
     font-size: 15px;
     color: #4D789D;
 }
