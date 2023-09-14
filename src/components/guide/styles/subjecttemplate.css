@@ -67,3 +67,60 @@
     font-family: 'NanumSquareNeo-Bold';
     font-size: 14px;
 }
+
+/* 과목 버튼과 삭제 버튼을 감싸는 컨테이너 */
+.subject_button_container {
+    position: relative; /* 상대적인 위치 설정 */
+    display: inline-block; /* 과목 버튼과 삭제 버튼이 옆으로 나타날 수 있도록 설정 */
+    margin-right: 4px; /* 선택된 과목 버튼 간의 간격 설정 (원하는 간격으로 조절) */
+}
+
+/* 삭제 버튼 페이드 인/아웃 애니메이션 정의 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* 삭제 버튼 초기 상태 (투명) */
+.delete_button {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards; /* 페이드 인 애니메이션 적용 */
+}
+
+/* 삭제 버튼 */
+.delete_button {
+    position: absolute; /* 상대적인 컨테이너 내에서 절대 위치 설정 */
+    bottom: -40%; /* 하단 정렬 */
+    right: -15%; /* 우측 정렬 */
+    background-color: rgb(255, 211, 211); /* 삭제 버튼의 배경색 설정 */
+    padding: 4px 6px; /* 내용과 버튼 주변의 여백 설정 */
+    border: rgb(255, 173, 173);
+    border-style: dotted;
+    cursor: pointer; /* 커서 스타일 설정 */
+    border-radius: 0 40% 40% 40%; /* 수정: 우하단 코너만 둥글게 만들어 삭제 버튼이 과목 버튼 우측 하단에 겹치도록 설정 */
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 12px;
+    color: gray;
+}
+
+/* 삭제 버튼에 호버 효과를 주어 페이드 아웃 시키기 */
+.delete_button:hover {
+    background-color: rgb(255, 173, 173);
+
+    font-family: 'NanumSquareNeo-Heavy';
+    color: rgb(86, 86, 86);
+}

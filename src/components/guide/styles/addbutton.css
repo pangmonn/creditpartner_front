@@ -76,18 +76,17 @@
 
     font-family: 'NanumSquareNeo-Bold';
     font-size: 15px;
-    color: grey;
+    color: rgb(111, 111, 111);
 }
 
 /* 추천 과목 */
 .addButtonClass.recommended {
-    background-color: #B5C9FF;
-    color: #4D789D;
+    background-color: #efffc5;
 }
 
 /* 선택 */
 .addButtonClass.selected {
-    background-color: #CCFA50;
+    filter: saturate(400%);
 
     font-family: 'NanumSquareNeo-ExtraBold';
     color: #1751EC;

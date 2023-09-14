@@ -8,6 +8,7 @@ import subjectByMajorData from "./subjectByMajorData.json";
 
 const SubjectTemplate = ({selectedMajor}) => {
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
+    // 선택한 학과에 대해 저장된 과목 리스트 및 추천 과목
     const [majorData, setMajorData] = useState(
         subjectByMajorData.find((data) => data.major === selectedMajor)
     );
@@ -37,6 +38,34 @@ const SubjectTemplate = ({selectedMajor}) => {
         }
     });
 
+    // 삭제 버튼
+    const [subjectToDelete, setSubjectToDelete] = useState(null);
+
+    // 우클릭 이벤트
+    const handleContextMenu = (e, subjClass) => {
+        e.preventDefault(); // Prevent the default context menu
+        if (subjClass === subjectToDelete) {
+            // If you right-click on the same subject again, clear the subjectToDelete
+            setSubjectToDelete(null);
+        } else {
+            // Otherwise, set the subject to display the delete button for
+            setSubjectToDelete(subjClass);
+        }
+    };
+
+    // 삭제 핸들러
+    const handleDeleteSubject = () => {
+        // Remove the subject from majorData
+        const updatedMajorData = { ...majorData };
+        updatedMajorData.subjectData = updatedMajorData.subjectData.filter(
+        (subj) => subj.class !== subjectToDelete
+        );
+        setMajorData(updatedMajorData);
+
+        // Clear the subjectToDelete state
+        setSubjectToDelete(null);
+    };
+
     // 과목 리스트 출력
     const subjectList = Object.keys(
         majorData.subjectData.reduce((idx, subj) => {
@@ -45,29 +74,38 @@ const SubjectTemplate = ({selectedMajor}) => {
         }
         idx[subj.subject].push(subj.class);
         return idx;
-    }, {})).map((subject) => (
+        }, {})
+    ).map((subject) => (
         <tr key={subject}>
-            <td>{subject}</td>
-            <td style={{ textAlign: "left" }}>
-            <div 
-                style={{ display: "flex", alignItems: "center", flexWrap: "wrap"}}
-            >
-                    {majorData.subjectData
-                        .filter((subj) => subj.subject === subject)
-                        .map((subj) => (
-                            <span key={subj.class} > 
+        <td>{subject}</td>
+        <td style={{ textAlign: "left" }}>
+            <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
+            {majorData.subjectData
+                .filter((subj) => subj.subject === subject)
+                .map((subj) => (
+                    <span key={subj.class} className="subject_button_container">
+                        <button
+                            className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
+                            onContextMenu={(e) => handleContextMenu(e, subj.class)}
+                        >
+                            {subj.class}
+                        </button>
+                        {subj.complete ? null : (
+                            subj.class === subjectToDelete && (
                                 <button
-                                    className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
+                                    onClick={() => handleDeleteSubject(subj.class)} className="delete_button"
                                 >
-                                    {subj.class}
+                                    삭제
                                 </button>
-                            </span>
-                        ))
-                    }
-                    <AddButton subject={subject} majorData={majorData} setMajorData={setMajorData} />
-                </div>
-            </td>
-            <td style={{ color: creditMap.get(subject) < 10 ? 'red' : 'inherit' }}>{creditMap.get(subject)}/10</td>
+                            )
+                        )}
+                    </span>
+                ))
+            }
+            <AddButton subject={subject} majorData={majorData} setMajorData={setMajorData} />
+            </div>
+        </td>
+        <td style={{ color: creditMap.get(subject) < 10 ? 'red' : 'inherit' }}>{creditMap.get(subject)}/10</td>
         </tr>
     ));
 
