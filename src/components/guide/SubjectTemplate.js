@@ -38,7 +38,8 @@ const SubjectTemplate = ({selectedMajor}) => {
     });
 
     // 과목 리스트 출력
-    const subjectList = Object.keys(majorData.subjectData.reduce((idx, subj) => {
+    const subjectList = Object.keys(
+        majorData.subjectData.reduce((idx, subj) => {
         if (!idx[subj.subject]) {
             idx[subj.subject] = [];
         }
@@ -48,7 +49,9 @@ const SubjectTemplate = ({selectedMajor}) => {
         <tr key={subject}>
             <td>{subject}</td>
             <td style={{ textAlign: "left" }}>
-            <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap"}}>
+            <div 
+                style={{ display: "flex", alignItems: "center", flexWrap: "wrap"}}
+            >
                     {majorData.subjectData
                         .filter((subj) => subj.subject === subject)
                         .map((subj) => (
