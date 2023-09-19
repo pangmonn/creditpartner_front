@@ -13,6 +13,21 @@ const SubjectTemplate = ({selectedMajor}) => {
         subjectByMajorData.find((data) => data.major === selectedMajor)
     );
 
+    // 과목 분류별 필수 이수 학점
+    const subjectsCredit = 
+    [
+        {category: "국어", total: 10}, 
+        {category: "수학", total: 10},
+        {category: "영어", total: 10},
+        {category: "한국사", total: 6},
+        {category: "사회", total: 10},
+        {category: "과학", total: 12},
+        {category: "체육", total: 10},
+        {category: "예술", total: 10},
+        {category: "기타", total: 16},
+    ];
+
+
     // 선택한 학과에 대한 과목 정보 업데이트
     useEffect(() => {
         const updatedMajorData = subjectByMajorData.find((data) => data.major === selectedMajor);
@@ -27,16 +42,16 @@ const SubjectTemplate = ({selectedMajor}) => {
         setSelectedSemesterData(prevSelectedData => prevSelectedData === selectedData ? [] : selectedData);
     };
 
-    // 학점 계산
-    const creditMap = new Map(); // 과목별 학점 데이터를 저장
-    majorData.subjectData.forEach((subj) => {
-        if (!creditMap.has(subj.subject)) {
-            creditMap.set(subj.subject, 0);
+    // 각 카테고리별로 학점을 계산하는 함수
+    const calculateTotalCredit = (categorySubjects) => {
+        let totalCredit = 0;
+        for (const subj of categorySubjects) {
+            if (subj.complete) {
+                totalCredit += subj.credit;
+            }
         }
-        if (subj.complete) {
-            creditMap.set(subj.subject, creditMap.get(subj.subject) + subj.credit);
-        }
-    });
+        return totalCredit;
+    };
 
     // 삭제 버튼
     const [subjectToDelete, setSubjectToDelete] = useState(null);
@@ -67,47 +82,45 @@ const SubjectTemplate = ({selectedMajor}) => {
     };
 
     // 과목 리스트 출력
-    const subjectList = Object.keys(
-        majorData.subjectData.reduce((idx, subj) => {
-        if (!idx[subj.subject]) {
-            idx[subj.subject] = [];
-        }
-        idx[subj.subject].push(subj.class);
-        return idx;
-        }, {})
-    ).map((subject) => (
-        <tr key={subject}>
-        <td>{subject}</td>
-        <td style={{ textAlign: "left" }}>
-            <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
-            {majorData.subjectData
-                .filter((subj) => subj.subject === subject)
-                .map((subj) => (
-                    <span key={subj.class} className="subject_button_container">
-                        <button
-                            className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
-                            onContextMenu={(e) => handleContextMenu(e, subj.class)}
-                        >
-                            {subj.class}
-                        </button>
-                        {subj.complete ? null : (
-                            subj.class === subjectToDelete && (
+    const subjectList = subjectsCredit.map((subjectCredit) => {
+        const categorySubjects = majorData.subjectData.filter((subj) => subj.category === subjectCredit.category);
+
+        // 필요한 과목만 필터링하여 categorySubjects 배열을 생성합니다.
+
+        return (
+            <tr key={subjectCredit.category}>
+                <td>{subjectCredit.category}</td>
+                <td style={{ textAlign: "left" }}>
+                    <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
+                        {categorySubjects.map((subj) => (
+                            <span key={subj.class} className="subject_button_container">
                                 <button
-                                    onClick={() => handleDeleteSubject(subj.class)} className="delete_button"
+                                    className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
+                                    onContextMenu={(e) => handleContextMenu(e, subj.class)}
                                 >
-                                    삭제
+                                    {subj.class}
                                 </button>
-                            )
-                        )}
-                    </span>
-                ))
-            }
-            <AddButton subject={subject} majorData={majorData} setMajorData={setMajorData} />
-            </div>
-        </td>
-        <td style={{ color: creditMap.get(subject) < 10 ? 'red' : 'inherit' }}>{creditMap.get(subject)}/10</td>
-        </tr>
-    ));
+                                {subj.complete ? null : (
+                                    subj.class === subjectToDelete && (
+                                        <button
+                                            onClick={() => handleDeleteSubject(subj.class)} className="delete_button"
+                                        >
+                                            삭제
+                                        </button>
+                                    )
+                                )}
+                            </span>
+                        ))}
+                        <AddButton category={subjectCredit.category} majorData={majorData} setMajorData={setMajorData} />
+                    </div>
+                </td>
+                <td style={{ color: calculateTotalCredit(categorySubjects) < subjectCredit.total ? 'red' : 'inherit' }}>
+                    {calculateTotalCredit(categorySubjects)}/{subjectCredit.total}
+                </td>
+            </tr>
+        );
+    });
+
 
     return (
         <div>
@@ -115,18 +128,18 @@ const SubjectTemplate = ({selectedMajor}) => {
                 <SemesterButton
                     key={index}
                     onClick={() => handleButtonClick(semesterData.subjectData)}
-                    label={`${Math.floor((semesterData.semester+1)/2)}-${(semesterData.semester+1)%2+1}`}
+                    label={`${Math.floor((semesterData.semester + 1) / 2)}-${(semesterData.semester + 1) % 2 + 1}`}
                     isSelected={selectedSemesterData === semesterData.subjectData}
                 />
             ))}
 
             <div>
                 <table className="subjectListTable">
-                <colgroup>
-                    <col style={{ width: "12%" }} />
-                    <col style={{ width: "70%" }} />
-                    <col style={{ width: "18%" }} />
-                </colgroup>
+                    <colgroup>
+                        <col style={{ width: "12%" }} />
+                        <col style={{ width: "70%" }} />
+                        <col style={{ width: "18%" }} />
+                    </colgroup>
                     <thead>
                         <tr>
                             <th></th>

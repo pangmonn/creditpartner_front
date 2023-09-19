@@ -2,149 +2,149 @@
     {
         "major": "컴퓨터공학과",
         "subjectData": [
-            {"subject": "국어", "class": "공통국어1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "국어", "class": "공통국어2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "국어", "subject": "국어", "class": "공통국어1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "국어", "subject": "국어", "class": "공통국어2", "credit": 3, "course": "공통", "complete": true},
 
-            {"subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학", "subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "수학","subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "수학","subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
 
-            {"subject": "영어", "class": "공통영어1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "영어", "class": "공통영어2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "영어","subject": "영어", "class": "공통영어1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "영어","subject": "영어", "class": "공통영어2", "credit": 3, "course": "공통", "complete": true},
 
-            {"subject": "한국사", "class": "한국사1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "한국사", "class": "한국사2", "credit": 3, "course": "공통", "complete": false},
+            {"category": "한국사","subject": "한국사", "class": "한국사1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "한국사","subject": "한국사", "class": "한국사2", "credit": 3, "course": "공통", "complete": false},
 
-            {"subject": "사회", "class": "통합사회1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "사회", "class": "통합사회2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "사회","subject": "사회", "class": "통합사회1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "사회","subject": "사회", "class": "통합사회2", "credit": 3, "course": "공통", "complete": true},
 
-            {"subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
             
-            {"subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true}
+            {"category": "기타","subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true}
         ],
         "recommendSubject": [
-            {"subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
-            {"subject": "수학", "class": "기하", "credit": 3, "course": "진로", "complete": false},
+            {"category": "수학","subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
+            {"category": "수학","subject": "수학", "class": "기하", "credit": 3, "course": "진로", "complete": false},
 
-            {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "과학", "class": "물리학Ⅱ", "credit": 3, "course": "진로", "complete": false},
-            {"subject": "과학", "class": "화학Ⅱ", "credit": 3, "course": "진로", "complete": false},
+            {"category": "과학","subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "물리학Ⅱ", "credit": 3, "course": "진로", "complete": false},
+            {"category": "과학","subject": "과학", "class": "화학Ⅱ", "credit": 3, "course": "진로", "complete": false},
 
-            {"subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "기술·가정", "class": "인공지능 기초", "credit": 3, "course": "진로", "complete": false}
+            {"category": "기타","subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},
+            {"category": "기타","subject": "기술·가정", "class": "인공지능 기초", "credit": 3, "course": "진로", "complete": false}
         ]
     },
 
     {
         "major": "인공지능학과",
         "subjectData": [
-            {"subject": "국어", "class": "공통국어1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "국어", "class": "공통국어2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "국어","subject": "국어", "class": "공통국어1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "국어","subject": "국어", "class": "공통국어2", "credit": 3, "course": "공통", "complete": true},
 
-            {"subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "수학","subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "수학","subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
 
-            {"subject": "영어", "class": "공통영어1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "영어", "class": "공통영어2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "영어","subject": "영어", "class": "공통영어1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "영어","subject": "영어", "class": "공통영어2", "credit": 3, "course": "공통", "complete": true},
 
-            {"subject": "한국사", "class": "한국사1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "한국사", "class": "한국사2", "credit": 3, "course": "공통", "complete": false},
+            {"category": "한국사","subject": "한국사", "class": "한국사1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "한국사","subject": "한국사", "class": "한국사2", "credit": 3, "course": "공통", "complete": false},
 
-            {"subject": "사회", "class": "통합사회1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "사회", "class": "통합사회2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "사회","subject": "사회", "class": "통합사회1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "사회","subject": "사회", "class": "통합사회2", "credit": 3, "course": "공통", "complete": true},
 
-            {"subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
 
-            {"subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},
+            {"category": "기타","subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},
 
-            {"subject": "교양", "class": "논리학", "credit": 3, "course": "일반", "complete": false}
+            {"category": "기타","subject": "교양", "class": "논리학", "credit": 3, "course": "일반", "complete": false}
         ],
         "recommendSubject": [
-            {"subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
-            {"subject": "수학", "class": "기하", "credit": 3, "course": "진로", "complete": false},
-            {"subject": "수학", "class": "수학과제 탐구", "credit": 3, "course": "진로", "complete": false},
+            {"category": "수학","subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
+            {"category": "수학","subject": "수학", "class": "기하", "credit": 3, "course": "진로", "complete": false},
+            {"category": "수학","subject": "수학", "class": "수학과제 탐구", "credit": 3, "course": "진로", "complete": false},
 
-            {"subject": "사회", "class": "사회문제 탐구", "credit": 3, "course": "진로", "complete": false},
+            {"category": "사회","subject": "사회", "class": "사회문제 탐구", "credit": 3, "course": "진로", "complete": false},
 
-            {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "과학", "class": "물리학Ⅱ", "credit": 3, "course": "진로", "complete": false},
+            {"category": "과학","subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "화학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "물리학Ⅱ", "credit": 3, "course": "진로", "complete": false},
 
-            {"subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "기술·가정", "class": "인공지능 기초", "credit": 3, "course": "진로", "complete": false}
+            {"category": "기타","subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},
+            {"category": "기타","subject": "기술·가정", "class": "인공지능 기초", "credit": 3, "course": "진로", "complete": false}
         ]
     },
 
     {
         "major": "소프트웨어학과",
         "subjectData": [
-            {"subject": "국어", "class": "공통국어1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "국어", "class": "공통국어2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "국어","subject": "국어", "class": "공통국어1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "국어","subject": "국어", "class": "공통국어2", "credit": 3, "course": "공통", "complete": true},
 
-            {"subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "수학","subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "수학","subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
 
-            {"subject": "영어", "class": "공통영어1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "영어", "class": "공통영어2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "영어","subject": "영어", "class": "공통영어1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "영어","subject": "영어", "class": "공통영어2", "credit": 3, "course": "공통", "complete": true},
 
-            {"subject": "한국사", "class": "한국사1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "한국사", "class": "한국사2", "credit": 3, "course": "공통", "complete": false},
+            {"category": "한국사","subject": "한국사", "class": "한국사1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "한국사","subject": "한국사", "class": "한국사2", "credit": 3, "course": "공통", "complete": false},
 
-            {"subject": "사회", "class": "통합사회1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "사회", "class": "통합사회2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "사회", "class": "세계사", "credit": 3, "course": "일반", "complete": false},
+            {"category": "사회","subject": "사회", "class": "통합사회1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "사회","subject": "사회", "class": "통합사회2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "사회","subject": "사회", "class": "세계사", "credit": 3, "course": "일반", "complete": false},
 
-            {"subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
-            {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "통합과학1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "통합과학2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "과학탐구실험1", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "과학탐구실험2", "credit": 3, "course": "공통", "complete": true},
+            {"category": "과학","subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
 
-            {"subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true}
+            {"category": "기타","subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true}
         ],
         "recommendSubject": [
-            {"subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
-            {"subject": "수학", "class": "기하", "credit": 3, "course": "진로", "complete": false},
+            {"category": "수학","subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": true},
+            {"category": "수학","subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": false},
+            {"category": "수학","subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": false},
+            {"category": "수학","subject": "수학", "class": "기하", "credit": 3, "course": "진로", "complete": false},
 
-            {"subject": "영어", "class": "영어권 문화", "credit": 3, "course": "진로", "complete": false},
+            {"category": "영어","subject": "영어", "class": "영어권 문화", "credit": 3, "course": "진로", "complete": false},
 
-            {"subject": "사회", "class": "세계사", "credit": 3, "course": "일반", "complete": false},
-            {"subject": "사회", "class": "사회·문화", "credit": 3, "course": "일반", "complete": false},
+            {"category": "사회","subject": "사회", "class": "세계사", "credit": 3, "course": "일반", "complete": false},
+            {"category": "사회","subject": "사회", "class": "사회·문화", "credit": 3, "course": "일반", "complete": false},
         
-            {"subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
+            {"category": "과학","subject": "과학", "class": "물리학Ⅰ", "credit": 3, "course": "일반", "complete": false},
 
-            {"subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},
-            {"subject": "기술·가정", "class": "인공지능 기초", "credit": 3, "course": "진로", "complete": false}
+            {"category": "기타","subject": "기술·가정", "class": "정보", "credit": 3, "course": "일반", "complete": true},
+            {"category": "기타","subject": "기술·가정", "class": "인공지능 기초", "credit": 3, "course": "진로", "complete": false}
         ]
     }
 ]

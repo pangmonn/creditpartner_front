@@ -4,7 +4,7 @@ import './styles/addbutton.css';
 
 import subjectDataList from "./subjectDataList.json";
 
-const AddButton = ({ subject, majorData, setMajorData }) => {
+const AddButton = ({ category, majorData, setMajorData }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClasses, setSelectedClasses] = useState([]);
 
@@ -13,33 +13,37 @@ const AddButton = ({ subject, majorData, setMajorData }) => {
         return majorData.subjectData.some(item => item.class === className);
     };
 
-    // filtering한 과목 목록
-    const filterMajorData = subjectDataList
-        .filter(item => item.subject === subject && !majorDataIncludesClass(item.class))
-        .map(item => item.class);
+    // 필터된 데이터를 카테고리별로 그룹화
+    const groupedData = subjectDataList.reduce((result, item) => {
+        if (!majorDataIncludesClass(item.class) && item.category === category) {
+            if (!result[item.subject]) {
+                result[item.subject] = [];
+            }
+            result[item.subject].push(item);
+        }
+        return result;
+    }, {});
 
     // 추천 과목 목록 확인
     const recommendSubjects = Array.isArray(majorData.recommendSubject)
         ? majorData.recommendSubject
         : [];
 
-    console.log(recommendSubjects);
-
     // 과목 추가 handler
     const handleAddSubject = () => {
-        // subjectDataList.json에서 찾기
-        const selectedClassData = subjectDataList.filter(item =>
-            selectedClasses.includes(item.class)
-        );
-
         // 선택한 클래스 데이터로 새로운 과목 객체를 생성합니다.
-        const newSubjects = selectedClassData.map(item => ({
-            subject: item.subject,
-            class: item.class,
-            credit: item.credit,
-            course: item.course,
-            complete: false
-        }));
+        const newSubjects = Object.values(groupedData)
+            .flatMap((subjectGroup) => subjectGroup
+                .filter(item => selectedClasses.includes(item.class))
+                .map(item => ({
+                    category: item.category,
+                    subject: item.subject,
+                    class: item.class,
+                    credit: item.credit,
+                    course: item.course,
+                    complete: false
+                }))
+            );
 
         // 기존 majorData와 새로운 과목 합치기
         setMajorData(prevData => ({
@@ -60,40 +64,44 @@ const AddButton = ({ subject, majorData, setMajorData }) => {
                 onRequestClose={() => setIsModalOpen(false)}
                 shouldCloseOnOverlayClick={false} // 팝업창 밖을 클릭해도 닫히지 않도록 설정
             >
-                <h2>{subject}</h2>
-                <ul className="addButtonPopUpContent">
-                {filterMajorData.length === 0 ? (
-                    <li className="noSubjects">추가할 수 있는 과목이 없습니다.</li>
-                ) : (
-                    <>
-                        {/* 과목 목록 */}
-                        {filterMajorData.map(className => {
-                            const isRecommended = recommendSubjects.some(recommendedSubject => recommendedSubject.class === className);
-                            return (
-                                <li key={className}>
-                                    <label>
-                                        <button
-                                            className={`addButtonClass ${selectedClasses.includes(className) ? 'selected' : ''} ${isRecommended ? 'recommended' : ''}`}
-                                            onClick={() => {
-                                                if (selectedClasses.includes(className)) {
-                                                    setSelectedClasses(prevClasses =>
-                                                        prevClasses.filter(item => item !== className)
-                                                    );
-                                                } else {
-                                                    setSelectedClasses(prevClasses => [...prevClasses, className]);
-                                                }
-                                            }}
-                                        >
-                                            {className}
-                                        </button>
-                                    </label>
-                                </li>
-                            );
-                        })}
-                    </>
-                )}
-                </ul>
-
+                {category !== "기타" && <h2>{category}</h2>}
+                {Object.entries(groupedData).map(([subject, subjectGroup]) => (
+                    <div key={subject}>
+                        {category == "기타" && <h2>{subject}</h2>}
+                        <ul className="addButtonPopUpContent">
+                            {subjectGroup.length === 0 ? (
+                                <li className="noSubjects">추가할 수 있는 과목이 없습니다.</li>
+                            ) : (
+                                <>
+                                    {/* 과목 목록 */}
+                                    {subjectGroup.map(item => {
+                                        const isRecommended = recommendSubjects.some(recommendedSubject => recommendedSubject.class === item.class);
+                                        return (
+                                            <li key={item.class}>
+                                                <label>
+                                                    <button
+                                                        className={`addButtonClass ${selectedClasses.includes(item.class) ? 'selected' : ''} ${isRecommended ? 'recommended' : ''}`}
+                                                        onClick={() => {
+                                                            if (selectedClasses.includes(item.class)) {
+                                                                setSelectedClasses(prevClasses =>
+                                                                    prevClasses.filter(selectedClass => selectedClass !== item.class)
+                                                                );
+                                                            } else {
+                                                                setSelectedClasses(prevClasses => [...prevClasses, item.class]);
+                                                            }
+                                                        }}
+                                                    >
+                                                        {item.class}
+                                                    </button>
+                                                </label>
+                                            </li>
+                                        );
+                                    })}
+                                </>
+                            )}
+                        </ul>
+                    </div>
+                ))}
                 <div className="addButtonFooter">
                     <button className="addButtonInnerButton" onClick={handleAddSubject}>추가</button>
                     <button className="addButtonInnerButton" onClick={() => {
