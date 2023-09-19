@@ -2,6 +2,11 @@ import React, {useRef, useState} from 'react';
 import BotBubble from './BotBubble';
 import './styles/YesMajor.css'
 import Field1 from './questionList/yes/Field1';
+import Field2 from './questionList/yes/Field2';
+import Field3 from './questionList/yes/Field3';
+import Field4 from './questionList/yes/Field4';
+import Field5 from './questionList/yes/Field5';
+import Field6 from './questionList/yes/Field6';
 import save from '../../images/save.png';
 import { useNavigate } from 'react-router-dom';
 import client from '../auth/api/client'
@@ -82,6 +87,11 @@ const YesMajor = () => {
                     <div></div>
             </div>
             {yesHopeField===1 ? <Field1 setHopeMajorName={setHopeMajorName} /> : ''}
+            {yesHopeField===2 ? <Field2 setHopeMajorName={setHopeMajorName} /> : ''}
+            {yesHopeField===3 ? <Field3 setHopeMajorName={setHopeMajorName} /> : ''}
+            {yesHopeField===4 ? <Field4 setHopeMajorName={setHopeMajorName} /> : ''}
+            {yesHopeField===5 ? <Field5 setHopeMajorName={setHopeMajorName} /> : ''}
+            {yesHopeField===6 ? <Field6 setHopeMajorName={setHopeMajorName} /> : ''}
             {hopeMajorName!=='' ? <BotBubble text={[ment1,<br/>,ment2]} /> : ''}
             {hopeMajorName!=='' ? <div className='imgdiv'><img src={save} onClick={onClickSave} className='save' /></div> : ''}
         </>

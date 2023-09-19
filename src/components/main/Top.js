@@ -11,7 +11,7 @@ const Top = () => {
     <div className="top">
       <Link to="/">
         <span className="logoNtitle">
-          <img src={logo} />
+          <img className="mainprofile" src={logo} />
           <span className="title">CREDIT PARTNER</span>
         </span>
       </Link>

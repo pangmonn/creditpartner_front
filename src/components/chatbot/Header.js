@@ -14,7 +14,7 @@ const Header = () => {
         <div className='chatbotHeader'>
             <div className='empty'></div>
             <div className='titleText'>CREDIT PARTNER</div>
-            <img onClick={onClickHome} src={home} />
+            <img className='headerimg' onClick={onClickHome} src={home} />
         </div>
     );
 };
