@@ -95,8 +95,6 @@ const SubjectTemplate = ({selectedMajor}) => {
     const subjectList = subjectsCredit.map((subjectCredit) => {
         const categorySubjects = majorData.subjectData.filter((subj) => subj.category === subjectCredit.category);
 
-        // 필요한 과목만 필터링하여 categorySubjects 배열을 생성합니다.
-
         return (
             <tr key={subjectCredit.category}>
                 <td>{subjectCredit.category}</td>

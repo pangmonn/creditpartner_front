@@ -66,13 +66,13 @@ const AddButton = ({ category, majorData, setMajorData }) => {
                 onRequestClose={() => setIsModalOpen(false)}
                 shouldCloseOnOverlayClick={false} // 팝업창 밖을 클릭해도 닫히지 않도록 설정
             >
-                {category !== "기타" && <h2>{category}</h2>}
+                {<h2>[{category}]</h2>}
                 {Object.keys(groupedData).length === 0 ? (
                     <p className="addButtonNoObject">추가할 수 있는 과목이 없습니다.</p>
                 ) : (
                     Object.entries(groupedData).map(([subject, subjectGroup]) => (
                         <div key={subject}>
-                            {category === "기타" && <h2>{subject}</h2>}
+                            {category === "기타" && <h3>{subject}</h3>}
                             <ul className="addButtonPopUpContent">
                             {subjectGroup.map(item => {
                                 const isRecommended = recommendSubjects.some(recommendedSubject => recommendedSubject.class === item.class);
