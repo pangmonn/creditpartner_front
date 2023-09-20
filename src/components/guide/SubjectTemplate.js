@@ -53,6 +53,16 @@ const SubjectTemplate = ({selectedMajor}) => {
         return totalCredit;
     };
 
+    // 모든 카테고리의 이수 학점 합계 계산 함수
+    const calculateTotalCreditAllCategories = () => {
+        let totalCredit = 0;
+        subjectsCredit.forEach((subjectCredit) => {
+            const categorySubjects = majorData.subjectData.filter((subj) => subj.category === subjectCredit.category);
+            totalCredit += calculateTotalCredit(categorySubjects);
+        });
+        return totalCredit;
+    };
+
     // 삭제 버튼
     const [subjectToDelete, setSubjectToDelete] = useState(null);
 
@@ -123,7 +133,7 @@ const SubjectTemplate = ({selectedMajor}) => {
 
 
     return (
-        <div>
+        <div className="subject_template">
             {subjectBySemesterData.map((semesterData, index) => (
                 <SemesterButton
                     key={index}
@@ -149,6 +159,13 @@ const SubjectTemplate = ({selectedMajor}) => {
                     </thead>
                     <tbody>
                         {subjectList}
+                        <tr className="subjectTotal">
+                            <th>합계</th>
+                            <th></th>
+                            <th style={{ color: calculateTotalCreditAllCategories() <= 174 ? 'red' : 'inherit'}}>
+                                {calculateTotalCreditAllCategories()}/174
+                            </th>
+                        </tr>
                     </tbody>
                 </table>
             </div>
