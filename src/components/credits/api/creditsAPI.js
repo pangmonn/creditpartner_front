@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 const client = axios.create();
 
-const config = { headers : { "Content-Type": 'application/json' } };
+const config = { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } };
 
 const fakeURL_credits = 'http://localhost:3000/credits1';
 
