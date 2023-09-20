@@ -63,7 +63,7 @@ const MajorList = ({ fieldSelected, lineSelected, majorSelected }) => {
     ));
 
     return (
-        <div>
+        <div className='majorListContainer'>
             <div className='searchContainer'>
                 <SearchBar onSearch={handleSearch} />
             </div>

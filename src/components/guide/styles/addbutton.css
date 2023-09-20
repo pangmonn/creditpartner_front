@@ -43,6 +43,19 @@
     color: #4D789D;
 }
 
+.addButtonNoObject {
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    justify-content: center;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 18px;
+    color: #4D789D;
+}
+
 .addButtonFooter {
     display: flex;
     justify-content: flex-end;

@@ -43,7 +43,6 @@
 .subjectListTable {
     display: inline;
     margin-top: 20px;
-    table-layout: fixed;
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 100px;
@@ -75,11 +74,24 @@
 /* 합계 */
 .subjectTotal {
     background-color: #E7EDFD;
-    height: 60px;
+    height: 90px;
     text-align: center;
 
     font-family: 'NanumSquareNeo-ExtraBold';
-    font-size: 16px;
+    font-size: 18px;
+}
+
+/* 합계 텍스트 대각선 나열 */
+.subjectTotal-diagonal {
+    transform: rotate(45deg);
+    white-space: nowrap;
+}  
+
+.subjectTotal-diagonal span {
+    display: inline-block;
+    transform: rotate(-45deg); /* 45도 회전 */
+    transform-origin: center; /* 회전 중심을 글자 중앙으로 설정 */
+    margin: 1px; /* 글자 사이 간격 조절 */
 }
 
 /* 과목 버튼과 삭제 버튼을 감싸는 컨테이너 */

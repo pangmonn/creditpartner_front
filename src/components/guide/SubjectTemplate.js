@@ -162,8 +162,26 @@ const SubjectTemplate = ({selectedMajor}) => {
                         <tr className="subjectTotal">
                             <th>합계</th>
                             <th></th>
-                            <th style={{ color: calculateTotalCreditAllCategories() <= 174 ? 'red' : 'inherit'}}>
-                                {calculateTotalCreditAllCategories()}/174
+                            <th className="subjectTotal-diagonal">
+                                <span
+                                    style={{ 
+                                        color: calculateTotalCreditAllCategories() <= 174 ? 'red' : 'inherit',
+                                        fontSize: "21px",
+                                        fontFamily: calculateTotalCreditAllCategories() <= 174 ? "NanumSquareNeo-Heavy" : 'inherit'
+                                    }}
+                                >
+                                    {calculateTotalCreditAllCategories()}
+                                </span>
+                                <span
+                                    style={{
+                                        fontSize: "32px",
+                                        fontFamily: "NanumSquareNeo-Light",
+                                        transform: "rotate(-30deg)"
+                                    }}
+                                >
+                                    /
+                                </span>
+                                <span>174</span>
                             </th>
                         </tr>
                     </tbody>
