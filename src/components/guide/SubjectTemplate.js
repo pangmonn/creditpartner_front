@@ -166,7 +166,7 @@ const SubjectTemplate = ({selectedMajor}) => {
                                 <span
                                     style={{ 
                                         color: calculateTotalCreditAllCategories() <= 174 ? 'red' : 'inherit',
-                                        fontSize: "21px",
+                                        fontSize: "20px",
                                         fontFamily: calculateTotalCreditAllCategories() <= 174 ? "NanumSquareNeo-Heavy" : 'inherit'
                                     }}
                                 >
@@ -178,9 +178,7 @@ const SubjectTemplate = ({selectedMajor}) => {
                                         fontFamily: "NanumSquareNeo-Light",
                                         transform: "rotate(-30deg)"
                                     }}
-                                >
-                                    /
-                                </span>
+                                >/</span>
                                 <span>174</span>
                             </th>
                         </tr>
