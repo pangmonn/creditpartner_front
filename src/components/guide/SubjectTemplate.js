@@ -42,7 +42,7 @@ const SubjectTemplate = ({selectedMajor}) => {
         setSelectedSemesterData(prevSelectedData => prevSelectedData === selectedData ? [] : selectedData);
     };
 
-    // 각 카테고리별로 학점을 계산하는 함수
+    // 각 카테고리별로 이수학점을 계산하는 함수
     const calculateTotalCredit = (categorySubjects) => {
         let totalCredit = 0;
         for (const subj of categorySubjects) {
@@ -60,6 +60,15 @@ const SubjectTemplate = ({selectedMajor}) => {
             const categorySubjects = majorData.subjectData.filter((subj) => subj.category === subjectCredit.category);
             totalCredit += calculateTotalCredit(categorySubjects);
         });
+        return totalCredit;
+    };
+
+    // 모든 카테고리의 예상 이수학점을 계산하는 함수
+    const calculateTotalExpectedCredit = () => {
+        let totalCredit = 0;
+        for (const subj of majorData.subjectData) {
+                totalCredit += subj.credit;
+        }
         return totalCredit;
     };
 
@@ -157,6 +166,8 @@ const SubjectTemplate = ({selectedMajor}) => {
                     </thead>
                     <tbody>
                         {subjectList}
+                        <br />
+
                         <tr className="subjectTotal">
                             <th>합계</th>
                             <th></th>
@@ -178,6 +189,21 @@ const SubjectTemplate = ({selectedMajor}) => {
                                     }}
                                 >/</span>
                                 <span>174</span>
+                            </th>
+                        </tr>
+
+                        <tr className="subjectExpected">
+                            <th>
+                                예상 수강학점
+                            </th>
+                            <th></th>
+                            <th
+                                style={{
+                                    fontSize: '24px', 
+                                    fontFamily: "NanumSquareNeo-Heavy"
+                                }}
+                            >
+                                {calculateTotalExpectedCredit()}
                             </th>
                         </tr>
                     </tbody>

@@ -94,6 +94,16 @@
     margin: 0px; /* 글자 사이 간격 조절 */
 }
 
+/* 예상 이수학점 */
+.subjectExpected {
+    background-color: #ddd;
+    height: 60px;
+    text-align: center;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 15px;
+}
+
 /* 과목 버튼과 삭제 버튼을 감싸는 컨테이너 */
 .subject_button_container {
     position: relative; /* 상대적인 위치 설정 */
