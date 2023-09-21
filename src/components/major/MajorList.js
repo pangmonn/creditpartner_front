@@ -58,7 +58,7 @@ const MajorList = ({ fieldSelected, lineSelected, majorSelected }) => {
             <td>{dept.field}</td>
             <td>{dept.line}</td>
             <td>{dept.major}</td>
-            <td>{<MajorPopUp descript={dept.descript} recommend={dept.recommend} similar={dept.similar} general_credit={dept.general_credit} career_credit={dept.career_credit}/>}</td>
+            <td>{<MajorPopUp department={dept.major} descript={dept.descript} recommend={dept.recommend} similar={dept.similar} general_credit={dept.general_credit} career_credit={dept.career_credit}/>}</td>
         </tr>
     ));
 

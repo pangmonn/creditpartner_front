@@ -38,39 +38,70 @@
 }
 
 /* font(in order of thickness) */
-
-/* variable */
+/* 나눔스퀘어 네오 */
+  /* variable */
 @font-face {
   font-family: 'NanumSquareNeo';
   src: url("./fonts/NanumSquareNeo-Variable.ttf");
 }
 
-/* Light */
+  /* Light */
 @font-face {
   font-family: 'NanumSquareNeo-Light';
   src: url("./fonts/NanumSquareNeo-aLt.ttf");
 }
 
-/* Regular */
+  /* Regular */
 @font-face {
   font-family: 'NanumSquareNeo-Regular';
   src: url("./fonts/NanumSquareNeo-bRg.ttf");
 }
 
-/* Bold */
+  /* Bold */
 @font-face {
   font-family: 'NanumSquareNeo-Bold';
   src: url("./fonts/NanumSquareNeo-cBd.ttf");
 }
 
-/* Extra Bold */
+  /* Extra Bold */
 @font-face {
   font-family: 'NanumSquareNeo-ExtraBold';
   src: url("./fonts/NanumSquareNeo-dEb.ttf");
 }
 
-/* Heavy */
+  /* Heavy */
 @font-face {
   font-family: 'NanumSquareNeo-Heavy';
   src: url("./fonts/NanumSquareNeo-eHv.ttf");
+}
+
+/* 나눔스퀘어 라운드*/
+  /* Light */
+@font-face {
+  font-family: 'NanumSquareRound-Light';
+  src: url("./fonts/NanumSquareRoundL.ttf");
+}
+  
+  /* Regular */
+@font-face {
+  font-family: 'NanumSquareRound-Regular';
+  src: url("./fonts/NanumSquareRoundR.ttf");
+}
+  
+  /* Bold */
+@font-face {
+  font-family: 'NanumSquareRound-Bold';
+  src: url("./fonts/NanumSquareRoundB.ttf");
+}
+
+  /* Extra Bold */
+@font-face {
+  font-family: 'NanumSquareRound-ExtraBold';
+  src: url("./fonts/NanumSquareRoundEB.ttf");
+}
+
+/* 카페24 써라운드 */
+@font-face {
+  font-family: 'Cafe24surround';
+  src: url("./fonts/Cafe24Ssurround-v2.0.ttf");
 }

@@ -7,10 +7,10 @@
     max-width: 30%;
     max-height: 75%;
     overflow-y: auto;
-    padding: 40px;
+    padding: 40px 40px 80px 40px;
 
     background-color: #E7EDFD;
-    border-radius: 20px;
+    border-radius: 2px;
 }
 
 /* Top */
@@ -18,9 +18,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 25px;
 
     font-family: 'NanumSquareNeo-Heavy';
-    font-size: 20px;
+    font-size: 24px;
     color: #4D789D;
 }
 
@@ -44,22 +45,60 @@
     font-family: 'NanumSquareNeo-ExtraBold';
 }
 
-/* 내용 */
+/* 내용 제목 */
+    /* 학과 설명 */
+.majorPopUpTitle {
+    background-color: #CCFA50;
+    padding: 12px;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+
+    line-height: 125%;
+    font-family: 'Cafe24surround';
+    color: #4D789D;
+    font-size: 21px;
+}
+
+    /* 일반, 진로 선택 */
+.majorPopUpTitle-select {
+    background-color: #B5C9FF;
+    padding: 12px;
+    text-align: center;
+
+    line-height: 125%;
+    font-family: 'Cafe24surround';
+    color: #426584;
+    font-size: 21px;
+}
+
+/* 내용 설명 */
+    /* 학과 설명 */
 .majorPopUpContent {
     background-color: white;
-    border-radius: 20px;
-    margin-top: 20px;
-    padding: 10px;    
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    margin-top: 0px; /* 삭제하지 마시오 */
 
-    font-family: 'NanumSquareNeo-Regular';
-    font-size: 15px;
+    line-height: 125%;
+    font-family: 'NanumSquareRound-Bold';
+    font-size: 16px;
     color: #4D789D;
 }
 
-/* 내용 제목 */
-.majorPopUpTitle {
-    font-family: 'NanumSquareNeo-Bold';
-}
+    /* 학과 설명 */
+    .majorPopUpContent-select {
+        background-color: white;
+        border-radius: 0 0 20px 20px;
+        margin-bottom: -20px;
+        padding: 20px;
+        margin-top: 0px; /* 삭제하지 마시오 */
+    
+        line-height: 125%;
+        font-family: 'NanumSquareRound-Bold';
+        font-size: 16px;
+        color: #4D789D;
+    }
 
 /* 버튼 스타일 */
 .majorPopUpButton {
