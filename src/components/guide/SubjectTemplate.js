@@ -193,13 +193,17 @@ const SubjectTemplate = ({selectedMajor}) => {
                         </tr>
 
                         <tr className="subjectExpected">
-                            <th>
-                                예상 수강학점
+                            <th
+                                style={{lineHeight: '125%'}}
+                            >
+                                예상
+                                <br />
+                                이수학점
                             </th>
                             <th></th>
                             <th
                                 style={{
-                                    fontSize: '24px', 
+                                    fontSize: '21px', 
                                     fontFamily: "NanumSquareNeo-Heavy"
                                 }}
                             >
