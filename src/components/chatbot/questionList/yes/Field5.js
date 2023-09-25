@@ -69,22 +69,22 @@ const Field5 = ({setHopeMajorName}) => {
         <BotBubble text={'희망하는 학과를 선택해줘.'} />
             <div className='majors'>
                 <div></div>
-                <button className='majorButton' id={1} onClick={onClick} ref={b1}>간호학과</button>
-                <button className='majorButton' id={2} onClick={onClick} ref={b2}>물리치료학과</button>
-                <button className='majorButton' id={3} onClick={onClick} ref={b3}>응급구조학과</button>
-                <button className='majorButton' id={4} onClick={onClick} ref={b4}>임상병리학과</button>
+                <button className='chatmajorButton' id={1} onClick={onClick} ref={b1}>간호학과</button>
+                <button className='chatmajorButton' id={2} onClick={onClick} ref={b2}>물리치료학과</button>
+                <button className='chatmajorButton' id={3} onClick={onClick} ref={b3}>응급구조학과</button>
+                <button className='chatmajorButton' id={4} onClick={onClick} ref={b4}>임상병리학과</button>
                 <div></div>
                 <div></div>
-                <button className='majorButton' id={5} onClick={onClick} ref={b5}>재활치료학과</button>
-                <button className='majorButton' id={6} onClick={onClick} ref={b6}>치기공학과</button>
-                <button className='majorButton' id={7} onClick={onClick} ref={b7}>치위생학과</button>
-                <button className='majorButton' id={8} onClick={onClick} ref={b8}>수의학과</button>
+                <button className='chatmajorButton' id={5} onClick={onClick} ref={b5}>재활치료학과</button>
+                <button className='chatmajorButton' id={6} onClick={onClick} ref={b6}>치기공학과</button>
+                <button className='chatmajorButton' id={7} onClick={onClick} ref={b7}>치위생학과</button>
+                <button className='chatmajorButton' id={8} onClick={onClick} ref={b8}>수의학과</button>
                 <div></div>
                 <div></div>
-                <button className='majorButton' id={9} onClick={onClick} ref={b9}>약학과</button>
-                <button className='majorButton' id={10} onClick={onClick} ref={b10}>의예과</button>
-                <button className='majorButton' id={11} onClick={onClick} ref={b11}>치의예과</button>
-                <button className='majorButton' id={12} onClick={onClick} ref={b12}>한의예과</button>
+                <button className='chatmajorButton' id={9} onClick={onClick} ref={b9}>약학과</button>
+                <button className='chatmajorButton' id={10} onClick={onClick} ref={b10}>의예과</button>
+                <button className='chatmajorButton' id={11} onClick={onClick} ref={b11}>치의예과</button>
+                <button className='chatmajorButton' id={12} onClick={onClick} ref={b12}>한의예과</button>
                 <div></div>
             </div>
         </>

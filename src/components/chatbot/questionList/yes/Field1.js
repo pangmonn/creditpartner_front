@@ -85,28 +85,28 @@ const Field1 = ({setHopeMajorName}) => {
         <BotBubble text={'희망하는 학과를 선택해줘.'} />
             <div className='majors'>
                 <div></div>
-                <button className='majorButton' id={1} onClick={onClick} ref={b1}>국어국문학과</button>
-                <button className='majorButton' id={2} onClick={onClick} ref={b2}>일어일문학과</button>
-                <button className='majorButton' id={3} onClick={onClick} ref={b3}>중어중문학과</button>
-                <button className='majorButton' id={4} onClick={onClick} ref={b4}>노어노문학과</button>
+                <button className='chatmajorButton' id={1} onClick={onClick} ref={b1}>국어국문학과</button>
+                <button className='chatmajorButton' id={2} onClick={onClick} ref={b2}>일어일문학과</button>
+                <button className='chatmajorButton' id={3} onClick={onClick} ref={b3}>중어중문학과</button>
+                <button className='chatmajorButton' id={4} onClick={onClick} ref={b4}>노어노문학과</button>
                 <div></div>
                 <div></div>
-                <button className='majorButton' id={5} onClick={onClick} ref={b5}>독어독문학과</button>
-                <button className='majorButton' id={6} onClick={onClick} ref={b6}>불어불문학과</button>
-                <button className='majorButton' id={7} onClick={onClick} ref={b7}>서어서문학과</button>
-                <button className='majorButton' id={8} onClick={onClick} ref={b8}>영어영문학과</button>
+                <button className='chatmajorButton' id={5} onClick={onClick} ref={b5}>독어독문학과</button>
+                <button className='chatmajorButton' id={6} onClick={onClick} ref={b6}>불어불문학과</button>
+                <button className='chatmajorButton' id={7} onClick={onClick} ref={b7}>서어서문학과</button>
+                <button className='chatmajorButton' id={8} onClick={onClick} ref={b8}>영어영문학과</button>
                 <div></div>
                 <div></div>
-                <button className='majorButton' id={9} onClick={onClick} ref={b9}>통번역학과</button>
-                <button className='majorButton' id={10} onClick={onClick} ref={b10}>고고학과</button>
-                <button className='majorButton' id={11} onClick={onClick} ref={b11}>문헌정보학과</button>
-                <button className='majorButton' id={12} onClick={onClick} ref={b12}>문화재보존학과</button>
+                <button className='chatmajorButton' id={9} onClick={onClick} ref={b9}>통번역학과</button>
+                <button className='chatmajorButton' id={10} onClick={onClick} ref={b10}>고고학과</button>
+                <button className='chatmajorButton' id={11} onClick={onClick} ref={b11}>문헌정보학과</button>
+                <button className='chatmajorButton' id={12} onClick={onClick} ref={b12}>문화재보존학과</button>
                 <div></div>
                 <div></div>
-                <button className='majorButton' id={13} onClick={onClick} ref={b13}>문화콘텐츠학과</button>
-                <button className='majorButton' id={14} onClick={onClick} ref={b14}>사학과</button>
-                <button className='majorButton' id={15} onClick={onClick} ref={b15}>인류학과</button>
-                <button className='majorButton' id={16} onClick={onClick} ref={b16}>철학과</button>
+                <button className='chatmajorButton' id={13} onClick={onClick} ref={b13}>문화콘텐츠학과</button>
+                <button className='chatmajorButton' id={14} onClick={onClick} ref={b14}>사학과</button>
+                <button className='chatmajorButton' id={15} onClick={onClick} ref={b15}>인류학과</button>
+                <button className='chatmajorButton' id={16} onClick={onClick} ref={b16}>철학과</button>
                 <div></div>
             </div>
         </>
