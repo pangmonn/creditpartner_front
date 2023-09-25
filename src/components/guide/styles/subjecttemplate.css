@@ -5,8 +5,7 @@
 /* 수강 */
 .subject_complete {
     background-color: #E7EDFD;
-    border: solid;
-    border-color: #4D789D;
+    border: none;
     border-width: 2px;
     border-radius: 14px;
     height: 28px;
@@ -23,7 +22,7 @@
     background-color: white;
     border: solid;
     border-color: #4D789D;
-    border-width: 2px;
+    border-width: 1.2px;
     border-radius: 14px;
     height: 28px;
     white-space: nowrap;
@@ -36,8 +35,8 @@
 
 /* 학기 선택 */
 .semester_selected {
-    background-color: #4D789D;
-    color: white;
+    background-color: #1751EC;
+    color: #E7EDFD;
 }
 
 .subjectListTable {
