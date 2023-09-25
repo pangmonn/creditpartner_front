@@ -9,7 +9,7 @@
     margin-bottom: 35px;
 }
 
-.majorButton {
+.chatmajorButton {
     height: 40px;
     background-color: white;
     border: 0.5px solid #4D789D;
@@ -24,7 +24,7 @@
     color: #1751EC;
 }
 
-.majorButton:hover {
+.chatmajorButton:hover {
     background: #E7EDFD;
     cursor: pointer;
 }
