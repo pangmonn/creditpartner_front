@@ -4,7 +4,7 @@ import client from '../../auth/api/client';
 import save from '../../../images/save.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Result.css';
-const API_KEY = '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';
+const API_KEY = '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';
 
 const config = { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } };
 
