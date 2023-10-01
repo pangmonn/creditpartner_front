@@ -16,18 +16,8 @@ const desktop = {
 export const MyContext = createContext();
 
 const ChatbotTemplate = () => {
-
+  const [test,setTest] = useState();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if(window.localStorage.length===0) {
-        navigate('/login');
-        console.log("$");
-      }
-    console.log("*");
-  },[]);
-  console.log("@");
-    
 
   const [inputText, setInputText] = useState('');
   const [ableSend, setAbleSend] = useState(false);
@@ -36,6 +26,7 @@ const ChatbotTemplate = () => {
   const [answer6, setAnswer6] = useState('');
   const [answer9, setAnswer9] = useState([]);
   const [questionNum, setQuestionNum] = useState(0);
+
 
   return (
     <div style={desktop}>

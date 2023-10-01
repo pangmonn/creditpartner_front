@@ -160,9 +160,6 @@ const CreditsTemplate = () => {
     }, [semester]);
 
     useEffect(() => {
-        if(window.localStorage.length===0) {
-            navigate('/login');
-          }
 
         let classes = [];
         const get = async () => {

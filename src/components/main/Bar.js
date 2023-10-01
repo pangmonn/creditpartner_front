@@ -10,14 +10,29 @@ const Bar = () => {
     return (
         <div className='bar'>
             <div className='menubar'>
-                <Link to='/credits'>
-                    <div className='menu1'>
-                        <span style={colorBLUE}>이수내역 </span>
-                        <span>입력하기</span>
-                    </div>
-                </Link>
-                
-                
+                {
+                    (window.localStorage.length===0) ? (
+                    <>
+                        <Link to='/login'>
+                            <div className='menu1'>
+                                <span style={colorBLUE}>이수내역 </span>
+                                <span>입력하기</span>
+                            </div>
+                        </Link>
+                    </> 
+                    )
+                :
+                (
+                    <>
+                        <Link to='/credits'>
+                        <div className='menu1'>
+                            <span style={colorBLUE}>이수내역 </span>
+                            <span>입력하기</span>
+                        </div>
+                        </Link>
+                    </>
+                )
+                }
                 <Link to='/major'>
                     <div className='menu2'>
                         <span style={colorBLUE}>학과정보 </span>

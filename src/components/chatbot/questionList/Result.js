@@ -4,7 +4,7 @@ import client from '../../auth/api/client';
 import save from '../../../images/save.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Result.css';
-const API_KEY = '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';
+const API_KEY = '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';
 
 const config = { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } };
 
@@ -167,6 +167,7 @@ const Result = ({answers, setResultMajor}) => {
     useEffect(() => {
         if(GPTanswer!=='') {
             let tempAnswer=GPTanswer;
+            console.log(GPTanswer);
             let majors = [];
             let first = tempAnswer.indexOf('1');
             let first_colon = tempAnswer.indexOf(':', first);
@@ -195,6 +196,7 @@ const Result = ({answers, setResultMajor}) => {
 
     const onClickSave = () => {
         const data = [{ 'resultMajor': postMajor[0] },{ 'resultMajor': postMajor[1] },{ 'resultMajor': postMajor[2] }]
+        console.log(data);
         client.post('/api/chatbot2', data, config).then(function (response) {
             console.log(response);
         }).catch(function (error) {
