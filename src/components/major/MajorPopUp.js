@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Modal from 'react-modal';
 import './styles/majorpopup.css'
 
 const MajorPopUp = ({department, descript, recommend, similar, general_credit, career_credit}) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-
+    
     const modalClose = () => {
     	setModalIsOpen(!modalIsOpen);
   	};

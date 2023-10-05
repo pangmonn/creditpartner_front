@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import "./styles/majorlist.css"
 import SearchBar from './SearchBar';
 import MajorPopUp from "./MajorPopUp";
