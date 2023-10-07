@@ -20,8 +20,8 @@ const SubjectTemplate = ({selectedMajor}) => {
         majorData.subjectData.filter((subject) => subject.chosen === true)
       );
 
-    // console.log(majorData);
-    // console.log(filteredSubjectData);
+    console.log(majorData);
+    console.log(filteredSubjectData);
     
     // 과목 분류별 필수 이수 학점
     const subjectsCredit = 
@@ -37,12 +37,13 @@ const SubjectTemplate = ({selectedMajor}) => {
         {category: "기타", total: 16},
     ];
 
-
     // 선택한 학과에 대한 과목 정보 업데이트
     useEffect(() => {
         const updatedMajorData = subjectByMajor.find((data) => data.major === selectedMajor);
-        setMajorData(updatedMajorData);
-    }, [selectedMajor]); // selectedMajor가 변경될 때마다 실행
+        // 이 부분에서 filteredSubjectData를 업데이트합니다.
+        const updatedFilteredSubjectData = updatedMajorData.subjectData.filter((subject) => subject.chosen === true);
+        setFilteredSubjectData(updatedFilteredSubjectData);
+    }, [selectedMajor]);
 
     console.log(selectedMajor);
 
