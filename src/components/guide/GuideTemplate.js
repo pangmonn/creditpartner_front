@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Top from "./Top";
 import MajorButton from "./MajorButton";
 import SubjectTemplate from "./SubjectTemplate";
-import subjectByMajorData from "./subjectByMajorData.json"
+import subjectByMajor from "./subjectByMajor.json"
 
 const desktop = {
     width: "800px",
@@ -12,7 +12,7 @@ const desktop = {
 
 const GuideTemplate = () => {
     // Default: 첫 번째 버튼
-    const [selectedMajor, setSelectedMajor] = useState(subjectByMajorData[0].major);
+    const [selectedMajor, setSelectedMajor] = useState(subjectByMajor[0].major);
 
     const handleMajorButtonClick = (major) => {
         setSelectedMajor(major);
@@ -23,7 +23,7 @@ const GuideTemplate = () => {
     return (
         <div style={desktop}>
             <Top />
-            <MajorButton majorList={subjectByMajorData.map(data => data.major)} selectedMajor={selectedMajor} setSelectedMajor={setSelectedMajor} handleMajorButtonClick={handleMajorButtonClick} />
+            <MajorButton majorList={subjectByMajor.map(data => data.major)} selectedMajor={selectedMajor} setSelectedMajor={setSelectedMajor} handleMajorButtonClick={handleMajorButtonClick} />
             <SubjectTemplate selectedMajor={selectedMajor} />
         </div>
     );

@@ -3,16 +3,26 @@ import "./styles/subjecttemplate.css"
 import SemesterButton from "./SemesterButton";
 import AddButton from "./AddButton";
 
-import subjectBySemesterData from "./subjectBySemesterData.json";
-import subjectByMajorData from "./subjectByMajorData.json";
+import subjectBySemester from "./subjectBySemester.json";
+import subjectByMajor from "./subjectByMajor.json";
 
 const SubjectTemplate = ({selectedMajor}) => {
+    // console.log(selectedMajor);
+
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
+    
     // 선택한 학과에 대해 저장된 과목 리스트 및 추천 과목
     const [majorData, setMajorData] = useState(
-        subjectByMajorData.find((data) => data.major === selectedMajor)
+        subjectByMajor.find((data) => data.major === selectedMajor)
     );
+    // majorData 내부의 subjectData에서 chosen이 true인 항목들을 필터링하여 filteredSubjectData에 저장합니다.
+    const [filteredSubjectData, setFilteredSubjectData] = useState(
+        majorData.subjectData.filter((subject) => subject.chosen === true)
+      );
 
+    // console.log(majorData);
+    // console.log(filteredSubjectData);
+    
     // 과목 분류별 필수 이수 학점
     const subjectsCredit = 
     [
@@ -30,12 +40,11 @@ const SubjectTemplate = ({selectedMajor}) => {
 
     // 선택한 학과에 대한 과목 정보 업데이트
     useEffect(() => {
-        const updatedMajorData = subjectByMajorData.find((data) => data.major === selectedMajor);
+        const updatedMajorData = subjectByMajor.find((data) => data.major === selectedMajor);
         setMajorData(updatedMajorData);
     }, [selectedMajor]); // selectedMajor가 변경될 때마다 실행
 
     console.log(selectedMajor);
-    console.log(majorData);
 
     const handleButtonClick = (selectedData) => {
         // 버튼 재클릭시 해제
@@ -57,20 +66,20 @@ const SubjectTemplate = ({selectedMajor}) => {
     const calculateTotalCreditAllCategories = () => {
         let totalCredit = 0;
         subjectsCredit.forEach((subjectCredit) => {
-            const categorySubjects = majorData.subjectData.filter((subj) => subj.category === subjectCredit.category);
-            totalCredit += calculateTotalCredit(categorySubjects);
+        const categorySubjects = filteredSubjectData.filter((subj) => subj.category === subjectCredit.category);
+        totalCredit += calculateTotalCredit(categorySubjects);
         });
         return totalCredit;
     };
-
+    
     // 모든 카테고리의 예상 이수학점을 계산하는 함수
     const calculateTotalExpectedCredit = () => {
         let totalCredit = 0;
-        for (const subj of majorData.subjectData) {
-                totalCredit += subj.credit;
+        for (const subj of filteredSubjectData) {
+        totalCredit += subj.credit;
         }
         return totalCredit;
-    };
+    };  
 
     // 삭제 버튼
     const [subjectToDelete, setSubjectToDelete] = useState(null);
@@ -91,18 +100,30 @@ const SubjectTemplate = ({selectedMajor}) => {
     const handleDeleteSubject = () => {
         // Remove the subject from majorData
         const updatedMajorData = { ...majorData };
-        updatedMajorData.subjectData = updatedMajorData.subjectData.filter(
+        const updatedSubjectData = [...filteredSubjectData];
+        const updatedFilteredSubjectData = updatedSubjectData.filter(
         (subj) => subj.class !== subjectToDelete
         );
+    
+        // Update chosen to false for the subjectToDelete in majorData.subjectData
+        updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
+        if (subj.class === subjectToDelete) {
+            return { ...subj, chosen: false };
+        }
+        return subj;
+        });
+    
+        // Update filteredSubjectData and majorData
+        setFilteredSubjectData(updatedFilteredSubjectData);
         setMajorData(updatedMajorData);
-
+    
         // Clear the subjectToDelete state
         setSubjectToDelete(null);
     };
-
+  
     // 과목 리스트 출력
     const subjectList = subjectsCredit.map((subjectCredit) => {
-        const categorySubjects = majorData.subjectData.filter((subj) => subj.category === subjectCredit.category);
+        const categorySubjects = filteredSubjectData.filter((subj) => subj.category === subjectCredit.category);
 
         return (
             <tr key={subjectCredit.category}>
@@ -128,7 +149,7 @@ const SubjectTemplate = ({selectedMajor}) => {
                                 )}
                             </span>
                         ))}
-                        <AddButton category={subjectCredit.category} majorData={majorData} setMajorData={setMajorData} />
+                        <AddButton category={subjectCredit.category} majorData={majorData} setFilteredSubjectData={setFilteredSubjectData} setMajorData={setMajorData} />
                     </div>
                 </td>
                 <td style={{ color: calculateTotalCredit(categorySubjects) < subjectCredit.total ? 'red' : 'inherit' }}>
@@ -141,7 +162,7 @@ const SubjectTemplate = ({selectedMajor}) => {
 
     return (
         <div className="subject_template">
-            {subjectBySemesterData.map((semesterData, index) => (
+            {subjectBySemester.map((semesterData, index) => (
                 <SemesterButton
                     key={index}
                     onClick={() => handleButtonClick(semesterData.subjectData)}

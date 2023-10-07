@@ -4,32 +4,37 @@ import './styles/addbutton.css';
 
 import subjectDataList from "./subjectDataList.json";
 
-const AddButton = ({ category, majorData, setMajorData }) => {
+const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClasses, setSelectedClasses] = useState([]);
 
+    // console.log(majorData.subjectData);
+    // console.log(subjectDataList);
+
     // 과목 filtering 함수
     const majorDataIncludesClass = (className) => {
-        return majorData.subjectData.some(item => item.class === className);
+        return majorData.subjectData.some(item => item.class === className && item.chosen);
     };
-
+    
     // 필터된 데이터를 카테고리별로 그룹화
     const groupedData = subjectDataList.reduce((result, item) => {
         if (!majorDataIncludesClass(item.class) && item.category === category) {
-            if (!result[item.subject]) {
-                result[item.subject] = [];
-            }
-            result[item.subject].push(item);
+        if (!result[item.subject]) {
+            result[item.subject] = [];
+        }
+        result[item.subject].push(item);
         }
         return result;
     }, {});
-
-    console.log(groupedData);
-
+    
+    // console.log(groupedData);
+    
     // 추천 과목 목록 확인
-    const recommendSubjects = Array.isArray(majorData.recommendSubject)
-        ? majorData.recommendSubject
-        : [];
+    const recommendSubjects = majorData.subjectData
+        .filter(item => item.recommend)
+        .map(item => ({ ...item }));  
+
+    // console.log(recommendSubjects);
 
     // 과목 추가 handler
     const handleAddSubject = () => {
@@ -37,25 +42,45 @@ const AddButton = ({ category, majorData, setMajorData }) => {
         const newSubjects = Object.values(groupedData)
             .flatMap((subjectGroup) => subjectGroup
                 .filter(item => selectedClasses.includes(item.class))
-                .map(item => ({
-                    category: item.category,
-                    subject: item.subject,
-                    class: item.class,
-                    credit: item.credit,
-                    course: item.course,
-                    complete: false
-                }))
+                .map(item => {
+                    // majorData에서 해당 클래스의 정보를 가져옵니다.
+                    const existingSubject = majorData.subjectData.find(subj => subj.class === item.class);
+
+                    // recommend 값을 기존 과목에서 가져오거나 없으면 false로 설정합니다.
+                    const recommend = existingSubject ? existingSubject.recommend : false;
+
+                    return {
+                        category: item.category,
+                        subject: item.subject,
+                        class: item.class,
+                        credit: item.credit,
+                        course: item.course,
+                        complete: false,
+                        recommend: recommend,
+                        chosen: true // majorData.subjectData에서 chosen을 true로 설정
+                    };
+                })
             );
 
+        // 기존 majorData의 subjectData에서 해당 클래스의 chosen을 true로 설정
+        const updatedMajorData = { ...majorData };
+        updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
+            if (selectedClasses.includes(subj.class)) {
+                return { ...subj, chosen: true };
+            }
+            return subj;
+        });
+
         // 기존 majorData와 새로운 과목 합치기
-        setMajorData(prevData => ({
-            ...prevData,
-            subjectData: [...prevData.subjectData, ...newSubjects]
-        }));
+        setMajorData(updatedMajorData);
+
+        // filteredSubjectData에 새로운 과목 추가
+        setFilteredSubjectData(prevData => [...prevData, ...newSubjects]);
 
         setIsModalOpen(false);
         setSelectedClasses([]);
     };
+
 
     return (
         <div>
