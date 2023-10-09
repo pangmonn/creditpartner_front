@@ -160,17 +160,16 @@ const CreditsTemplate = () => {
     }, [semester]);
 
     useEffect(() => {
-
+        console.log("11");
         let classes = [];
         const get = async () => {
             try {
                 const data = await getClasses(semester);
-                // data에 접근하여 필요한 작업 수행
                 classes = data;
                 console.log(classes)
-
+    
                 let newSubject = [];
-                for(let i=0;i<classes.length;i++) {
+                for(let i=0; i<classes.length; i++) {
                     const newClass = {
                         id: i,
                         subject: classes[i].subject,
@@ -181,8 +180,8 @@ const CreditsTemplate = () => {
                 }
                 nextId.current = classes.length;
                 console.log(newSubject.length);
-                if(newSubject.length===0) {
-                    setSubjects([
+                if(newSubject.length === 0) {
+                    newSubject = [
                         {
                             id: 1,
                             subject: '국어',
@@ -201,20 +200,19 @@ const CreditsTemplate = () => {
                             class_name: '',
                             credit: '',
                         },
-                    ]);
+                    ];
                 }
-                else {
-                    setSubjects(newSubject);
-                }
-                //setSubjects(newSubject);  
+                setSubjects(newSubject);
             } catch (error) {
                 // 에러 처리
             }
         };
         get(); //semester 학기에 저장된 class들 리스트 받아오기
-        
-        //console.log(newSubject);
-    },[semester]);
+    }, []);
+    
+    // subjects 값을 변경한 후 다음 렌더링에서 화면에 출력
+    console.log(subjects);
+    
 
     const onSubmitClass = useCallback(() => {
         for(let i=0;i<subjects.length;i++) {

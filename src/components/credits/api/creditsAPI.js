@@ -3,7 +3,6 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 const client = axios.create();
 
-const config = { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } };
 
 const fakeURL_credits = 'http://localhost:3000/credits1';
 
@@ -40,9 +39,9 @@ export const getClasses = (semester) => {
             break;
     }
     return new Promise((resolve, reject) => {
-        client.get(URL, config)
+        client.get(URL, { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } })
             .then(response => {
-                // console.log(response.data.items);
+                console.log(response);
                 resolve(response.data);
             })
             .catch(error => {
@@ -77,7 +76,7 @@ export const postClasses = (form, semester) => {
         default:
             break;
     }
-    client.post(URL, data, config).then(function (response) {
+    client.post(URL, data, { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } }).then(function (response) {
             console.log(response);
             return response;
             }).catch(function (error) {
