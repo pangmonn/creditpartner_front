@@ -208,7 +208,7 @@ const CreditsTemplate = () => {
             }
         };
         get(); //semester 학기에 저장된 class들 리스트 받아오기
-    }, []);
+    }, [subjects]);
     
     // subjects 값을 변경한 후 다음 렌더링에서 화면에 출력
     console.log(subjects);
