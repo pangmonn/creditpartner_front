@@ -3,7 +3,6 @@ import "./styles/subjecttemplate.css"
 import SemesterButton from "./SemesterButton";
 import AddButton from "./AddButton";
 
-import subjectBySemester from "./subjectBySemester.json";
 import subjectByMajor from "./subjectByMajor.json";
 
 const SubjectTemplate = ({selectedMajor}) => {
@@ -160,10 +159,39 @@ const SubjectTemplate = ({selectedMajor}) => {
         );
     });
 
+    // subjectData를 semesterData 형태로 변형하는 함수
+    const SemesterData = (subjectByMajor) => {
+        const subjectBySemester = [];
+      
+        if (subjectByMajor && subjectByMajor.subjectData) {
+          const semesters = {};
+      
+          subjectByMajor.subjectData.forEach((subject) => {
+            const { complete, class: subjectClass } = subject;
+      
+            if (complete > 0) {
+              if (!semesters[complete]) {
+                semesters[complete] = [];
+              }
+              semesters[complete].push(subjectClass);
+            }
+          });
+      
+          for (const semester in semesters) {
+            subjectBySemester.push({ semester: parseInt(semester), subjectData: semesters[semester] });
+          }
+        } else {
+          console.error("subjectByMajor is not properly defined");
+        }
+      
+        return subjectBySemester;
+    }
 
+    // console.log(SemesterData(majorData));
+    
     return (
         <div className="subject_template">
-            {subjectBySemester.map((semesterData, index) => (
+            {SemesterData(majorData).map((semesterData, index) => (
                 <SemesterButton
                     key={index}
                     onClick={() => handleButtonClick(semesterData.subjectData)}
