@@ -7,7 +7,7 @@ const MajorButton = ({ majorList, selectedMajor, setSelectedMajor, handleMajorBu
         handleMajorButtonClick(major); // 부모 컴포넌트로 전달
     };
 
-    console.log(selectedMajor);
+    // console.log(selectedMajor);
 
     return (
         <div className="majorButtonContainer">

@@ -2,24 +2,34 @@ import React, { useState, useEffect } from "react";
 import "./styles/subjecttemplate.css"
 import SemesterButton from "./SemesterButton";
 import AddButton from "./AddButton";
+import DeleteButton from "./DeleteButton";
 
 import subjectByMajor from "./subjectByMajor.json";
 
 const SubjectTemplate = ({selectedMajor}) => {
-    // console.log(selectedMajor);
-
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
-    
-    // 선택한 학과에 대해 저장된 과목 리스트 및 추천 과목
     const [majorData, setMajorData] = useState(
         subjectByMajor.find((data) => data.major === selectedMajor)
     );
-    // majorData 내부의 subjectData에서 chosen이 true인 항목들을 필터링하여 filteredSubjectData에 저장합니다.
-    const [filteredSubjectData, setFilteredSubjectData] = useState(
-        majorData.subjectData.filter((subject) => subject.chosen === true)
-      );
+    const [filteredSubjectData, setFilteredSubjectData] = useState([]);
 
-    console.log(majorData);
+    useEffect(() => {
+        // 선택한 학과에 대한 majorData 업데이트
+        const updatedMajorData = subjectByMajor.find((data) => data.major === selectedMajor);
+        setMajorData(updatedMajorData);
+    }, [selectedMajor]);
+
+    useEffect(() => {
+        // majorData가 업데이트되면 filteredSubjectData를 업데이트
+        if (majorData) {
+        const updatedFilteredSubjectData = majorData.subjectData.filter((subject) => subject.chosen === true);
+        setFilteredSubjectData(updatedFilteredSubjectData);
+        }
+    }, [majorData]);
+
+    console.log(majorData.major);
+    // console.log(majorData.subjectData);
+    // console.log(majorData);
     console.log(filteredSubjectData);
     
     // 과목 분류별 필수 이수 학점
@@ -35,14 +45,6 @@ const SubjectTemplate = ({selectedMajor}) => {
         {category: "예술", total: 10},
         {category: "기타", total: 16},
     ];
-
-    // 선택한 학과에 대한 과목 정보 업데이트
-    useEffect(() => {
-        const updatedMajorData = subjectByMajor.find((data) => data.major === selectedMajor);
-        // 이 부분에서 filteredSubjectData를 업데이트합니다.
-        const updatedFilteredSubjectData = updatedMajorData.subjectData.filter((subject) => subject.chosen === true);
-        setFilteredSubjectData(updatedFilteredSubjectData);
-    }, [selectedMajor]);
 
     console.log(selectedMajor);
 
@@ -97,26 +99,26 @@ const SubjectTemplate = ({selectedMajor}) => {
     };
 
     // 삭제 핸들러
-    const handleDeleteSubject = () => {
+    const handleDeleteSubject = (subjectClass) => {
         // Remove the subject from majorData
         const updatedMajorData = { ...majorData };
         const updatedSubjectData = [...filteredSubjectData];
         const updatedFilteredSubjectData = updatedSubjectData.filter(
-        (subj) => subj.class !== subjectToDelete
+            (subj) => subj.class !== subjectClass
         );
-    
+
         // Update chosen to false for the subjectToDelete in majorData.subjectData
         updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
-        if (subj.class === subjectToDelete) {
-            return { ...subj, chosen: false };
-        }
-        return subj;
+            if (subj.class === subjectClass) {
+                return { ...subj, chosen: false };
+            }
+            return subj;
         });
-    
+
         // Update filteredSubjectData and majorData
         setFilteredSubjectData(updatedFilteredSubjectData);
         setMajorData(updatedMajorData);
-    
+
         // Clear the subjectToDelete state
         setSubjectToDelete(null);
     };
@@ -124,7 +126,7 @@ const SubjectTemplate = ({selectedMajor}) => {
     // 과목 리스트 출력
     const subjectList = subjectsCredit.map((subjectCredit) => {
         const categorySubjects = filteredSubjectData.filter((subj) => subj.category === subjectCredit.category);
-
+    
         return (
             <tr key={subjectCredit.category}>
                 <td>{subjectCredit.category}</td>
@@ -140,11 +142,7 @@ const SubjectTemplate = ({selectedMajor}) => {
                                 </button>
                                 {subj.complete ? null : (
                                     subj.class === subjectToDelete && (
-                                        <button
-                                            onClick={() => handleDeleteSubject(subj.class)} className="delete_button"
-                                        >
-                                            삭제
-                                        </button>
+                                        <DeleteButton onDelete={handleDeleteSubject} subjectClass={subj.class} />
                                     )
                                 )}
                             </span>

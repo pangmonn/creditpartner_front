@@ -229,7 +229,7 @@
             {"category": "기타", "subject": "한문", "class": "한문Ⅱ", "credit": 3, "course": "진로", "complete": 0, "recommend": false, "chosen": false},
         
             {"category": "기타", "subject": "교양", "class": "철학", "credit": 3, "course": "일반", "complete": 0, "recommend": false, "chosen": false},
-            {"category": "기타", "subject": "교양", "class": "논리학", "credit": 3, "course": "일반", "complete": true, "recommend": true, "chosen": true},
+            {"category": "기타", "subject": "교양", "class": "논리학", "credit": 3, "course": "일반", "complete": 0, "recommend": true, "chosen": true},
             {"category": "기타", "subject": "교양", "class": "심리학", "credit": 3, "course": "일반", "complete": 0, "recommend": false, "chosen": false},
             {"category": "기타", "subject": "교양", "class": "교육학", "credit": 3, "course": "일반", "complete": 0, "recommend": false, "chosen": false},
             {"category": "기타", "subject": "교양", "class": "종교학", "credit": 3, "course": "일반", "complete": 0, "recommend": false, "chosen": false},
@@ -255,10 +255,10 @@
             
             {"category": "수학", "subject": "수학", "class": "공통수학1", "credit": 3, "course": "공통", "complete": 1, "recommend": false, "chosen": true},
             {"category": "수학", "subject": "수학", "class": "공통수학2", "credit": 3, "course": "공통", "complete": 2, "recommend": false, "chosen": true},
-            {"category": "수학", "subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": 0, "recommend": false, "chosen": false},
-            {"category": "수학", "subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": 0, "recommend": false, "chosen": false},
-            {"category": "수학", "subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": true, "recommend": true, "chosen": true},
-            {"category": "수학", "subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": true, "recommend": true, "chosen": true},
+            {"category": "수학", "subject": "수학", "class": "수학Ⅰ", "credit": 3, "course": "일반", "complete": 3, "recommend": true, "chosen": true},
+            {"category": "수학", "subject": "수학", "class": "수학Ⅱ", "credit": 3, "course": "일반", "complete": 4, "recommend": true, "chosen": true},
+            {"category": "수학", "subject": "수학", "class": "미적분", "credit": 3, "course": "일반", "complete": 0, "recommend": true, "chosen": true},
+            {"category": "수학", "subject": "수학", "class": "확률과 통계", "credit": 3, "course": "일반", "complete": 0, "recommend": true, "chosen": true},
             {"category": "수학", "subject": "수학", "class": "기본 수학", "credit": 3, "course": "진로", "complete": 0, "recommend": false, "chosen": false},
             {"category": "수학", "subject": "수학", "class": "실용 수학", "credit": 3, "course": "진로", "complete": 0, "recommend": false, "chosen": false},
             {"category": "수학", "subject": "수학", "class": "인공지능 수학", "credit": 3, "course": "진로", "complete": 0, "recommend": true, "chosen": true},

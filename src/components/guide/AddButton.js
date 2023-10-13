@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Modal from "react-modal";
 import './styles/addbutton.css';
 
@@ -8,6 +8,7 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClasses, setSelectedClasses] = useState([]);
 
+    // console.log(majorData.major);
     // console.log(majorData.subjectData);
     // console.log(subjectDataList);
 
@@ -26,7 +27,7 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
         }
         return result;
     }, {});
-    
+ 
     // console.log(groupedData);
     
     // 추천 과목 목록 확인
@@ -37,16 +38,12 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
     // console.log(recommendSubjects);
 
     // 과목 추가 handler
-    const handleAddSubject = () => {
-        // 선택한 클래스 데이터로 새로운 과목 객체를 생성합니다.
+    const handleAddSubject = useCallback(() => {
         const newSubjects = Object.values(groupedData)
             .flatMap((subjectGroup) => subjectGroup
                 .filter(item => selectedClasses.includes(item.class))
                 .map(item => {
-                    // majorData에서 해당 클래스의 정보를 가져옵니다.
                     const existingSubject = majorData.subjectData.find(subj => subj.class === item.class);
-
-                    // recommend 값을 기존 과목에서 가져오거나 없으면 false로 설정합니다.
                     const recommend = existingSubject ? existingSubject.recommend : false;
 
                     return {
@@ -57,12 +54,11 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
                         course: item.course,
                         complete: false,
                         recommend: recommend,
-                        chosen: true // majorData.subjectData에서 chosen을 true로 설정
+                        chosen: true
                     };
                 })
             );
 
-        // 기존 majorData의 subjectData에서 해당 클래스의 chosen을 true로 설정
         const updatedMajorData = { ...majorData };
         updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
             if (selectedClasses.includes(subj.class)) {
@@ -71,15 +67,12 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
             return subj;
         });
 
-        // 기존 majorData와 새로운 과목 합치기
         setMajorData(updatedMajorData);
-
-        // filteredSubjectData에 새로운 과목 추가
         setFilteredSubjectData(prevData => [...prevData, ...newSubjects]);
 
         setIsModalOpen(false);
         setSelectedClasses([]);
-    };
+    }, [selectedClasses, majorData, groupedData, setMajorData, setFilteredSubjectData]);
 
 
     return (
