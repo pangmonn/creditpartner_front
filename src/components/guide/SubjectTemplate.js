@@ -4,9 +4,7 @@ import SemesterButton from "./SemesterButton";
 import AddButton from "./AddButton";
 import DeleteButton from "./DeleteButton";
 
-import subjectByMajor from "./subjectByMajor.json";
-
-const SubjectTemplate = ({selectedMajor}) => {
+const SubjectTemplate = ({subjectByMajor, selectedMajor}) => {
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
     const [majorData, setMajorData] = useState(
         subjectByMajor.find((data) => data.major === selectedMajor)

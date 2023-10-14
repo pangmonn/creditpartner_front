@@ -24,7 +24,7 @@ const GuideTemplate = () => {
         <div style={desktop}>
             <Top />
             <MajorButton majorList={subjectByMajor.map(data => data.major)} selectedMajor={selectedMajor} setSelectedMajor={setSelectedMajor} handleMajorButtonClick={handleMajorButtonClick} />
-            <SubjectTemplate selectedMajor={selectedMajor} />
+            <SubjectTemplate subjectByMajor={subjectByMajor} selectedMajor={selectedMajor} />
         </div>
     );
 };
