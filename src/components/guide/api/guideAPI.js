@@ -3,63 +3,93 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 const client = axios.create();
 
-const config = { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } };
+// 토큰을 localStorage에서 가져와서 설정
+// client.defaults.headers.common['Authorization'] = localStorage.getItem('login-token');
 
-const guideURL1 = '/api/guide/1';
-const guideURL2 = '/api/guide/2';
-const guideURL3 = '/api/guide/3';
+const BASE_URL = "http://localhost:3000"
 
+const guideURLs = {
+  /*
+  1: '/api/guide/1',
+  2: '/api/guide/2',
+  3: '/api/guide/3',
+  */
 
-export const getClasses = (guide) => {
-    let URL;
-    switch(Number(guide)) {
-        case 1:
-            URL = guideURL1;
-            break;
-        case 2:
-            URL = guideURL2;
-            break;
-        case 3:
-            URL = guideURL3;
-            break;
-        default:
-            break;
-    }
-    return new Promise((resolve, reject) => {
-        client.get(URL, config)
-            .then(response => {
-                // console.log(response.data.items);
-                resolve(response.data);
-            })
-            .catch(error => {
-                reject(error);
-            });
-    });
+  1: `${BASE_URL}/guide1`,
+  2: `${BASE_URL}/guide2`,
+  3: `${BASE_URL}/guide3`
 };
 
-export const postClasses = (form, guide) => {
-    const data = JSON.stringify(form);
-    console.log(data);
-    let URL;
-    switch(Number(guide)) {
-        case 1:
-            URL = guideURL1;
-            break;
-        case 2:
-            URL = guideURL2;
-            break;
-        case 3:
-            URL = guideURL3;
-            break;
-        default:
-            break;
-    }
-    client.post(URL, data, config).then(function (response) {
-            console.log(response);
-            return response;
-            }).catch(function (error) {
-                console.log(error);
-                return error;
-                });
-    
-}
+const config = {
+  headers: { "Content-Type": "application/json", Authorization: localStorage.getItem("login-token") },
+};
+
+export const fetchDbGuide = async () => {
+  try {
+      const response = await fetch(dbGuideURL);
+      if (!response.ok) {
+          throw new Error('Network response was not ok.');
+      }
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error('Error fetching db_guide data:', error);
+      throw error;
+  }
+};
+
+export const getGuide = (guide) => {
+  let URL;
+  // console.log(Number(guide));
+  switch (Number(guide)) {
+    case 1:
+      URL = guideURLs[1];
+      // console.log(URL);
+      break;
+    case 2:
+      URL = guideURLs[2];
+      break;
+    case 3:
+      URL = guideURLs[3];
+      break;
+    default:
+      break;
+  }
+  return new Promise((resolve, reject) => {
+    client
+      .get(URL, config) // config를 요청에 추가
+      .then((response) => {
+        // console.log(response.data.items);
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
+export const postGuide = (form, guide) => {
+  const data = JSON.stringify(form);
+  console.log(data);
+  let URL;
+  switch (Number(guide)) {
+    case 1:
+      URL = guideURLs[1];
+      break;
+    case 2:
+      URL = guideURLs[2];
+      break;
+    case 3:
+      URL = guideURLs[3];
+      break;
+    default:
+      break;
+  }
+  return client.post(URL, data, config).then(function (response) {
+    console.log(response);
+    return response;
+  }).catch(function (error) {
+    console.log(error);
+    return error;
+  });
+};  

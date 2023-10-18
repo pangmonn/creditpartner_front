@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 const DeleteButton = ({ onDelete, subjectClass }) => {
-    const handleDeleteClick = () => {
+    const handleDeleteClick = useCallback(() => {
         onDelete(subjectClass);
-    };
+    }, [onDelete, subjectClass]);
 
     return (
         <button

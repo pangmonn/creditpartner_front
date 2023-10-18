@@ -1,34 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./styles/subjecttemplate.css"
 import SemesterButton from "./SemesterButton";
 import AddButton from "./AddButton";
 import DeleteButton from "./DeleteButton";
 
-const SubjectTemplate = ({subjectByMajor, selectedMajor}) => {
+const SubjectTemplate = ({guideData, selectedMajor}) => {
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
     const [majorData, setMajorData] = useState(
-        subjectByMajor.find((data) => data.major === selectedMajor)
+        guideData.find((data) => data.major === selectedMajor)
     );
     const [filteredSubjectData, setFilteredSubjectData] = useState([]);
 
-    useEffect(() => {
+    const handleMajorDataUpdate = useCallback(() => {
         // 선택한 학과에 대한 majorData 업데이트
-        const updatedMajorData = subjectByMajor.find((data) => data.major === selectedMajor);
+        const updatedMajorData = guideData.find((data) => data.major === selectedMajor);
         setMajorData(updatedMajorData);
-    }, [selectedMajor]);
+    }, [selectedMajor, guideData]);
+
+    useEffect(() => {
+        handleMajorDataUpdate();
+    }, [handleMajorDataUpdate]);
 
     useEffect(() => {
         // majorData가 업데이트되면 filteredSubjectData를 업데이트
         if (majorData) {
-        const updatedFilteredSubjectData = majorData.subjectData.filter((subject) => subject.chosen === true);
-        setFilteredSubjectData(updatedFilteredSubjectData);
+            const updatedFilteredSubjectData = majorData.subjectData.filter((subject) => subject.chosen === true);
+            setFilteredSubjectData(updatedFilteredSubjectData);
         }
     }, [majorData]);
 
-    console.log(majorData.major);
+    // console.log(majorData.major);
     // console.log(majorData.subjectData);
     // console.log(majorData);
-    console.log(filteredSubjectData);
+    // console.log(filteredSubjectData);
     
     // 과목 분류별 필수 이수 학점
     const subjectsCredit = 
@@ -44,7 +48,7 @@ const SubjectTemplate = ({subjectByMajor, selectedMajor}) => {
         {category: "기타", total: 16},
     ];
 
-    console.log(selectedMajor);
+    // console.log(selectedMajor);
 
     const handleButtonClick = (selectedData) => {
         // 버튼 재클릭시 해제
@@ -85,7 +89,7 @@ const SubjectTemplate = ({subjectByMajor, selectedMajor}) => {
     const [subjectToDelete, setSubjectToDelete] = useState(null);
 
     // 우클릭 이벤트
-    const handleContextMenu = (e, subjClass) => {
+    const handleContextMenu = useCallback((e, subjClass) => {
         e.preventDefault(); // Prevent the default context menu
         if (subjClass === subjectToDelete) {
             // If you right-click on the same subject again, clear the subjectToDelete
@@ -94,10 +98,10 @@ const SubjectTemplate = ({subjectByMajor, selectedMajor}) => {
             // Otherwise, set the subject to display the delete button for
             setSubjectToDelete(subjClass);
         }
-    };
+    }, [subjectToDelete]);
 
     // 삭제 핸들러
-    const handleDeleteSubject = (subjectClass) => {
+    const handleDeleteSubject = useCallback((subjectClass) => {
         // Remove the subject from majorData
         const updatedMajorData = { ...majorData };
         const updatedSubjectData = [...filteredSubjectData];
@@ -119,7 +123,7 @@ const SubjectTemplate = ({subjectByMajor, selectedMajor}) => {
 
         // Clear the subjectToDelete state
         setSubjectToDelete(null);
-    };
+    }, [filteredSubjectData, majorData]);
   
     // 과목 리스트 출력
     const subjectList = subjectsCredit.map((subjectCredit) => {
@@ -156,13 +160,13 @@ const SubjectTemplate = ({subjectByMajor, selectedMajor}) => {
     });
 
     // subjectData를 semesterData 형태로 변형하는 함수
-    const SemesterData = (subjectByMajor) => {
+    const SemesterData = (guideData) => {
         const subjectBySemester = [];
       
-        if (subjectByMajor && subjectByMajor.subjectData) {
+        if (guideData && guideData.subjectData) {
           const semesters = {};
       
-          subjectByMajor.subjectData.forEach((subject) => {
+          guideData.subjectData.forEach((subject) => {
             const { complete, class: subjectClass } = subject;
       
             if (complete > 0) {
@@ -177,7 +181,7 @@ const SubjectTemplate = ({subjectByMajor, selectedMajor}) => {
             subjectBySemester.push({ semester: parseInt(semester), subjectData: semesters[semester] });
           }
         } else {
-          console.error("subjectByMajor is not properly defined");
+          console.error("guideData is not properly defined");
         }
       
         return subjectBySemester;
