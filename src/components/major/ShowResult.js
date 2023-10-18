@@ -270,9 +270,9 @@ const ShowResult = () => {
         setMajorSelected(e);
     };
 
-    console.log(fieldSelected);
-    console.log(lineSelected);
-    console.log(majorSelected);
+    // console.log(fieldSelected);
+    // console.log(lineSelected);
+    // console.log(majorSelected);
 
     return (
         <div>
