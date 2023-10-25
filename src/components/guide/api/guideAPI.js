@@ -21,10 +21,28 @@ const guideURLs = {
 };
 
 const config = {
+<<<<<<< HEAD
     headers: { 
         "Content-Type": "application/json", 
         Authorization: localStorage.getItem("login-token") 
     },
+=======
+  headers: { "Content-Type": "application/json", Authorization: localStorage.getItem("login-token") },
+};
+
+export const fetchDbGuide = async () => {
+  try {
+      const response = await fetch(dbGuideURL);
+      if (!response.ok) {
+          throw new Error('Network response was not ok.');
+      }
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error('Error fetching db_guide data:', error);
+      throw error;
+  }
+>>>>>>> ea405cf3aa5cbdf03ca809441121a7a9c512cdf2
 };
 
 export const getGuide = (guide) => {
