@@ -4,7 +4,7 @@ import client from '../../auth/api/client';
 import save from '../../../images/save.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Result.css';
-const API_KEY = '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';
+const API_KEY = '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';
 
 const config = { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } };
 
@@ -58,60 +58,70 @@ const Result = ({answers, setResultMajor}) => {
     for(let i=0;i<strongs.length;i++) {
         switch(Number(strongs[i])) {
             case 1:
-                strongField += "이 친구는 단어, 어휘의 의미와 소리에 대해 민감하며, 언어의 구조 및 언어가 사용될 수 있는 다양한 방법을 잘 알고 사용할 수 있어. ";
+                strongField += "단어, 어휘의 의미와 소리에 대해 민감하며, 언어의 구조 및 언어가 사용될 수 있는 다양한 방법을 잘 알고 사용할 수 있음. ";
                 break;
             case 2:
-                strongField += "이 친구는 수와 같은 추상적인 상징체계를 조작하고 그들의 관계를 인식하며 논리적이고 체계적으로 아이디어 평가를 잘해. ";
+                strongField += "수와 같은 추상적인 상징체계를 조작하고 그들의 관계를 인식하며 논리적이고 체계적으로 아이디어 평가를 잘함. ";
                 break;
             case 3:
-                strongField += "이 친구는 자연물, 동식물에 관심을 가지고 잘돌보거나 자연현상을 잘 이해하고, 자연을 보존하는데 관심이 있어. ";
+                strongField += "자연물, 동식물에 관심을 가지고 잘돌보거나 자연현상을 잘 이해하고, 자연을 보존하는데 관심이 있음. ";
                 break;
             case 4:
-                strongField += "이 친구는 색, 모양, 대칭, 이미지 등 시각자극을 정확하게 지각하고, 그러한 지각을 변형하며 관련 자극이 없을 때도 시각화를 잘해. ";
+                strongField += "색, 모양, 대칭, 이미지 등 시각자극을 정확하게 지각하고, 그러한 지각을 변형하며 관련 자극이 없을 때도 시각화를 잘함. ";
                 break;
             case 5:
-                strongField += "이 친구는 음의 높낮이,박자, 속도, 선율에 대해 민감하고, 음악을 만들고 분석하는 능력이 있으며 음악의 정서적인 측면을 잘 이해할 수 있어. ";
+                strongField += "음의 높낮이,박자, 속도, 선율에 대해 민감하고, 음악을 만들고 분석하는 능력이 있으며 음악의 정서적인 측면을 잘 이해할 수 있음. ";
                 break;
             case 6:
-                strongField += "이 친구는 자신을 표현하고 목적 달성을 하기 위해 몸을 기술적으로 사용하는 능력이 있고, 사물을 기술적으로 다루는 데 민감해. ";
+                strongField += "자신을 표현하고 목적 달성을 하기 위해 몸을 기술적으로 사용하는 능력이 있고, 사물을 기술적으로 다루는 데 민감함. ";
                 break;
             case 7:
-                strongField += "이 친구는 타인의 기분이나 기질, 동기, 의도 등을 잘 알아차리고 이에 대해 적절하고 민감하게 반응해. ";
+                strongField += "타인의 기분이나 기질, 동기, 의도 등을 잘 알아차리고 이에 대해 적절하고 민감하게 반응함. ";
                 break;
             case 8:
-                strongField += "이 친구는 자신의 내부상태에 대해 민감하며, 자신의 강약점, 욕구를 파악하고, 자신에 대한 정보를 적절하게 사용하여 적응적으로 행동하는 데 민감해. ";
+                strongField += "자신의 내부상태에 대해 민감하며, 자신의 강약점, 욕구를 파악하고, 자신에 대한 정보를 적절하게 사용하여 적응적으로 행동하는 데 민감함. ";
                 break;
             default:
         }
     }
 
     //성격
-    switch(Number(answers[0])) {
+    switch(Number(answers[5])) {
         case 1:
-            personality += "이 친구의 성격적인 특성은 원칙주의자, 자기주장적인, 문제해결지향성, 집중력, 신중한, 도전적, 진취성, 경쟁욕구, 직선적, 주도적인 특징이 있는 리더형이야. ";
+            personality += "원칙주의자, 자기주장적인, 문제해결지향성, 집중력, 신중한, 도전적, 진취성, 경쟁욕구, 직선적, 주도적인 특징이 있는 리더형. ";
             break;
         case 2:
-            personality += "이 친구의 성격적인 특성은 자기표현, 친교관계, 솔직함, 인간적인 특징이 있는 사교형이야. ";
+            personality += "자기표현, 친교관계, 솔직함, 인간적인 특징이 있는 사교형. ";
             break;
         case 3:
-            personality += "이 친구의 성격적인 특성은 장기 집중력, 감정 통제력, 합리화, 신중성, 비사교성, 성취지향적 특징이 있는 분석형이야. ";
+            personality += "장기 집중력, 감정 통제력, 합리화, 신중성, 비사교성, 성취지향적 특징이 있는 분석형. ";
 
             break;
         case 4:
-            personality += "이 친구의 성격적인 특성은 따뜻한, 친화적인, 순종적인, 겸손한, 조용한, 갈등회피, 친절함, 충동통제, 침착, 느림, 공감적이해, 상호협력적 특징이 있는 조화형이야. ";
+            personality += "따뜻한, 친화적인, 순종적인, 겸손한, 조용한, 갈등회피, 친절함, 충동통제, 침착, 느림, 공감적이해, 상호협력적 특징이 있는 조화형. ";
             break;
         default:
     }
 
     //질문 총집합
-    studentInfo += "이 친구가 좋아하는 과목은 " + likeSubject + " 과목이야. ";
-    studentInfo += "이 친구가 싫어하는 과목은 " + hateSubject + " 과목이야. ";
-    studentInfo += strongField;
-    studentInfo += "이 친구가 잘한다고 생각하는 것들은 " + goodAs + "야. ";
-    studentInfo += personality;
+    studentInfo += "좋아하는 과목 : " + likeSubject + " ";
+    studentInfo += "싫어하는 과목 :" + hateSubject + " ";
+    studentInfo += "강점 영역 : " + strongField + " ";
+    studentInfo += "스스로 잘한다고 생각하는 것 : " + goodAs + " ";
+    studentInfo += "성격 : " + personality + " ";
 
-    gptQuestion = "고등학생 친구가 진학할 학과를 추천해주려고 해. " + studentInfo + "다음의 학과 중에서 가장 잘 어울리는 학과 3가지를 적어줘. " + dep + "1.무슨과 : 이유, 2.무슨과 : 이유, 3.무슨과 : 이유 반드시 이 형식에 맞춰서 적어줘."
-    
+    gptQuestion = "고등학생 친구가 진학할 학과를 추천해주려고 해. 다른 정보보다 학생이 좋아하는 과목과 싫어하는 과목에 비중을 더 높게 두고 학과를 추천해줘. " + studentInfo + "다음의 학과 중에서 가장 잘 어울리는 학과 3가지를 적어줘. " + dep + "답변의 예시를 적어줄게. 반드시 다음 형식에 맞춰서 적어줘. 1.컴퓨터공학과 : 이유  2.사회학과 : 이유  3.국어교육과 : 이유"
+    let quest = `아래 문맥에 따라 질문에 답하세요.
+ 
+    맥락: 고등학생 친구가 진학할 학과를 추천해주려고 합니다. 학생의 정보는 다음과 같습니다. ${studentInfo} \n
+        반드시 다음 학과 중에서 가장 잘 어울리는 학과 3가지를 적어주세요. \n ${dep} \n
+        답변의 예시입니다. 이와 동일한 형태로 답변을 작성해주세요 \n
+        1.무슨과 : 이유  2.무슨과 : 이유  3.무슨과 : 이유
+
+    질문: 고등학생 친구에게 진학할 학과를 추천해주세요.
+     
+    답변:
+    `
     let data;
     const [GPTanswer, setGPTanswer] = useState('');
     //const [major3, setMajor3] = useState([]);
@@ -129,7 +139,7 @@ const Result = ({answers, setResultMajor}) => {
                     },
                     body: JSON.stringify({
                         model: "gpt-3.5-turbo",
-                        messages: [{role: "user", content: gptQuestion}],
+                        messages: [{role: "user", content: quest}],
                         max_tokens: 1000
                     })
                 }
