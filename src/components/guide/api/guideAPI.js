@@ -21,13 +21,10 @@ const guideURLs = {
 };
 
 const config = {
-<<<<<<< HEAD
     headers: { 
         "Content-Type": "application/json", 
         Authorization: localStorage.getItem("login-token") 
     },
-=======
-  headers: { "Content-Type": "application/json", Authorization: localStorage.getItem("login-token") },
 };
 
 export const fetchDbGuide = async () => {
@@ -42,7 +39,6 @@ export const fetchDbGuide = async () => {
       console.error('Error fetching db_guide data:', error);
       throw error;
   }
->>>>>>> ea405cf3aa5cbdf03ca809441121a7a9c512cdf2
 };
 
 export const getGuide = (guide) => {
