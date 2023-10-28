@@ -60,7 +60,7 @@ const MajorList = ({ fieldSelected, lineSelected, majorSelected }) => {
             <td>{dept.major}</td>
             <td>
                 {/* console.log(dept.major) */}
-                {<MajorPopUp major_name={dept.major} similar={dept.similar}/>}
+                {<MajorPopUp major_id={dept.id} major_name={dept.major} similar={dept.similar}/>}
             </td>
         </tr>
     ));

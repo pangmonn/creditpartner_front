@@ -14,7 +14,7 @@ const config = {
     }
 };
 
-export const getMajor = (major_name) => {
+export const getMajor = (majorNum) => {
     const URL = majorURL;
     // console.log(typeof(major_name));
 
@@ -22,7 +22,7 @@ export const getMajor = (major_name) => {
     return new Promise((resolve, reject) => {
         client.get(URL, {
             ...config,
-            params: { "major_name" : major_name }
+            params: { "majorNum" : majorNum }
         })
             .then(response => {
                 // console.log(response.data.items);

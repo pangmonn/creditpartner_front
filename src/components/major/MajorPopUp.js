@@ -3,28 +3,31 @@ import Modal from 'react-modal';
 import * as majorAPI from "./api/majorAPI";
 import './styles/majorpopup.css'
 
-const MajorPopUp = ({major_name, similar}) => {
+const MajorPopUp = ({major_id, major_name, similar}) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    // major_name의 details
+    // major_id의 details
     const [details, setDetails] = useState({});
 
-   // console.log(major_name);
-
-    const descript = details.major_info || ""; // 학과 설명
-    const recommend = details.kind_of_student || []; // 추천 학생
-    const general_credit = details.class_basic || []; // 일반 선택 과목
-    const career_credit = details.class_course || []; // 진로 선택 과목
-
+    console.log({major_id, major_name});
     console.log(details);
+
+    const [descript, setDescript] = useState("");
+    const [recommend, setRecommend] = useState([]);
+    const [general_credit, setGeneralCredit] = useState([]);
+    const [career_credit, setCareerCredit] = useState([]);
 
     useEffect(() => {
         const fetchDetailsData = async () => {
             try {
-                const detailData = await majorAPI.getMajor(major_name);
+                const detailData = await majorAPI.getMajor(major_id);
                 console.log(detailData);
 
                 if (detailData) {
                     setDetails(detailData);
+                    setDescript(detailData.major_info || "");
+                    setRecommend(detailData.kind_of_student.split(';') || []);
+                    setGeneralCredit(detailData.class_basic.split(';') || []);
+                    setCareerCredit(detailData.class_course.split(';') || []);
                 } else {
                     console.error("학과 정보를 찾을 수 없습니다.");
                 }
@@ -34,11 +37,11 @@ const MajorPopUp = ({major_name, similar}) => {
         };
 
         fetchDetailsData();
-    }, [major_name]);
+    }, [major_id]);
 
     const modalClose = () => {
-    	setModalIsOpen(!modalIsOpen);
-  	};
+        setModalIsOpen(!modalIsOpen);
+    };
     
     return (
         <div>
@@ -60,13 +63,13 @@ const MajorPopUp = ({major_name, similar}) => {
                                 이런 학생에게 추천해요
                                 </div>
                             <ul 
-                                className="majorPopUpContent"
+                                className="majorPopUpContent-recommend"
                                 style={{listStyle: 'decimal', listStylePosition: 'inside'}}      
                             >
                                 {recommend.map((item, index) => (
                                     <div>
                                         <li key={index}>{item}</li>
-                                        <br />
+                                        <br/>
                                     </div>
                                 ))}
                             </ul>

@@ -86,19 +86,33 @@
     color: #4D789D;
 }
 
-    /* 학과 설명 */
-    .majorPopUpContent-select {
-        background-color: white;
-        border-radius: 0 0 20px 20px;
-        margin-bottom: -20px;
-        padding: 20px;
-        margin-top: 0px; /* 삭제하지 마시오 */
-    
-        line-height: 125%;
-        font-family: 'NanumSquareRound-Bold';
-        font-size: 16px;
-        color: #4D789D;
-    }
+    /* 추천 설명 */
+.majorPopUpContent-recommend {
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 10px;
+    padding: 20px 20px 5px 20px;
+    margin-top: 0px; /* 삭제하지 마시오 */
+
+    line-height: 125%;
+    font-family: 'NanumSquareRound-Bold';
+    font-size: 16px;
+    color: #4D789D;
+}
+
+    /* 선택과목 설명 */
+.majorPopUpContent-select {
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: -20px;
+    padding: 20px;
+    margin-top: 0px; /* 삭제하지 마시오 */
+
+    line-height: 125%;
+    font-family: 'NanumSquareRound-Bold';
+    font-size: 16px;
+    color: #4D789D;
+}
 
 /* 버튼 스타일 */
 .majorPopUpButton {
