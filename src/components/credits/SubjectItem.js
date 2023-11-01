@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import './styles/subjectitem.css'
 
-const subjectList = ["국어","수학","영어","한국사","사회","과학","체육","예술","기술가정","제2외국어","한문","교양"];
-const classList0 = ["국어","화법과 작문", "독서", "언어와 매체", "문학", "실용국어","심화국어","고전읽기"];
-const classList1 = ["수학","수학Ⅰ","수학Ⅱ","미적분","확률과 통계","기본 수학","실용 수학","기하","경제 수학","수학과제 탐구","인공지능 수학"];
-
+const subjectList = ["국어","수학","영어","한국사","사회","과학","체육","예술","기술·가정","제2외국어","한문","교양"];
 
 const subjectOptions = [
     {value: "국어", label: "국어"},
@@ -16,13 +13,16 @@ const subjectOptions = [
     {value: "과학", label: "과학"},
     {value: "체육", label: "체육"},
     {value: "예술", label: "예술"},
-    {value: "기술가정", label: "기술가정"},
+    {value: "기술·가정", label: "기술·가정"},
     {value: "제2외국어", label: "제2외국어"},
     {value: "한문", label: "한문"},
     {value: "교양", label: "교양"},
 ];
 
-const classOptions = [ [{value: "국어", label: "국어"},{value: "화법과 작문", label: "화법과 작문"},
+const classOptions = [ [{value: "공통국어1", label: "공통국어1"},
+{value: "공통국어2", label: "공통국어2"},
+{value: "국어", label: "국어"},
+{value: "화법과 작문", label: "화법과 작문"},
 {value: "독서", label: "독서"},
 {value: "언어와 매체", label: "언어와 매체"},
 {value: "문학", label: "문학"},
@@ -30,7 +30,9 @@ const classOptions = [ [{value: "국어", label: "국어"},{value: "화법과 �
 {value: "심화 국어", label: "심화 국어"},
 {value: "고전 읽기", label: "고전 읽기"},],
 //수학
-[{value: "수학", label: "수학"},
+[{value: "공통수학1", label: "공통수학1"},
+{value: "공통수학2", label: "공통수학2"},
+{value: "수학", label: "수학"},
 {value: "수학Ⅰ", label: "수학Ⅰ"},
 {value: "수학Ⅱ", label: "수학Ⅱ"},
 {value: "미적분", label: "미적분"},
@@ -42,7 +44,9 @@ const classOptions = [ [{value: "국어", label: "국어"},{value: "화법과 �
 {value: "수학과제 탐구", label: "수학과제 탐구"},
 {value: "인공지능 수학", label: "인공지능 수학"},],
 //영어
-[{value: "영어", label: "영어"},
+[{value: "공통영어1", label: "공통영어1"},
+{value: "공통영어2", label: "공통영어2"},
+{value: "영어", label: "영어"},
 {value: "영어Ⅰ", label: "영어Ⅰ"},
 {value: "영어Ⅱ", label: "영어Ⅱ"},
 {value: "영어 회화", label: "영어 회화"},
@@ -53,9 +57,13 @@ const classOptions = [ [{value: "국어", label: "국어"},{value: "화법과 �
 {value: "진로 영어", label: "진로 영어"},
 {value: "영미 문학 읽기", label: "영미 문학 읽기"},],
 //한국사
-[{value: "한국사", label: "한국사"},],
+[{value: "한국사", label: "한국사"},
+{value: "한국사1", label: "한국사1"},
+{value: "한국사2", label: "한국사2"},],
 //사회
 [{value: "통합사회", label: "통합사회"},
+{value: "통합사회1", label: "통합사회1"},
+{value: "통합사회2", label: "통합사회2"},
 {value: "한국지리", label: "한국지리"},
 {value: "세계지리", label: "세계지리"},
 {value: "세계사", label: "세계사"},
@@ -70,7 +78,11 @@ const classOptions = [ [{value: "국어", label: "국어"},{value: "화법과 �
 {value: "고전과 윤리", label: "고전과 윤리"},],
 //과학
 [{value: "통합과학", label: "통합과학"},
+{value: "통합과학1", label: "통합과학1"},
+{value: "통합과학2", label: "통합과학2"},
 {value: "과학탐구실험", label: "과학탐구실험"},
+{value: "과학탐구실험1", label: "과학탐구실험1"},
+{value: "과학탐구실험2", label: "과학탐구실험2"},
 {value: "물리학Ⅰ", label: "물리학Ⅰ"},
 {value: "화학Ⅰ", label: "화학Ⅰ"},
 {value: "생명과학Ⅰ", label: "생명과학Ⅰ"},
@@ -154,20 +166,9 @@ const creditOptions = [{value: 1, label: "1"},
 
 const SubjectItem = ({ subject, id, onModifySubject, onModifyClass, onModifyCredit }) => {
     let subjectNum = -1;
-    let classNum = -1;
     if(subject.subject) {
         subjectNum = subjectList.indexOf(subject.subject); //class drop down을 위한 영역 index 구하기
-        //for showing
-        switch(subjectNum) {
-            case 0: //국어
-                classNum = classList0.indexOf(subject.class_name);
-                break;
-            case 1:
-                classNum = classList1.indexOf(subject.class_name);
-                break;
-            default:
-                break;
-        }
+        console.log(subjectNum);
     }
 
     const [subjectSelected, setSubjectSelected] = useState(subject.subject);

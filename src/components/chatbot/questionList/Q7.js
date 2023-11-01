@@ -39,7 +39,7 @@ const Q7 = ({username, batchim, setQuestionNum, selectPersonality, setSelectPers
         }
         setQuestionNum(8);
     }
-    console.log(selectPersonality)
+    //console.log(selectPersonality)
     
     return (
         <div>

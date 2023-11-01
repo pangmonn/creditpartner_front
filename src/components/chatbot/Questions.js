@@ -27,7 +27,7 @@ const Questions = ({inputText, setAbleSend, username, batchim}) => {
         messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
       }, [questionNum, hopeField, field, messageEndRef]);
 
-    console.log('q:'+questionNum);
+    //console.log('q:'+questionNum);
 
     return (
         <div>

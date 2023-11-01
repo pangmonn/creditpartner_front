@@ -101,11 +101,12 @@ const CreditsTemplate = () => {
     
 
     const onClickSemester = useCallback((e) => {
-        
         setSemester(e.value);
+        /*
         let classes = [];
         const get = async () => {
             try {
+                console.log(semester);
                 const data = await getClasses(semester);
                 // data에 접근하여 필요한 작업 수행
                 classes = data;
@@ -119,11 +120,11 @@ const CreditsTemplate = () => {
                         credit:  classes[i].credit,
                     };
                     newSubject.push(newClass);
-                    console.log(newClass);
-                    console.log(newSubject);
+                    //console.log(newClass);
+                    //console.log(newSubject);
                 }
                 nextId.current = classes.length;
-                console.log(newSubject.length);
+                //console.log(newSubject.length);
                 if(newSubject.length===0) {
                     setSubjects([
                         {
@@ -156,14 +157,15 @@ const CreditsTemplate = () => {
         get(); //semester 학기에 저장된 class들 리스트 받아오기
         
         //console.log(newSubject);
-        
-    }, [semester]);
+        */
+    }, []);
 
     useEffect(() => {
-        console.log("11");
+        
         let classes = [];
         const get = async () => {
             try {
+                console.log(semester);
                 const data = await getClasses(semester);
                 classes = data;
                 console.log(classes)
@@ -179,7 +181,7 @@ const CreditsTemplate = () => {
                     newSubject.push(newClass);
                 }
                 nextId.current = classes.length;
-                console.log(newSubject.length);
+                console.log(newSubject);
                 if(newSubject.length === 0) {
                     newSubject = [
                         {
@@ -226,7 +228,7 @@ const CreditsTemplate = () => {
         alert('저장되었습니다.')
     })
 
-    console.log(subjects);
+    //console.log(subjects);
 
     return (
         <div style={desktop}>
