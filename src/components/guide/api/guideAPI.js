@@ -3,12 +3,9 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 const client = axios.create();
 
-// 토큰을 localStorage에서 가져와서 설정
-// client.defaults.headers.common['Authorization'] = localStorage.getItem('login-token');
-
 const BASE_URL = "http://localhost:3000"
 
-const guideURLs = {
+const test_guideURLs = {
   /*
   1: '/api/guide/1',
   2: '/api/guide/2',
@@ -20,6 +17,8 @@ const guideURLs = {
   3: `${BASE_URL}/guide3`
 };
 
+const guideURL = '/api/guide';
+
 const config = {
     headers: { 
         "Content-Type": "application/json", 
@@ -27,42 +26,14 @@ const config = {
     },
 };
 
-export const fetchDbGuide = async () => {
-  try {
-      const response = await fetch(dbGuideURL);
-      if (!response.ok) {
-          throw new Error('Network response was not ok.');
-      }
-      const data = await response.json();
-      return data;
-  } catch (error) {
-      console.error('Error fetching db_guide data:', error);
-      throw error;
-  }
-};
+export const getGuide = () => {
+  const URL = guideURL;  
 
-export const getGuide = (guide) => {
-  let URL;
-  // console.log(Number(guide));
-  switch (Number(guide)) {
-    case 1:
-      URL = guideURLs[1];
-      // console.log(URL);
-      break;
-    case 2:
-      URL = guideURLs[2];
-      break;
-    case 3:
-      URL = guideURLs[3];
-      break;
-    default:
-      break;
-  }
   return new Promise((resolve, reject) => {
     client
       .get(URL, config) // config를 요청에 추가
       .then((response) => {
-        // console.log(response.data.items);
+        console.log(response.data.items);
         resolve(response.data);
       })
       .catch((error) => {
@@ -71,19 +42,19 @@ export const getGuide = (guide) => {
   });
 };
 
-export const postGuide = (form, guide) => {
+export const postGuide = (form, guideNum) => {
   const data = JSON.stringify(form);
   console.log(data);
   let URL;
-  switch (Number(guide)) {
+  switch (Number(guideNum)) {
     case 1:
-      URL = guideURLs[1];
+      URL = test_guideURLs[1];
       break;
     case 2:
-      URL = guideURLs[2];
+      URL = test_guideURLs[2];
       break;
     case 3:
-      URL = guideURLs[3];
+      URL = test_guideURLs[3];
       break;
     default:
       break;

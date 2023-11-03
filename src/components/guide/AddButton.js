@@ -1,17 +1,23 @@
 import React, { useCallback, useState } from "react";
 import Modal from "react-modal";
+import * as guideAPI from "./api/guideAPI.js"
 import './styles/addbutton.css';
 
 const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClasses, setSelectedClasses] = useState([]);
 
+    // majorData가 없을 때 빈 배열로 초기화
+    const majorDataSubjectData = majorData ? majorData.subjectData : [];
+
     const majorDataIncludesClass = (className) => {
-        return majorData.subjectData.some(item => item.class === className && item.chosen);
+        return majorDataSubjectData.some(item => item.classes === className && item.chosen);
     };
+
+    // console.log(majorDataSubjectData);
     
-    const groupedData = majorData.subjectData.reduce((result, item) => {
-        if (!majorDataIncludesClass(item.class) && item.category === category) {
+    const groupedData = majorDataSubjectData.reduce((result, item) => {
+        if (!majorDataIncludesClass(item.classes) && item.category === category) {
             if (!result[item.subject]) {
                 result[item.subject] = [];
             }
@@ -21,17 +27,19 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
     }, {});
 
     const handleAddSubject = useCallback(() => {
+        setIsModalOpen(true);
+
         const newSubjects = Object.values(groupedData)
             .flatMap((subjectGroup) => subjectGroup
-                .filter(item => selectedClasses.includes(item.class))
+                .filter(item => selectedClasses.includes(item.classes))
                 .map(item => {
-                    const existingSubject = majorData.subjectData.find(subj => subj.class === item.class);
+                    const existingSubject = majorData.subjectData.find(subj => subj.classes === item.classes);
                     const recommend = existingSubject ? existingSubject.recommend : false;
 
                     return {
                         category: item.category,
                         subject: item.subject,
-                        class: item.class,
+                        classes: item.classes,
                         credit: item.credit,
                         course: item.course,
                         complete: false,
@@ -43,7 +51,7 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
 
         const updatedMajorData = { ...majorData };
         updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
-            if (selectedClasses.includes(subj.class)) {
+            if (selectedClasses.includes(subj.classes)) {
                 return { ...subj, chosen: true };
             }
             return subj;
@@ -52,13 +60,16 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
         setMajorData(updatedMajorData);
         setFilteredSubjectData(prevData => [...prevData, ...newSubjects]);
 
+        // 'postGuide'를 사용하여 업데이트된 majorData를 서버에 보냄
+        guideAPI.postGuide(updatedMajorData, guide); // 'guide'가 가이드 번호를 나타내는 것으로 가정
+
         setIsModalOpen(false);
         setSelectedClasses([]);
     }, [selectedClasses, majorData, groupedData, setMajorData, setFilteredSubjectData]);
 
     return (
         <div>
-            <button className={`addButton ${majorData.subjectData.some(item => item.recommend && selectedClasses.includes(item.class)) ? 'recommended' : ''}`} onClick={() => setIsModalOpen(true)}>+</button>
+            <button className={`addButton ${majorDataSubjectData.some(item => item.recommend && selectedClasses.includes(item.classes)) ? 'recommended' : ''}`} onClick={() => setIsModalOpen(true)}>+</button>
             <Modal
                 className='addButtonPopUp'
                 isOpen={isModalOpen}
@@ -74,21 +85,21 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
                             {category === "기타" && <h3>{subject}</h3>}
                             <ul className="addButtonPopUpContent">
                             {subjectGroup.map(item => (
-                                <li key={item.class}>
+                                <li key={item.classes}>
                                     <label>
                                         <button
-                                            className={`addButtonClass ${selectedClasses.includes(item.class) ? 'selected' : ''} ${item.recommend ? 'recommended' : ''}`}
+                                            className={`addButtonClass ${selectedClasses.includes(item.classes) ? 'selected' : ''} ${item.recommend ? 'recommended' : ''}`}
                                             onClick={() => {
-                                                if (selectedClasses.includes(item.class)) {
+                                                if (selectedClasses.includes(item.classes)) {
                                                     setSelectedClasses(prevClasses =>
-                                                        prevClasses.filter(selectedClass => selectedClass !== item.class)
+                                                        prevClasses.filter(selectedClass => selectedClass !== item.classes)
                                                     );
                                                 } else {
-                                                    setSelectedClasses(prevClasses => [...prevClasses, item.class]);
+                                                    setSelectedClasses(prevClasses => [...prevClasses, item.classes]);
                                                 }
                                             }}
                                         >
-                                            {item.class}
+                                            {item.classes}
                                         </button>
                                     </label>
                                 </li>

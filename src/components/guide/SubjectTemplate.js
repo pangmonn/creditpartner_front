@@ -15,23 +15,26 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
         // 선택한 학과에 대한 majorData 업데이트
         const updatedMajorData = guideData.find((data) => data.major === selectedMajor);
         setMajorData(updatedMajorData);
+        // console.log(updatedMajorData);
     }, [selectedMajor, guideData]);
 
     useEffect(() => {
         handleMajorDataUpdate();
-    }, [handleMajorDataUpdate]);
+    }, [handleMajorDataUpdate, selectedMajor, guideData]);
 
     useEffect(() => {
-        // majorData가 업데이트되면 filteredSubjectData를 업데이트
-        if (majorData) {
+        if (majorData) { // majorData가 정의된 경우에만 아래 로직을 실행
             const updatedFilteredSubjectData = majorData.subjectData.filter((subject) => subject.chosen === true);
             setFilteredSubjectData(updatedFilteredSubjectData);
         }
     }, [majorData]);
+    
 
     // console.log(majorData.major);
     // console.log(majorData.subjectData);
-    // console.log(majorData);
+    console.log(guideData);
+    console.log(selectedMajor);
+    console.log(majorData);
     // console.log(filteredSubjectData);
     
     // 과목 분류별 필수 이수 학점
@@ -106,16 +109,19 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
         const updatedMajorData = { ...majorData };
         const updatedSubjectData = [...filteredSubjectData];
         const updatedFilteredSubjectData = updatedSubjectData.filter(
-            (subj) => subj.class !== subjectClass
+            (subj) => subj.classes !== subjectClass
         );
 
         // Update chosen to false for the subjectToDelete in majorData.subjectData
         updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
-            if (subj.class === subjectClass) {
+            if (subj.classes === subjectClass) {
                 return { ...subj, chosen: false };
             }
             return subj;
         });
+
+        // 'postGuide'를 사용하여 업데이트된 'majorData'를 서버에 보냄
+        guideAPI.postGuide(updatedMajorData, guide); // 'guide'가 가이드 번호를 나타내는 것으로 가정
 
         // Update filteredSubjectData and majorData
         setFilteredSubjectData(updatedFilteredSubjectData);
@@ -135,16 +141,16 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
                 <td style={{ textAlign: "left" }}>
                     <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
                         {categorySubjects.map((subj) => (
-                            <span key={subj.class} className="subject_button_container">
+                            <span key={subj.classes} className="subject_button_container">
                                 <button
                                     className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
-                                    onContextMenu={(e) => handleContextMenu(e, subj.class)}
+                                    onContextMenu={(e) => handleContextMenu(e, subj.classes)}
                                 >
-                                    {subj.class}
+                                    {subj.classes}
                                 </button>
                                 {subj.complete ? null : (
-                                    subj.class === subjectToDelete && (
-                                        <DeleteButton onDelete={handleDeleteSubject} subjectClass={subj.class} />
+                                    subj.classes === subjectToDelete && (
+                                        <DeleteButton onDelete={handleDeleteSubject} subjectClass={subj.classes} />
                                     )
                                 )}
                             </span>
@@ -167,7 +173,7 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
           const semesters = {};
       
           guideData.subjectData.forEach((subject) => {
-            const { complete, class: subjectClass } = subject;
+            const { complete, classes: subjectClass } = subject;
       
             if (complete > 0) {
               if (!semesters[complete]) {

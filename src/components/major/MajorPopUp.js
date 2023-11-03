@@ -8,8 +8,8 @@ const MajorPopUp = ({major_id, major_name, similar}) => {
     // major_id의 details
     const [details, setDetails] = useState({});
 
-    console.log({major_id, major_name});
-    console.log(details);
+    // console.log({major_id, major_name});
+    // console.log(details);
 
     const [descript, setDescript] = useState("");
     const [recommend, setRecommend] = useState([]);
@@ -20,7 +20,7 @@ const MajorPopUp = ({major_id, major_name, similar}) => {
         const fetchDetailsData = async () => {
             try {
                 const detailData = await majorAPI.getMajor(major_id);
-                console.log(detailData);
+                // console.log(detailData);
 
                 if (detailData) {
                     setDetails(detailData);
