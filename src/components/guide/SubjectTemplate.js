@@ -6,9 +6,16 @@ import DeleteButton from "./DeleteButton";
 
 const SubjectTemplate = ({guideData, selectedMajor}) => {
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
-    const [majorData, setMajorData] = useState(
-        guideData.find((data) => data.major === selectedMajor)
-    );
+    const [majorData, setMajorData] = useState(null); // 초기값 null
+
+    useEffect(() => {
+        if (selectedMajor && guideData) {
+            // 선택한 학과에 대한 majorData 업데이트
+            const updatedMajorData = guideData.find((data) => data.major === selectedMajor);
+            setMajorData(updatedMajorData);
+        }
+    }, [selectedMajor, guideData]);
+    
     const [filteredSubjectData, setFilteredSubjectData] = useState([]);
 
     const handleMajorDataUpdate = useCallback(() => {
@@ -32,9 +39,9 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
 
     // console.log(majorData.major);
     // console.log(majorData.subjectData);
-    console.log(guideData);
-    console.log(selectedMajor);
-    console.log(majorData);
+    // console.log(guideData);
+    // console.log(selectedMajor);
+    // console.log(majorData);
     // console.log(filteredSubjectData);
     
     // 과목 분류별 필수 이수 학점
@@ -53,10 +60,10 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
 
     // console.log(selectedMajor);
 
-    const handleButtonClick = (selectedData) => {
+    const handleButtonClick = useCallback((selectedData) => {
         // 버튼 재클릭시 해제
-        setSelectedSemesterData(prevSelectedData => prevSelectedData === selectedData ? [] : selectedData);
-    };
+        setSelectedSemesterData(prevSelectedData => prevSelectedData.length > 0 ? [] : selectedData);
+    }, [setSelectedSemesterData]);
 
     // 각 카테고리별로 이수학점을 계산하는 함수
     const calculateTotalCredit = (categorySubjects) => {
@@ -143,7 +150,7 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
                         {categorySubjects.map((subj) => (
                             <span key={subj.classes} className="subject_button_container">
                                 <button
-                                    className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.class) ? 'semester_selected' : ''}`}
+                                    className={`subject_button ${subj.complete ? 'subject_complete' : 'subject_incomplete'} ${selectedSemesterData.includes(subj.classes) ? 'semester_selected' : ''}`}
                                     onContextMenu={(e) => handleContextMenu(e, subj.classes)}
                                 >
                                     {subj.classes}
@@ -166,7 +173,7 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
     });
 
     // subjectData를 semesterData 형태로 변형하는 함수
-    const SemesterData = (guideData) => {
+    const SemesterData = useCallback((guideData) => {
         const subjectBySemester = [];
       
         if (guideData && guideData.subjectData) {
@@ -191,9 +198,11 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
         }
       
         return subjectBySemester;
-    }
+      }, []);
+      
 
     // console.log(SemesterData(majorData));
+    // console.log(selectedSemesterData);
     
     return (
         <div className="subject_template">
@@ -202,9 +211,10 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
                     key={index}
                     onClick={() => handleButtonClick(semesterData.subjectData)}
                     label={`${Math.floor((semesterData.semester + 1) / 2)}-${(semesterData.semester + 1) % 2 + 1}`}
-                    isSelected={selectedSemesterData === semesterData.subjectData}
+                    isSelected={selectedSemesterData.length > 0 && semesterData.subjectData.every(item => selectedSemesterData.includes(item))}
                 />
-            ))}
+            ))
+            }
 
             <div>
                 <table className="subjectListTable">

@@ -6,12 +6,13 @@ const SemesterButton = ({ onClick, label, isSelected }) => {
         <div className="semesterButtonContainer">
             <button 
                 className={`semesterButton ${isSelected ? 'selected' : ''}`} 
-                onClick={onClick}
+                onClick={() => onClick(!isSelected)}
             >
                 {label}
             </button>
         </div>
     )  
 };
+
 
 export default SemesterButton;

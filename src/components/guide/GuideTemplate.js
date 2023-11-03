@@ -30,7 +30,10 @@ const GuideTemplate = () => {
                 setGuideData(guideData);
 
                 // SelectedMajor의 초기값 지정
-                setSelectedMajor(guideData[0]);
+                if (guideData.length > 0) {
+                    // GuideData가 존재하는 경우 첫 번째 전공을 선택
+                    setSelectedMajor(guideData[0].major);
+                }
             } catch (error) {
                 console.error("가이드 데이터를 가져오는 중 오류 발생: ", error);
             }
@@ -42,7 +45,7 @@ const GuideTemplate = () => {
     // console.log(guideData);
     // console.log(guideData.map(data => data.major));
     console.log(selectedMajor);
-    
+
     return (
         <div style={desktop}>
             <Top />
