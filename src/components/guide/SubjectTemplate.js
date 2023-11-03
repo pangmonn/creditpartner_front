@@ -61,8 +61,9 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
     // console.log(selectedMajor);
 
     const handleButtonClick = useCallback((selectedData) => {
-        // 버튼 재클릭시 해제
-        setSelectedSemesterData(prevSelectedData => prevSelectedData.length > 0 ? [] : selectedData);
+        // 다른 버튼 클릭시 재선택
+        setSelectedSemesterData(prevSelectedData => prevSelectedData === selectedData ? [] : selectedData);
+        console.log(selectedData);
     }, [setSelectedSemesterData]);
 
     // 각 카테고리별로 이수학점을 계산하는 함수
@@ -203,6 +204,10 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
 
     // console.log(SemesterData(majorData));
     // console.log(selectedSemesterData);
+
+    const handleClearClick = () => {
+        setSelectedSemesterData([]); // Clear the selectedSemesterData
+    };
     
     return (
         <div className="subject_template">
@@ -215,6 +220,7 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
                 />
             ))
             }
+            <button onClick={handleClearClick} className="semester_clear">학기 초기화</button>
 
             <div>
                 <table className="subjectListTable">

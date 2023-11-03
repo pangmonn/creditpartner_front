@@ -39,6 +39,24 @@
     color: #E7EDFD;
 }
 
+/* 학기 초기화 */
+.semester_clear {
+    background-color: #89B7DE;
+    border: none;
+    border-radius: 14px;
+    width: 90px;
+    height: 28px;
+    white-space: nowrap;
+    margin: 5px;
+
+    font-family: 'NanumSquareNeo-Bold';
+    color: white;
+}
+
+.semester_clear:hover {
+    font-family: 'NanumSquareNeo-ExtraBold';
+}
+
 .subjectMenuTable {
     display: flex;
     justify-content: space-between; /* 요소를 양 끝에 배치 */
