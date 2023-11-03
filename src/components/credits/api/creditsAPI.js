@@ -15,6 +15,7 @@ const semesterURL6 = '/api/credits/6';
 
 
 export const getClasses = (semester) => {
+    console.log(semester);
     let URL;
     switch(Number(semester)) {
         case 1:

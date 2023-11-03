@@ -4,7 +4,7 @@ import client from '../../auth/api/client';
 import save from '../../../images/save.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Result.css';
-const API_KEY = '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';
+const API_KEY = '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';
 
 const config = { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } };
 
@@ -118,7 +118,7 @@ const Result = ({answers, setResultMajor}) => {
         답변의 예시입니다. 이와 동일한 형태로 답변을 작성해주세요 \n
         1.무슨과 : 이유  2.무슨과 : 이유  3.무슨과 : 이유
 
-    질문: 고등학생 친구에게 진학할 학과를 추천해주세요.
+    질문: 고등학생 친구에게 진학할 학과를 추천해주세요. 싫어하는 과목과 관련된 학과는 추천에서 제외하고 좋아하는 과목과 관련된 학과들을 중점으로 추천해주세요.
      
     답변:
     `

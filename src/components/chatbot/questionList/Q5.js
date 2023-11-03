@@ -8,7 +8,7 @@ const Q5 = ({username, batchim, setAbleSend, setQuestionNum, strongs, setStrongs
     const q5_2 = '여러 개 선택해도 되니 신중하게 고민해서 골라줘.'
 
     
-    console.log(strongs);
+    //console.log(strongs);
 
     useEffect(()=> {
         setAbleSend(false);

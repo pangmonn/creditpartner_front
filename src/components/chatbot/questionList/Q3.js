@@ -35,7 +35,7 @@ const Q3 = ({inputText, setAbleSend, field, setQuestionNum}) => {
         setQuestionNum(3);
     },[]);
     
-    console.log('input : ' + inputText)
+    //console.log('input : ' + inputText)
 
     return (
         <div>
