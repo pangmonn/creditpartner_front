@@ -1,0 +1,73 @@
+.guide_loading_image {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.guide_no_major {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    flex-direction: column; /* Stack content vertically */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0); /* 시작 위치 */
+    }
+    50% {
+        transform: translateY(-10px); /* 중간 위치 */
+    }
+    100% {
+        transform: translateY(0); /* 종료 위치 */
+    }
+}
+
+.guide_no_major_message_1 {
+    font-family: 'Cafe24surround';
+    font-size: 80px;
+    color: #4D789D;
+    animation: bounce 2s infinite;
+}
+
+.guide_no_major_message_2 {
+    font-family: 'Cafe24surround';
+    font-size: 60px;
+    color: black;
+    animation: bounce 2s infinite;
+}
+
+.guide_no_major_image {
+    width: 50px;
+    height: 60px;
+    margin-top: 10px;
+    background-color: none;
+    animation: bounce 2s infinite;
+}
+
+.guide_no_major_button {
+    background-color: #CCFA50;
+    border: none;
+    border-radius: 20px;
+    width: 300px;
+    height: 60px;
+    margin-top: 40px;
+    cursor: pointer;
+    
+    font-family: 'Cafe24surround';
+    font-size: 30px;
+    color: black;
+}
+
+.guide_no_major_button:hover {
+    background-color: #1751EC;
+    color: white;
+}

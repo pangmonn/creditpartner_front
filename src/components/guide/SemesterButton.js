@@ -3,8 +3,8 @@ import "./styles/semesterbutton.css";
 
 const SemesterButton = ({ onClick, label, isSelected }) => {
     const [isButtonSelected, setIsButtonSelected] = useState(isSelected);
-    console.log(isSelected);
-    console.log(label);
+    // console.log(isSelected);
+    // console.log(label);
 
     const handleClick = useCallback(() => {
         setIsButtonSelected((prevIsButtonSelected) => !prevIsButtonSelected);
