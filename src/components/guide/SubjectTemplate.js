@@ -3,10 +3,13 @@ import "./styles/subjecttemplate.css"
 import SemesterButton from "./SemesterButton";
 import AddButton from "./AddButton";
 import DeleteButton from "./DeleteButton";
+import * as guideAPI from "./api/guideAPI.js"
 
 const SubjectTemplate = ({guideData, selectedMajor}) => {
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
     const [majorData, setMajorData] = useState(null); // 초기값 null
+
+    // console.log(guideData);
 
     useEffect(() => {
         if (selectedMajor && guideData) {
@@ -39,7 +42,6 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
 
     // console.log(majorData.major);
     // console.log(majorData.subjectData);
-    // console.log(guideData);
     // console.log(selectedMajor);
     // console.log(majorData);
     // console.log(filteredSubjectData);
@@ -113,31 +115,44 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
 
     // 삭제 핸들러
     const handleDeleteSubject = useCallback((subjectClass) => {
-        // Remove the subject from majorData
-        const updatedMajorData = { ...majorData };
-        const updatedSubjectData = [...filteredSubjectData];
-        const updatedFilteredSubjectData = updatedSubjectData.filter(
-            (subj) => subj.classes !== subjectClass
-        );
-
-        // Update chosen to false for the subjectToDelete in majorData.subjectData
-        updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
-            if (subj.classes === subjectClass) {
-                return { ...subj, chosen: false };
-            }
-            return subj;
-        });
-
-        // 'postGuide'를 사용하여 업데이트된 'majorData'를 서버에 보냄
-        guideAPI.postGuide(updatedMajorData, guide); // 'guide'가 가이드 번호를 나타내는 것으로 가정
-
-        // Update filteredSubjectData and majorData
-        setFilteredSubjectData(updatedFilteredSubjectData);
-        setMajorData(updatedMajorData);
-
-        // Clear the subjectToDelete state
-        setSubjectToDelete(null);
-    }, [filteredSubjectData, majorData]);
+        // Create a copy of the guideData
+        const updatedGuideData = [...guideData];
+    
+        // Find the index of the major that matches the selectedMajor
+        const majorIndex = updatedGuideData.findIndex((data) => data.major === selectedMajor);
+    
+        if (majorIndex !== -1) {
+            // Remove the subject from the majorData of the selectedMajor
+            const updatedMajorData = { ...updatedGuideData[majorIndex] };
+            const updatedSubjectData = [...updatedMajorData.subjectData];
+            const updatedFilteredSubjectData = updatedSubjectData.filter(
+                (subj) => subj.classes !== subjectClass
+            );
+    
+            // Update chosen to false for the subjectToDelete in majorData.subjectData
+            updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
+                if (subj.classes === subjectClass) {
+                    return { ...subj, chosen: false };
+                }
+                return subj;
+            });
+    
+            // Update the majorData for the selectedMajor
+            updatedGuideData[majorIndex] = updatedMajorData;
+    
+            console.log(updatedGuideData);
+            // Use guideAPI to post the updated guideData
+            guideAPI.postGuide(updatedGuideData);
+    
+            // Update filteredSubjectData and majorData
+            setFilteredSubjectData(updatedFilteredSubjectData);
+            setMajorData(updatedMajorData);
+    
+            // Clear the subjectToDelete state
+            setSubjectToDelete(null);
+        }
+    }, [guideData, selectedMajor]);
+    
   
     // 과목 리스트 출력
     const subjectList = subjectsCredit.map((subjectCredit) => {
@@ -163,7 +178,7 @@ const SubjectTemplate = ({guideData, selectedMajor}) => {
                                 )}
                             </span>
                         ))}
-                        <AddButton category={subjectCredit.category} majorData={majorData} setFilteredSubjectData={setFilteredSubjectData} setMajorData={setMajorData} />
+                        <AddButton category={subjectCredit.category} guideData={guideData} majorData={majorData} setFilteredSubjectData={setFilteredSubjectData} setMajorData={setMajorData} selectedMajor={selectedMajor}/>
                     </div>
                 </td>
                 <td style={{ color: calculateTotalCredit(categorySubjects) < subjectCredit.total ? 'red' : 'inherit' }}>

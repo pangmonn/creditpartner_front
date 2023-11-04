@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import * as guideAPI from "./api/guideAPI.js"
 import './styles/addbutton.css';
 
-const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }) => {
+const AddButton = ({ category, guideData, majorData, setFilteredSubjectData, setMajorData, selectedMajor }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClasses, setSelectedClasses] = useState([]);
 
@@ -28,14 +28,14 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
 
     const handleAddSubject = useCallback(() => {
         setIsModalOpen(true);
-
+    
         const newSubjects = Object.values(groupedData)
             .flatMap((subjectGroup) => subjectGroup
                 .filter(item => selectedClasses.includes(item.classes))
                 .map(item => {
                     const existingSubject = majorData.subjectData.find(subj => subj.classes === item.classes);
                     const recommend = existingSubject ? existingSubject.recommend : false;
-
+    
                     return {
                         category: item.category,
                         subject: item.subject,
@@ -48,7 +48,7 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
                     };
                 })
             );
-
+    
         const updatedMajorData = { ...majorData };
         updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
             if (selectedClasses.includes(subj.classes)) {
@@ -56,16 +56,28 @@ const AddButton = ({ category, majorData, setFilteredSubjectData, setMajorData }
             }
             return subj;
         });
-
+    
         setMajorData(updatedMajorData);
         setFilteredSubjectData(prevData => [...prevData, ...newSubjects]);
+    
+        // Create a copy of the guideData
+        const updatedGuideData = [...guideData];
+    
+        // Find the index of the major that matches the selectedMajor
+        const majorIndex = updatedGuideData.findIndex((data) => data.major === selectedMajor);
+    
+        // Replace the major data at majorIndex with the updatedMajorData
+        updatedGuideData[majorIndex] = updatedMajorData;
+    
+        // Post the updatedGuideData to the server using guideAPI
+        guideAPI.postGuide(updatedGuideData);
 
-        // 'postGuide'를 사용하여 업데이트된 majorData를 서버에 보냄
-        guideAPI.postGuide(updatedMajorData, guide); // 'guide'가 가이드 번호를 나타내는 것으로 가정
-
+        console.log(updatedGuideData);
+    
         setIsModalOpen(false);
         setSelectedClasses([]);
-    }, [selectedClasses, majorData, groupedData, setMajorData, setFilteredSubjectData]);
+    }, [selectedClasses, majorData, groupedData, setMajorData, setFilteredSubjectData, guideData, selectedMajor]);
+    
 
     return (
         <div>

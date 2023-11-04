@@ -42,23 +42,12 @@ export const getGuide = () => {
   });
 };
 
-export const postGuide = (form, guideNum) => {
+export const postGuide = (form) => {
   const data = JSON.stringify(form);
+  const URL = guideURL;
+
   console.log(data);
-  let URL;
-  switch (Number(guideNum)) {
-    case 1:
-      URL = test_guideURLs[1];
-      break;
-    case 2:
-      URL = test_guideURLs[2];
-      break;
-    case 3:
-      URL = test_guideURLs[3];
-      break;
-    default:
-      break;
-  }
+
   return client.post(URL, data, config).then(function (response) {
     console.log(response);
     return response;
