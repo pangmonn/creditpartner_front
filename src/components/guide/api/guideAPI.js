@@ -19,19 +19,12 @@ const test_guideURLs = {
 
 const guideURL = '/api/guide';
 
-const config = {
-    headers: { 
-        "Content-Type": "application/json", 
-        Authorization: localStorage.getItem("login-token") 
-    },
-};
-
 export const getGuide = () => {
   const URL = guideURL;  
 
   return new Promise((resolve, reject) => {
     client
-      .get(URL, config) // config를 요청에 추가
+      .get(URL, { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } })
       .then((response) => {
         console.log(response.data.items);
         resolve(response.data);
@@ -48,7 +41,7 @@ export const postGuide = (form) => {
 
   console.log(data);
 
-  return client.post(URL, data, config).then(function (response) {
+  return client.post(URL, data, { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } }).then(function (response) {
     console.log(response);
     return response;
   }).catch(function (error) {
