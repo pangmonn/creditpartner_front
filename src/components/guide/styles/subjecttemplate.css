@@ -198,6 +198,7 @@
     border-style: dotted;
     cursor: pointer; /* 커서 스타일 설정 */
     border-radius: 0 40% 40% 40%; /* 수정: 우하단 코너만 둥글게 만들어 삭제 버튼이 과목 버튼 우측 하단에 겹치도록 설정 */
+    z-index: 1;
 
     font-family: 'NanumSquareNeo-ExtraBold';
     font-size: 12px;

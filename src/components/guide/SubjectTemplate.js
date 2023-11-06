@@ -138,17 +138,17 @@ const SubjectTemplate = ({ guideData, selectedMajor }) => {
                 <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
                 {categorySubjects.map((subj) => (
                     <span key={subj.classes} className="subject_button_container">
-                    <button
-                        className={`subject_button ${subj.complete ? "subject_complete" : "subject_incomplete"} ${
-                        selectedSemesterData.includes(subj.classes) ? "semester_selected" : ""
-                        }`}
-                        onContextMenu={(e) => handleContextMenu(e, subj.classes)}
-                    >
-                        {subj.classes}
-                    </button>
-                    {!subj.complete && subj.classes === subjectToDelete && (
-                        <DeleteButton onDelete={handleDeleteSubject} subjectClass={subj.classes} />
-                    )}
+                        <button
+                            className={`subject_button ${subj.complete ? "subject_complete" : "subject_incomplete"} ${
+                            selectedSemesterData.includes(subj.classes) ? "semester_selected" : ""
+                            }`}
+                            onContextMenu={(e) => handleContextMenu(e, subj.classes)}
+                        >
+                            {subj.classes}
+                        </button>
+                        {!subj.complete && subj.classes === subjectToDelete && (
+                            <DeleteButton onDelete={handleDeleteSubject} subjectClass={subj.classes} />
+                        )}
                     </span>
                 ))}
                 <AddButton

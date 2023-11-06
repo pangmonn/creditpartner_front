@@ -2,9 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import Top from "./Top";
 import MajorButton from "./MajorButton";
 import SubjectTemplate from "./SubjectTemplate";
+import CaptureButton from "./CaptureButton";
 import * as guideAPI from "./api/guideAPI";
-import loading_image from '../../images/loading.gif'
-import pointer_image from '../../images/pointer.png'
+import loading_image from '../../images/loading.gif';
+import pointer_image from '../../images/pointer.png';
 import './styles/guidetemplate.css'
 
 const desktop = {
@@ -51,13 +52,16 @@ const GuideTemplate = () => {
                 <img src={loading_image} className="guide_loading_image" alt="Loading"/>
             ) : (
                 guideData.length > 0 ? (
-                    <div>
-                        <MajorButton 
-                            majorList={guideData.map(data => data.major)} 
-                            selectedMajor={selectedMajor} 
-                            setSelectedMajor={setSelectedMajor} 
-                            handleMajorButtonClick={handleMajorButtonClick}
-                        />
+                    <div id="capture-container">
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <MajorButton 
+                                majorList={guideData.map(data => data.major)} 
+                                selectedMajor={selectedMajor} 
+                                setSelectedMajor={setSelectedMajor} 
+                                handleMajorButtonClick={handleMajorButtonClick}
+                            />
+                            <CaptureButton selectedMajor={selectedMajor} />
+                        </div>
                         <SubjectTemplate guideData={guideData} selectedMajor={selectedMajor} />
                     </div>
                 ) : (
