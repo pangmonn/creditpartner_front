@@ -57,6 +57,7 @@
 .semester_clear:hover {
     background-color: #73acde;
     font-family: 'NanumSquareNeo-ExtraBold';
+    color: white;
 }
 
 .subjectMenuTable {
