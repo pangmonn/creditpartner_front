@@ -52,17 +52,18 @@ const GuideTemplate = () => {
                 <img src={loading_image} className="guide_loading_image" alt="Loading"/>
             ) : (
                 guideData.length > 0 ? (
-                    <div id="capture-container">
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <MajorButton 
-                                majorList={guideData.map(data => data.major)} 
-                                selectedMajor={selectedMajor} 
-                                setSelectedMajor={setSelectedMajor} 
-                                handleMajorButtonClick={handleMajorButtonClick}
-                            />
-                            <CaptureButton selectedMajor={selectedMajor} />
+                    <div>
+                        <div id="capture-container">
+                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                <MajorButton 
+                                    majorList={guideData.map(data => data.major)} 
+                                    selectedMajor={selectedMajor} 
+                                    setSelectedMajor={setSelectedMajor} 
+                                    handleMajorButtonClick={handleMajorButtonClick}
+                                />
+                            </div>
+                            <SubjectTemplate guideData={guideData} selectedMajor={selectedMajor} />
                         </div>
-                        <SubjectTemplate guideData={guideData} selectedMajor={selectedMajor} />
                     </div>
                 ) : (
                     <div className="guide_no_major">

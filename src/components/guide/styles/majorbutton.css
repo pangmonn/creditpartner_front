@@ -8,9 +8,9 @@
 .majorButton {
     background-color: #E7EDFD;
     border: none;
-    border-radius: 16px;
+    border-radius: 20px;
     width: 150px;
-    height: 32px;
+    height: 40px;
     margin-right: 20px;
     cursor: pointer;
 

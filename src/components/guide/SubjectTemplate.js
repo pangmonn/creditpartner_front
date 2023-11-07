@@ -3,6 +3,7 @@ import "./styles/subjecttemplate.css";
 import SemesterButton from "./SemesterButton";
 import AddButton from "./AddButton";
 import DeleteButton from "./DeleteButton";
+import CaptureButton from "./CaptureButton";
 import * as guideAPI from "./api/guideAPI.js";
 
 const SubjectTemplate = ({ guideData, selectedMajor }) => {
@@ -193,48 +194,59 @@ const SubjectTemplate = ({ guideData, selectedMajor }) => {
         </button>
         <div>
             <table className="subjectListTable">
-            <colgroup>
-                <col style={{ width: "12%" }} />
-                <col style={{ width: "70%" }} />
-                <col style={{ width: "18%" }} />
-            </colgroup>
-            <thead>
-                <tr>
-                <th></th>
-                <th></th>
-                <th>이수학점/최소학점</th>
-                </tr>
-            </thead>
-            <tbody>
-                {renderSubjectCategory()}
-                <br />
-                <tr className="subjectTotal">
-                <th>합계</th>
-                <th></th>
-                <th className="subjectTotal-diagonal">
+                <colgroup>
+                    <col style={{ width: "12%" }} />
+                    <col style={{ width: "70%" }} />
+                    <col style={{ width: "18%" }} />
+                </colgroup>
+                <thead>
+                    <tr>
+                    <th></th>
+                    <th></th>
+                    <th style={{"lineHeight": "1.5"}}>
+                        이수학점/
+                        <br/>
+                        최소학점
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* 과목 목록 */}
+                    {renderSubjectCategory()}
+                    <br />
+                </tbody>
+            </table>
+        </div>
+
+        <div className="subject_result">
+            {/* 합계 */}
+            <div className="subjectTotal">
+                <div>합계</div>
+                <div className="subjectTotal-diagonal">
                     <span
                     style={{
                         color: calculateTotalCreditAllCategories() <= 174 ? "red" : "inherit",
-                        fontSize: "20px",
                         fontFamily: calculateTotalCreditAllCategories() <= 174 ? "NanumSquareNeo-Heavy" : "inherit",
                     }}
                     >
                     {calculateTotalCreditAllCategories()}
                     </span>
-                    <span style={{ fontSize: "32px", fontFamily: "NanumSquareNeo-Light", transform: "rotate(-30deg)" }}>
-                    /
-                    </span>
-                    <span>174</span>
-                </th>
-                </tr>
-                <tr className="subjectExpected">
-                <th style={{ lineHeight: "125%" }}>예상 이수학점</th>
-                <th></th>
-                <th style={{ fontSize: "21px", fontFamily: "NanumSquareNeo-Heavy" }}>{calculateTotalExpectedCredit()}</th>
-                </tr>
-            </tbody>
-            </table>
+                    <span>/174</span>
+                </div>
+            </div>
+                
+            {/* 예상 학점 */}
+            <div className="subjectExpected">
+                <div style={{ lineHeight: "125%" }}>예상 이수학점</div>
+                <div>{calculateTotalExpectedCredit()}</div>
+            </div>
+
+            {/* 캡쳐 버튼 */}
+            <div>
+                <CaptureButton selectedMajor={selectedMajor} />
+            </div>
         </div>
+
         </div>
     );
 };

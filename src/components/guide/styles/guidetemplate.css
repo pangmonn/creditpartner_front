@@ -33,14 +33,14 @@
 
 .guide_no_major_message_1 {
     font-family: 'Cafe24surround';
-    font-size: 80px;
+    font-size: 50px;
     color: #4D789D;
     animation: bounce 2s infinite;
 }
 
 .guide_no_major_message_2 {
     font-family: 'Cafe24surround';
-    font-size: 60px;
+    font-size: 45px;
     color: black;
     animation: bounce 2s infinite;
 }
@@ -56,14 +56,14 @@
 .guide_no_major_button {
     background-color: #CCFA50;
     border: none;
-    border-radius: 20px;
-    width: 300px;
-    height: 60px;
+    border-radius: 15px;
+    width: 250px;
+    height: 50px;
     margin-top: 40px;
     cursor: pointer;
     
     font-family: 'Cafe24surround';
-    font-size: 30px;
+    font-size: 25px;
     color: black;
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import html2canvas from 'html2canvas';
+import './styles/capturebutton.css'
 import camera_image from '../../images/camera.png';
 
 const CaptureButton = ({ selectedMajor }) => {
@@ -35,13 +36,15 @@ const CaptureButton = ({ selectedMajor }) => {
 
     // 이미지 크기 조절을 위한 스타일 적용
     const imageStyle = {
-        width: "40px", // 원하는 너비로 조절
-        height: "40px", // 원하는 높이로 조절
-        cursor: "pointer", // 마우스 커서 스타일 설정
+        width: "20px",
+        height: "20px",
+        cursor: "pointer",
     };
 
     return (
-        <img src={camera_image} alt="Capture" onClick={handleCaptureClick} style={imageStyle} />
+        <div className="capture_button" onClick={handleCaptureClick}>
+            <img src={camera_image} alt="Capture" style={imageStyle} />
+        </div>
     );
 };
 

@@ -1,5 +1,5 @@
 .subject_template {
-    padding-bottom: 80px;
+    padding-bottom: 40px;
 }
 
 /* 수강 */
@@ -41,7 +41,7 @@
 
 /* 학기 초기화 */
 .semester_clear {
-    background-color: #89B7DE;
+    background-color: white;
     border: none;
     border-radius: 14px;
     width: 90px;
@@ -51,7 +51,7 @@
     cursor: pointer;
 
     font-family: 'NanumSquareNeo-Bold';
-    color: white;
+    color: #89B7DE;
 }
 
 .semester_clear:hover {
@@ -115,44 +115,55 @@
 /* 본문 */
 .subjectListTable tbody td {
     border-bottom: 1px solid #ddd;
-    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
 
     font-family: 'NanumSquareNeo-Bold';
     font-size: 14px;
 }
 
-/* 합계 */
-.subjectTotal {
-    background-color: #E7EDFD;
-    height: 80px;
-    text-align: center;
-
-    font-family: 'NanumSquareNeo-ExtraBold';
-    font-size: 16px;
+.subjectListTable tbody tr {
+    height: 58.8px;
 }
 
-/* 합계 텍스트 대각선 나열 */
-.subjectTotal-diagonal {
-    transform: rotate(45deg);
-    white-space: nowrap;
-}  
+/* 이수학점의 결과 */
+.subject_result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
 
-.subjectTotal-diagonal span {
-    display: inline-block;
-    transform: rotate(-45deg); /* 45도 회전 */
-    transform-origin: center; /* 회전 중심을 글자 중앙으로 설정 */
-    margin: 0px; /* 글자 사이 간격 조절 */
+/* 합계 */
+.subjectTotal {
+    display: flex;
+    background-color: #E7EDFD;
+    border-radius: 40px;
+    height: 30px;
+    width: 305px;
+    padding: 15px 25px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 14px;
 }
 
 /* 예상 이수학점 */
 .subjectExpected {
-    background-color: #ddd;
-    height: 60px;
+    display: flex;
+    background-color: #e9e9e9;
+    border-radius: 40px;
+    height: 30px;
+    width: 305px;
+    padding: 15px 25px;
     text-align: center;
-
+    align-items: center;
+    justify-content: space-between;
     font-family: 'NanumSquareNeo-ExtraBold';
-    font-size: 15px;
+    font-size: 14px;
 }
 
 /* 과목 버튼과 삭제 버튼을 감싸는 컨테이너 */
