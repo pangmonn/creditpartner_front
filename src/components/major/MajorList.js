@@ -80,7 +80,7 @@ const MajorList = ({ fieldSelected, lineSelected, majorSelected }) => {
                     <th>바로가기</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='majorList_content'>
                     {majorList}
                 </tbody>
             </table>

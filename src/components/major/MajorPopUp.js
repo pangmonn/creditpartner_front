@@ -75,17 +75,6 @@ const MajorPopUp = ({major_id, major_name, similar}) => {
                             </ul>
                             <br />
 
-                            <div className="majorPopUpTitle">유사 학과</div>
-                            <ul 
-                                className="majorPopUpContent" 
-                                style={{listStyle: 'square', listStylePosition: 'inside'}}  
-                            >
-                                {similar.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                            <br />
-
                             <div>
                             <div className="majorPopUpTitle">
                                 추천하는 선택 과목
