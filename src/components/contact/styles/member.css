@@ -1,0 +1,66 @@
+.members {
+    height: 50px;
+    width: 100%;
+    margin-top: 40px;
+    
+}
+
+.frontback {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'NanumSquareNeo-Bold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 30px;
+    letter-spacing : 2px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.images {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+}
+
+.memprofile {
+    width: 150px;
+}
+
+.memname {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.details {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+    
+}
+
+.mem {
+    display: flex;
+    align-items: center;
+    
+}
+
+.name {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.gitimg {
+    width: 20px;
+    margin-right: 5px;
+}

@@ -1,0 +1,21 @@
+.middle {
+    height: 50px;
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team {
+    margin-left: 20px;
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 30px;
+    letter-spacing : 2px;
+    color: #000000;
+    text-decoration: underline;
+    text-underline-position:under;
+}

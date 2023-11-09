@@ -1,0 +1,16 @@
+.contactTitle {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.c-title {
+    margin-left: 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
