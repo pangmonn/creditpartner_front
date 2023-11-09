@@ -8,6 +8,7 @@ import MyPageTemplate from "./components/mypage/MypageTemplate";
 import MajorTemplate from "./components/major/MajorTemplate";
 import ChatbotTemplate from "./components/chatbot/ChatbotTemplate";
 import GuideTemplate from "./components/guide/GuideTemplate";
+import Contact from "./components/contact/Contact";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/major" element={<MajorTemplate />} />
       <Route path="/chatbot" element={<ChatbotTemplate />} />
       <Route path="/guide" element={<GuideTemplate />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }
