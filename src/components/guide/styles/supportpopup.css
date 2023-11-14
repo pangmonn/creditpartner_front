@@ -1,0 +1,101 @@
+.supportPopUpButton {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.supportPopUpContainer {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 40%;
+    max-height: 75%;
+    overflow-y: auto;
+    padding: 0px 40px 40px 40px;
+
+    background-color: #E7EDFD;
+    border-radius: 2px;
+}
+
+/* 페이지 이동 */
+.supportPopUpPageButton {
+    display: inline-block;
+    margin: 0 10px; /* Add margin for spacing */
+    
+    background-color: #4D789D;
+    border: none;
+    border-radius: 12px;
+    width: 100px;
+    height: 24px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    color: white;
+}
+
+.supportPopUpPageButtonsContainer {
+    text-align: center;
+    margin-top: 10px;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 15px;
+    color: #4D789D;
+}
+
+
+/* Top */
+.supportPopUpTop {
+    position: sticky; /* 상단에 고정 */
+    top: 0; /* 상단으로 고정 */
+    background-color: rgba(231, 237, 253, 0.7);
+    z-index: 1; /* 다른 내용 위에 표시하기 위한 z-index 설정 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 25px;
+
+    font-family: 'NanumSquareNeo-Heavy';
+    font-size: 24px;
+    color: #4D789D;
+}
+
+/* 닫기 버튼 */
+.supportPopUpClose {
+    display: inline-block;
+    
+    background-color: #4D789D;
+    border: none;
+    border-radius: 12px;
+    width: 50px;
+    height: 24px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    color: white;
+}
+
+/* 내용 이미지 */
+.supportPopUpImage {
+    border-radius: 8%;
+}
+
+/* 내용 글 */
+.supportPopUpContent {
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 460px;
+
+    line-height: 125%;
+    font-family: 'NanumSquareRound-Bold';
+    font-size: 16px;
+    color: #4D789D;
+}
