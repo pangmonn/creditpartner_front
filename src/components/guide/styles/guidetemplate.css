@@ -71,3 +71,45 @@
     background-color: #1751EC;
     color: white;
 }
+
+.guide_addMode {
+    background-color: #E7EDFD;
+    border: none;
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
+    margin-right: 32px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 13px;
+    color: #4D789D;
+}
+
+.guide_addMode:hover {
+    background-color: #CCFA50;
+
+    font-family: 'NanumSquareNeo-Heavy';
+    color: #4D789D;
+}
+
+.guide_deleteMode {
+    background-color: #fde7f5;
+    border: none;
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
+    margin-right: 32px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 13px;
+    color: #b24188;
+}
+
+.guide_deleteMode:hover {
+    background-color: #CCFA50;
+
+    font-family: 'NanumSquareNeo-Heavy';
+    color: #b24188;
+}

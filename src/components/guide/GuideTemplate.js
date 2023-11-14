@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import Top from "./Top";
 import MajorButton from "./MajorButton";
 import SubjectTemplate from "./SubjectTemplate";
-import CaptureButton from "./CaptureButton";
 import * as guideAPI from "./api/guideAPI";
 import loading_image from '../../images/loading.gif';
 import pointer_image from '../../images/pointer.png';
@@ -18,15 +17,26 @@ const GuideTemplate = () => {
     const [guideData, setGuideData] = useState([]);
     const [selectedMajor, setSelectedMajor] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [addMode, setAddMode] = useState(true); // 초기 모드는 "Add" 모드
 
+    console.log(guideData);
+
+    // 학과 버튼 핸들러
     const handleMajorButtonClick = useCallback((major) => {
         setSelectedMajor(major);
     }, []);
 
+    // 추가/삭제 모드 변경
+    const handleAddModeToggle = () => {
+        setAddMode(!addMode);
+    };
+    
+    // GET
     useEffect(() => {
         const fetchGuideData = async () => {
             try {
                 const guideData = await guideAPI.getGuide();
+                console.log("GET");
 
                 // GuideData에 배열로 저장
                 setGuideData(guideData);
@@ -61,8 +71,14 @@ const GuideTemplate = () => {
                                     setSelectedMajor={setSelectedMajor} 
                                     handleMajorButtonClick={handleMajorButtonClick}
                                 />
+                                <button 
+                                    onClick={handleAddModeToggle}
+                                    className={addMode ? "guide_deleteMode" : "guide_addMode" }
+                                >
+                                    {addMode ? "삭제하기" : "추가하기"}
+                                </button>
                             </div>
-                            <SubjectTemplate guideData={guideData} selectedMajor={selectedMajor} />
+                            <SubjectTemplate guideData={guideData} selectedMajor={selectedMajor} addMode={addMode} />
                         </div>
                     </div>
                 ) : (

@@ -1,11 +1,13 @@
 import React, { useCallback, useState } from "react";
 import Modal from "react-modal";
-import * as guideAPI from "./api/guideAPI.js"
 import './styles/addbutton.css';
+import * as guideAPI from "./api/guideAPI";
 
-const AddButton = ({ category, guideData, majorData, setFilteredSubjectData, setMajorData, selectedMajor }) => {
+const AddButton = ({ category, guideData, majorData, setFilteredSubjectData, setMajorData, selectedMajor}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClasses, setSelectedClasses] = useState([]);
+
+    // console.log(selectedClasses);
 
     // majorData가 없을 때 빈 배열로 초기화
     const majorDataSubjectData = majorData ? majorData.subjectData : [];
@@ -13,8 +15,6 @@ const AddButton = ({ category, guideData, majorData, setFilteredSubjectData, set
     const majorDataIncludesClass = (className) => {
         return majorDataSubjectData.some(item => item.classes === className && item.chosen);
     };
-
-    // console.log(majorDataSubjectData);
     
     const groupedData = majorDataSubjectData.reduce((result, item) => {
         if (!majorDataIncludesClass(item.classes) && item.category === category) {
@@ -32,33 +32,24 @@ const AddButton = ({ category, guideData, majorData, setFilteredSubjectData, set
         const newSubjects = Object.values(groupedData)
             .flatMap((subjectGroup) => subjectGroup
                 .filter(item => selectedClasses.includes(item.classes))
-                .map(item => {
-                    const existingSubject = majorData.subjectData.find(subj => subj.classes === item.classes);
-                    const recommend = existingSubject ? existingSubject.recommend : false;
-    
-                    return {
+                .map(item => ({
                         category: item.category,
                         subject: item.subject,
                         classes: item.classes,
                         credit: item.credit,
                         course: item.course,
-                        complete: false,
-                        recommend: recommend,
-                        chosen: true
-                    };
+                        complete: item.complete,
+                        recommend: item.recommend,
+                        chosen: item.chosen
                 })
-            );
+            ));
+
+        // console.log(newSubjects);
     
         const updatedMajorData = { ...majorData };
-        updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => {
-            if (selectedClasses.includes(subj.classes)) {
-                return { ...subj, chosen: true };
-            }
-            return subj;
-        });
-    
-        setMajorData(updatedMajorData);
-        setFilteredSubjectData(prevData => [...prevData, ...newSubjects]);
+        updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) => (
+            selectedClasses.includes(subj.classes) ? { ...subj, chosen: true } : subj
+        ));
     
         // Create a copy of the guideData
         const updatedGuideData = [...guideData];
@@ -68,16 +59,31 @@ const AddButton = ({ category, guideData, majorData, setFilteredSubjectData, set
     
         // Replace the major data at majorIndex with the updatedMajorData
         updatedGuideData[majorIndex] = updatedMajorData;
+
+        const setMajorDataAndFilteredData = ({ majorData, filteredSubjectData }) => {
+            setMajorData(majorData);
+            setFilteredSubjectData(filteredSubjectData);
+        };        
     
-        // Post the updatedGuideData to the server using guideAPI
-        guideAPI.postGuide(updatedGuideData);
+        try {
+            guideAPI.postGuide(updatedGuideData);
+            console.log("POST");
+            alert("추가되었습니다");
+            // window.location.reload(); // 새로고침
+
+            setMajorDataAndFilteredData({
+                majorData: updatedMajorData,
+                filteredSubjectData: newSubjects,
+            });            
+        } catch (error) {
+            console.error("저장 중 오류 발생: ", error);
+        }
 
         console.log(updatedGuideData);
     
         setIsModalOpen(false);
         setSelectedClasses([]);
     }, [selectedClasses, majorData, groupedData, setMajorData, setFilteredSubjectData, guideData, selectedMajor]);
-    
 
     return (
         <div>
@@ -87,6 +93,7 @@ const AddButton = ({ category, guideData, majorData, setFilteredSubjectData, set
                 isOpen={isModalOpen}
                 onRequestClose={() => setIsModalOpen(false)}
                 shouldCloseOnOverlayClick={false}
+                ariaHideApp={false}
             >
                 {<h2>[{category}]</h2>}
                 {Object.keys(groupedData).length === 0 ? (
@@ -122,7 +129,12 @@ const AddButton = ({ category, guideData, majorData, setFilteredSubjectData, set
                 )}
 
                 <div className="addButtonFooter">
-                    <button className="addButtonInnerButton" onClick={handleAddSubject}>추가</button>
+                    <button 
+                        className="addButtonInnerButton" 
+                        onClick={handleAddSubject}
+                    >
+                        추가
+                    </button>
                     <button className="addButtonInnerButton" onClick={() => {
                         setSelectedClasses([]);
                         setIsModalOpen(false);

@@ -35,17 +35,18 @@ export const getGuide = () => {
   });
 };
 
-export const postGuide = (form) => {
+export const postGuide = async (form) => {
   const data = JSON.stringify(form);
   const URL = guideURL;
 
   console.log(data);
 
-  return client.post(URL, data, { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } }).then(function (response) {
+  try {
+    const response = await client.post(URL, data, { headers: { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } });
     console.log(response);
     return response;
-  }).catch(function (error) {
+  } catch (error) {
     console.log(error);
     return error;
-  });
+  }
 };  

@@ -4,14 +4,13 @@ import SemesterButton from "./SemesterButton";
 import AddButton from "./AddButton";
 import DeleteButton from "./DeleteButton";
 import CaptureButton from "./CaptureButton";
-import * as guideAPI from "./api/guideAPI.js";
 
-const SubjectTemplate = ({ guideData, selectedMajor }) => {
+const SubjectTemplate = ({ guideData, selectedMajor, addMode }) => {
     const [selectedSemesterData, setSelectedSemesterData] = useState([]); // 선택 학기
     const [majorData, setMajorData] = useState(null); // 초기값 null
     const [filteredSubjectData, setFilteredSubjectData] = useState([]);
 
-    console.log(majorData);
+    // console.log(majorData);
 
     // 과목 분류별 필수 이수 학점
     const subjectsCredit = [
@@ -71,11 +70,7 @@ const SubjectTemplate = ({ guideData, selectedMajor }) => {
         }
     }, [majorData]);
 
-    // 버튼 클릭 핸들러
-    const handleButtonClick = useCallback((selectedData) => {
-        setSelectedSemesterData((prevSelectedData) => (prevSelectedData === selectedData ? [] : selectedData));
-    }, [setSelectedSemesterData]);
-
+    /* 계산 기능 */
     // 각 카테고리별로 이수학점을 계산하는 함수
     const calculateTotalCredit = (categorySubjects) => {
         return categorySubjects.reduce((totalCredit, subj) => (subj.complete ? totalCredit + subj.credit : totalCredit), 0);
@@ -94,82 +89,18 @@ const SubjectTemplate = ({ guideData, selectedMajor }) => {
         return filteredSubjectData.reduce((totalCredit, subj) => totalCredit + subj.credit, 0);
     };
 
-    // 삭제 기능 구현
-    // 삭제 버튼
-    const [subjectToDelete, setSubjectToDelete] = useState(null);
+    /* SemesterButton Handler */
+    // 버튼 클릭 핸들러
+    const handleButtonClick = useCallback((selectedData) => {
+        setSelectedSemesterData((prevSelectedData) => (prevSelectedData === selectedData ? [] : selectedData));
+    }, [setSelectedSemesterData]);
 
-    // 우클릭 이벤트
-    const handleContextMenu = useCallback((e, subjClass) => {
-        e.preventDefault();
-        setSubjectToDelete((prevSubjectToDelete) => (prevSubjectToDelete === subjClass ? null : subjClass));
-    }, [setSubjectToDelete]);
-
-    // 과목 삭제 핸들러
-    const handleDeleteSubject = useCallback((subjectClass) => {
-        const updatedGuideData = [...guideData];
-        const majorIndex = updatedGuideData.findIndex((data) => data.major === selectedMajor);
-
-        if (majorIndex !== -1) {
-        const updatedMajorData = { ...updatedGuideData[majorIndex] };
-        const updatedSubjectData = [...updatedMajorData.subjectData];
-        const updatedFilteredSubjectData = updatedSubjectData.filter((subj) => subj.classes !== subjectClass);
-
-        updatedMajorData.subjectData = updatedMajorData.subjectData.map((subj) =>
-            subj.classes === subjectClass ? { ...subj, chosen: false } : subj
-        );
-
-        updatedGuideData[majorIndex] = updatedMajorData;
-
-        guideAPI.postGuide(updatedGuideData);
-
-        setFilteredSubjectData(updatedFilteredSubjectData);
-        setMajorData(updatedMajorData);
-        setSubjectToDelete(null);
-        }
-    }, [guideData, selectedMajor]);
-
-    // 과목 리스트 렌더링
-    const renderSubjectCategory = () => {
-        return subjectsCredit.map((subjectCredit) => {
-        const categorySubjects = filteredSubjectData.filter((subj) => subj.category === subjectCredit.category);
-        return (
-            <tr key={subjectCredit.category}>
-            <td>{subjectCredit.category}</td>
-            <td style={{ textAlign: "left" }}>
-                <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
-                {categorySubjects.map((subj) => (
-                    <span key={subj.classes} className="subject_button_container">
-                        <button
-                            className={`subject_button ${subj.complete ? "subject_complete" : "subject_incomplete"} ${
-                            selectedSemesterData.includes(subj.classes) ? "semester_selected" : ""
-                            }`}
-                            onContextMenu={(e) => handleContextMenu(e, subj.classes)}
-                        >
-                            {subj.classes}
-                        </button>
-                        {!subj.complete && subj.classes === subjectToDelete && (
-                            <DeleteButton onDelete={handleDeleteSubject} subjectClass={subj.classes} />
-                        )}
-                    </span>
-                ))}
-                <AddButton
-                    category={subjectCredit.category}
-                    guideData={guideData}
-                    majorData={majorData}
-                    setFilteredSubjectData={setFilteredSubjectData}
-                    setMajorData={setMajorData}
-                    selectedMajor={selectedMajor}
-                />
-                </div>
-            </td>
-            <td style={{ color: calculateTotalCredit(categorySubjects) < subjectCredit.total ? "red" : "inherit" }}>
-                {calculateTotalCredit(categorySubjects)}/{subjectCredit.total}
-            </td>
-            </tr>
-        );
-        });
+    // 학기 초기화
+    const handleClearClick = () => {
+        setSelectedSemesterData([]);
     };
 
+    /* Rendering */
     // 학기 버튼 렌더링
     const renderSemesterButtons = () => {
         return SemesterData(majorData).map((semesterData, index) => (
@@ -182,8 +113,84 @@ const SubjectTemplate = ({ guideData, selectedMajor }) => {
         ));
     };
 
-    const handleClearClick = () => {
-        setSelectedSemesterData([]);
+    // 추가/삭제 모드 렌더링
+    const renderModeButton = (subjectCredit) => {
+        if (addMode === true) {
+            return (
+                <AddButton
+                    category={subjectCredit.category}
+                    guideData={guideData}
+                    majorData={majorData}
+                    setFilteredSubjectData={setFilteredSubjectData}
+                    setMajorData={setMajorData}
+                    selectedMajor={selectedMajor}
+                />
+            );
+        } else {
+            return (
+                <DeleteButton
+                    category={subjectCredit.category}
+                    guideData={guideData}
+                    majorData={majorData}
+                    setFilteredSubjectData={setFilteredSubjectData}
+                    setMajorData={setMajorData}
+                    selectedMajor={selectedMajor}
+                />
+            );
+        }
+    };
+
+    // 과목 리스트 렌더링
+    const renderSubjectCategory = () => {
+        return subjectsCredit.map((subjectCredit) => {
+            let categorySubjects = filteredSubjectData
+                .filter((subj) => subj.category === subjectCredit.category)
+                .sort((a, b) => {
+                    // '공통' < '일반' < '진로' 순서대로 정렬
+                    const courseOrder = {
+                        '공통': 1,
+                        '일반': 2,
+                        '진로': 3,
+                    };
+
+                    if (a.course === b.course) {
+                        // course가 같은 경우 classes로 정렬
+                        const classOrder = {
+                            '공통': 1,
+                            '일반': 2,
+                            '진로': 3,
+                        };
+                        return classOrder[a.classes] - classOrder[b.classes];
+                    }
+
+                    return courseOrder[a.course] - courseOrder[b.course];
+                });
+
+            return (
+                <tr key={subjectCredit.category}>
+                    <td>{subjectCredit.category}</td>
+                    <td style={{ textAlign: "left" }}>
+                        <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
+                            {categorySubjects.map((subj) => (
+                                <span key={subj.classes} className="subject_button_container">
+                                    <button
+                                        className={`subject_button ${subj.complete ? "subject_complete" : "subject_incomplete"} ${
+                                            selectedSemesterData.includes(subj.classes) ? "semester_selected" : ""
+                                        }`}
+                                    >
+                                        {subj.classes}
+                                    </button>
+                                </span>
+                            ))}
+                            {renderModeButton(subjectCredit)}
+                        </div>
+                    </td>
+                    <td style={{ color: calculateTotalCredit(categorySubjects) < subjectCredit.total ? "red" : "inherit" }}>
+                        {calculateTotalCredit(categorySubjects)}/{subjectCredit.total}
+                    </td>
+                </tr>
+            );
+        });
     };
 
     return (

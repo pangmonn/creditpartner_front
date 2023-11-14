@@ -1,0 +1,106 @@
+.deleteButton {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    color: #b24188;
+}
+
+.deleteButtonPopUp {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    max-height: 75%;
+    overflow-y: auto;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    background-color: #E7EDFD;
+    border-radius: 20px;
+
+    font-family: 'NanumSquareNeo-Heavy';
+    color: #4D789D;
+}
+
+.deleteButtonPopUpContent {
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    color: #4D789D;
+}
+
+.deleteButtonNoObject {
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    justify-content: center;
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    font-size: 15px;
+    color: #4D789D;
+}
+
+.deleteButtonFooter {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.deleteButtonInnerButton {
+    display: inline-block;
+    background-color: #4D789D;
+    border: none;
+    border-radius: 12px;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    color: white;
+}
+
+.deleteButtonClass {
+    background-color: #E7EDFD;
+    border: none;
+    border-radius: 16px;
+    height: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    cursor: pointer;
+
+    font-family: 'NanumSquareNeo-Bold';
+    font-size: 15px;
+    color: rgb(111, 111, 111);
+}
+
+/* 추천 과목 */
+.deleteButtonClass.recommended {
+    background-color: #efffc5;
+}
+
+/* 선택 */
+.deleteButtonClass.selected {
+    filter: saturate(400%);
+
+    font-family: 'NanumSquareNeo-ExtraBold';
+    color: #1751EC;
+}
