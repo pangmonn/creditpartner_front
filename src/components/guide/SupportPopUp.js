@@ -64,7 +64,7 @@ const SupportPopUp = () => {
                     <div className='supportPopUpContent' dangerouslySetInnerHTML={{ __html: pageContents[currentPage - 1] }} />
                     <div className="supportPopUpPageButtonsContainer">
                         <button className="supportPopUpPageButton" onClick={goToPreviousPage} disabled={currentPage === 1}>이전 페이지</button>
-                        <span>- {currentPage} -</span>
+                        <span>- {currentPage}/5 -</span>
                         <button className="supportPopUpPageButton" onClick={goToNextPage} disabled={currentPage === supportImages.length}>다음 페이지</button>
                     </div>
                 </div>
