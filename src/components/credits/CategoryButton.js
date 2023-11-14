@@ -24,7 +24,6 @@ const CategoryButton = ({semester, onClickSemester}) => {
                     onChange={onClickSemester}
                     styles={{option: (provided, state) => ({...provided, backgroundColor: '#E1E9FF', color: state.isSelected ? '#1751EC' : 'gray'})}} />
             </div>
-            <img src={scan} className='scanImage' />
         </div>
         
     );
