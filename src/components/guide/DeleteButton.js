@@ -109,7 +109,7 @@ const DeleteButton = ({ category, guideData, majorData, setFilteredSubjectData, 
                                         <li key={item.classes}>
                                             <label>
                                                 <button
-                                                    className={`deleteButtonClass ${selectedClasses.includes(item.classes) ? 'selected' : ''} ${item.recommend ? 'recommended' : ''}`}
+                                                    className={`deleteButtonClass ${selectedClasses.includes(item.classes) ? 'selected' : ''} ${item.recommend && item.course != '공통' ? 'recommended' : ''}`}
                                                     onClick={() => {
                                                         if (selectedClasses.includes(item.classes)) {
                                                             setSelectedClasses(prevClasses =>
