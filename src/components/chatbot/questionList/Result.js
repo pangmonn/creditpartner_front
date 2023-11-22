@@ -4,7 +4,7 @@ import client from '../../auth/api/client';
 import save from '../../../images/save.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Result.css';
-const API_KEY = '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';
+const API_KEY = '';
 
 const config = { headers : { "Content-Type": 'application/json', Authorization: localStorage.getItem("login-token") } };
 
@@ -110,13 +110,15 @@ const Result = ({answers, setResultMajor}) => {
     studentInfo += "스스로 잘한다고 생각하는 것 : " + goodAs + " ";
     studentInfo += "성격 : " + personality + " ";
 
-    gptQuestion = "고등학생 친구가 진학할 학과를 추천해주려고 해. 다른 정보보다 학생이 좋아하는 과목과 싫어하는 과목에 비중을 더 높게 두고 학과를 추천해줘. " + studentInfo + "다음의 학과 중에서 가장 잘 어울리는 학과 3가지를 적어줘. " + dep + "답변의 예시를 적어줄게. 반드시 다음 형식에 맞춰서 적어줘. 1.컴퓨터공학과 : 이유  2.사회학과 : 이유  3.국어교육과 : 이유"
+    gptQuestion = "고등학생 친구가 진학할 학과를 추천해주려고 해. 다른 정보보다 학생이 좋아하는 과목과 싫어하는 과목에 비중을 더 높게 두고 학과를 추천해줘. " + studentInfo + "다음의 학과 중에서 가장 잘 어울리는 학과 3가지를 적어줘. " + dep + "답변의 예시를 적어줄게. 반드시 다음 형식에 맞춰서 적어줘. 1.컴퓨터공학과 :  2.사회학과 :  3.국어교육과 :"
     let quest = `아래 문맥에 따라 질문에 답하세요.
  
     맥락: 고등학생 친구가 진학할 학과를 추천해주려고 합니다. 학생의 정보는 다음과 같습니다. ${studentInfo} \n
         가장 잘 어울리는 학과 3가지를 반드시 다음 학과 중에서만 선택하여 골라주세요. \n ${dep} \n
         답변의 예시입니다. 이와 동일한 형태로 답변을 작성해주세요 \n
-        1.무슨과: 이유  2.무슨과: 이유  3.무슨과: 이유
+        1.과 이름
+        2.과 이름
+        3.과 이름
 
     질문: 고등학생 친구에게 진학할 학과를 추천해주세요. 싫어하는 과목과 관련된 학과는 추천에서 제외하고 좋아하는 과목과 관련된 학과들을 중점으로 추천해주세요. 반드시 다음 학과 중에서만 골라해주세요. \n ${dep}
     
@@ -181,16 +183,16 @@ const Result = ({answers, setResultMajor}) => {
             console.log(GPTanswer);
             let majors = [];
             let first = tempAnswer.indexOf('1');
-            let first_colon = tempAnswer.indexOf(':', first);
+            let first_colon = tempAnswer.indexOf('\n', first);
             majors.push(tempAnswer.slice(first+3,first_colon));
     
             let second = tempAnswer.indexOf('2');
-            let second_colon = tempAnswer.indexOf(':', second);
+            let second_colon = tempAnswer.indexOf('\n', second);
             majors.push(tempAnswer.slice(second+3,second_colon));
     
             let third = tempAnswer.indexOf('3');
-            let third_colon = tempAnswer.indexOf(':', third);
-            majors.push(tempAnswer.slice(third+3,third_colon));
+            let third_colon = tempAnswer.indexOf('과', third);
+            majors.push(tempAnswer.slice(third+3,third_colon+1));
             console.log(majors);
     
             if(majors!==[]) {
